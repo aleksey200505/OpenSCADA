@@ -899,10 +899,6 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %doc README README_ru COPYING ChangeLog
 %{_libdir}/*.so.*
 %{_libdir}/openscada/*.so
-#%if %{?with_qtstarter}
-#%_desktopdir/openscada.desktop
-#%_iconsdir/openscada.png
-#%endif
 
 %{?with_diamondboards: %exclude %{_libdir}/openscada/daq_DiamondBoards.so}
 %{?with_dcon: %exclude %{_libdir}/openscada/daq_DCON.so}
