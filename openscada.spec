@@ -6,8 +6,7 @@
 %bcond_with diamondboards
 %bcond_without dcon
 %bcond_without modbus
-# Portaudio-devel not preset in to CentOs
-%bcond_with soundcard
+%bcond_without soundcard
 %bcond_without snmp
 %bcond_without siemens
 %bcond_without system
@@ -81,9 +80,7 @@ BuildRequires: expat-devel
 BuildRequires: sqlite-devel
 BuildRequires: byacc
 BuildRequires: bison
-%if 0%{?with_soundcard}
 BuildRequires: portaudio-devel
-%endif
 %if 0%{?rhel}
 BuildRequires: qt4-devel
 %else
@@ -1147,6 +1144,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 %endif
 
 %changelog
+* Tue Jun 16 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-3
+- Enabled Portaudio-devel library.
+
 * Tue Jun 16 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-3
 - Adapted spec file for dist 5E-epel by Popkov Aleksey
 - Adapted spec file for dist 4E-epel by Popkov Aleksey (Not tested)
