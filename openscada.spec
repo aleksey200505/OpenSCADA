@@ -768,7 +768,7 @@ Requires:%{name}-Transport-Sockets=%{version}-%{release}
 Requires:%{name}-Transport-SSL=%{version}-%{release}
 Requires:%{name}-Transport-Serial=%{version}-%{release}
 
-%if %{?with_qtstarter}
+%if 0%{?with_qtstarter}
 Requires:%{name}-UI-QTStarter=%{version}-%{release}
 Requires:%{name}-UI-QTCfg=%{version}-%{release}
 Requires:%{name}-UI-QTVision=%{version}-%{release}
@@ -862,7 +862,7 @@ install -m 644 data/icons/* %{buildroot}/var/spool/openscada/icons
 install -m 755 -d %{buildroot}/var/spool/openscada/ARCHIVES/{MESS,VAL}
 install -m 644 -pD demo/oscada_demo.xml %{buildroot}%{_sysconfdir}/oscada_demo.xml
 install -m 755 -pD demo/openscada_demo %{buildroot}%{_bindir}/openscada_demo
-%if %{?with_qtstarter}
+%if 0%{?with_qtstarter}
 install -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
 install -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
 %endif
@@ -874,7 +874,7 @@ echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVE
 echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/VAL/info
 
 # installation of *.desktop files
-%if %{?with_qtstarter}
+%if 0%{?with_qtstarter}
 desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
@@ -1151,7 +1151,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %dir %{_localstatedir}/spool/openscada/DEMO
 %{_bindir}/openscada_demo
 %{_localstatedir}/spool/openscada/DEMO/*.db
-%if %{?with_qtstarter}
+%if 0%{?with_qtstarter}
 %_desktopdir/openscada_demo.desktop
 %_iconsdir/openscada_demo.png
 %endif
