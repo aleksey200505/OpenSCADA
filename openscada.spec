@@ -63,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 3%{?dist}
+Release: 4%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -1144,8 +1144,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 %endif
 
 %changelog
-* Tue Jun 16 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-3
-- Enabled Portaudio-devel library.
+* Tue Jun 16 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-4
+- Enabled Portaudio-devel library by Popkov Aleksey.
 
 * Tue Jun 16 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-3
 - Adapted spec file for dist 5E-epel by Popkov Aleksey
