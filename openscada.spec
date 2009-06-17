@@ -32,16 +32,16 @@
 %bcond_without http
 # ========== QT Interfaces ==========
 # QT4 devel old in to CentOs
+%if 0%{?rhel}
 %bcond_with qtstarter
-%if 0%{?rhel} && 0%{?with_qtstarter}
-# Don't change it's
+%bcond_with qtcfg
+%bcond_with qtvision
+%else
+%bcond_without qtstarter
 %bcond_without qtcfg
 %bcond_without qtvision
 %define _desktopdir %_datadir/applications
 %define _iconsdir /usr/share/icons
-%else
-%bcond_with qtcfg
-%bcond_with qtvision
 %endif
 # ========== Transports ==========
 %bcond_without ssl
@@ -63,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 4%{?dist}
+Release: 5%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -117,7 +117,6 @@ Kennwort "openscada" benutzen.
 
 %preun
 /sbin/chkconfig --del openscadad
-
 
 %if 0%{?with_diamondboards}
 %package DAQ-DiamondBoards
@@ -312,7 +311,6 @@ The %name-DAQ-LogicLevel allows logic level paramers.
 %description DAQ-LogicLevel -l de_DE.UTF8
 Das Paket %name-DAQ-LogicLevel, enthaelt das logische Parameterlevel.
 %endif
-
 
 %if 0%{?with_daqgate}
 %package DAQ-Gate
@@ -524,6 +522,25 @@ The %name-Protocol-HTTP package allows support HTTP for WWW based UIs.
 %description Protocol-HTTP -l de_DE.UTF8
 Das Paket %name-Protocol-HTTP ermoeglicht die HTTP-Unterstuetzung fuer die
 WWW-basierenden Nutzersinterfaces .
+%endif
+
+%if 0%{?with_qtstarter}
+%package UI-QTStarter
+Summary: Open SCADA QT Starter
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description UI-QTStarter
+The %name-UI-QTStarter Allow QT GUI starter. It is single for
+all QT GUI modules!.
+%description UI-QTStarter -l ru_RU.UTF8
+Пакет %name-UI-QTStarter Предоставляет QT GUI пускатель.
+Он является единственным для всех QT GUI модулей!
+%description UI-QTStarter -l uk_UA.UTF8
+Пакет %name-UI-QTStarter Надає QT GUI пускач. Він є один для
+усіх QT GUI модулів!
+%description UI-QTStarter -l de_DE.UTF8
+Das Paket %name-UI-QTStarter  Enthaelt den QT GUI Starter.
+Ist das einzige fuer alle QT GUI Module!
 %endif
 
 %if 0%{?with_qtcfg}
@@ -751,20 +768,15 @@ Requires:%{name}-Transport-Sockets=%{version}-%{release}
 Requires:%{name}-Transport-SSL=%{version}-%{release}
 Requires:%{name}-Transport-Serial=%{version}-%{release}
 
-Requires:%{name}-UI-WebCfg=%{version}-%{release}
-Requires:%{name}-UI-WebCfgd=%{version}-%{release}
-Requires:%{name}-UI-WebVision=%{version}-%{release}
-
-%if 0%{?with_qtcfg}
+%if %{?with_qtstarter}
+Requires:%{name}-UI-QTStarter=%{version}-%{release}
 Requires:%{name}-UI-QTCfg=%{version}-%{release}
-%endif
-%if 0%{?with_qtvision}
 Requires:%{name}-UI-QTVision=%{version}-%{release}
 %endif
 
-%if 0%{?with_qtstarter}
-desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
-%endif
+Requires:%{name}-UI-WebCfg=%{version}-%{release}
+Requires:%{name}-UI-WebCfgd=%{version}-%{release}
+Requires:%{name}-UI-WebVision=%{version}-%{release}
 
 %description demo
 The %{name}-demo package includes demo data bases and configs.
@@ -844,22 +856,28 @@ install -m 644 src/*.h %{buildroot}%{_includedir}/openscada
 install -m 644 -pD data/oscada.xml %{buildroot}%{_sysconfdir}/oscada.xml
 install -m 644 -pD data/oscada_start.xml %{buildroot}%{_sysconfdir}/oscada_start.xml
 install -m 755 -pD data/openscada_start %{buildroot}%{_bindir}/openscada_start
-%if 0%{?with_qtstarter}
-install -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
-install -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
-%endif
 install -m 755 -pD data/oscada.init %{buildroot}%{_initrddir}/openscadad
 install -m 755 -d %{buildroot}/var/spool/openscada/{DATA,icons}
 install -m 644 data/icons/* %{buildroot}/var/spool/openscada/icons
 install -m 755 -d %{buildroot}/var/spool/openscada/ARCHIVES/{MESS,VAL}
 install -m 644 -pD demo/oscada_demo.xml %{buildroot}%{_sysconfdir}/oscada_demo.xml
 install -m 755 -pD demo/openscada_demo %{buildroot}%{_bindir}/openscada_demo
+%if %{?with_qtstarter}
+install -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
+install -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
+%endif
 install -m 755 -d %{buildroot}/var/spool/openscada/DEMO
 install -m 644 demo/*.db %{buildroot}/var/spool/openscada/DEMO
 
 echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
 echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/VAL/info
+
+# installation of *.desktop files
+%if %{?with_qtstarter}
+desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
+desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
+%endif
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -879,14 +897,12 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %{_bindir}/openscada
 %{_bindir}/openscada_start
 %doc README README_ru COPYING ChangeLog
-
-%if 0%{?with_qtstarter}
-%_desktopdir/openscada.desktop
-%_iconsdir/openscada.png
-%endif
-
 %{_libdir}/*.so.*
 %{_libdir}/openscada/*.so
+#%if %{?with_qtstarter}
+#%_desktopdir/openscada.desktop
+#%_iconsdir/openscada.png
+#%endif
 
 %{?with_diamondboards: %exclude %{_libdir}/openscada/daq_DiamondBoards.so}
 %{?with_dcon: %exclude %{_libdir}/openscada/daq_DCON.so}
@@ -912,7 +928,6 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %{?with_http: %exclude %{_libdir}/openscada/prot_HTTP.so}
 %{?with_qtcfg: %exclude %{_libdir}/openscada/ui_QTCfg.so}
 %{?with_qtvision: %exclude %{_libdir}/openscada/ui_Vision.so}
-%{?with_qtstarter: %exclude %{_libdir}/openscada/ui_QTStarter.so}
 %{?with_ssl: %exclude %{_libdir}/openscada/tr_SSL.so}
 %{?with_sockets: %exclude %{_libdir}/openscada/tr_Sockets.so}
 %{?with_ssl: %exclude %{_libdir}/openscada/tr_Serial.so}
@@ -1065,6 +1080,15 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %{_libdir}/openscada/prot_HTTP.so
 %endif
 
+%if 0%{?with_qtstarter}
+%files UI-QTStarter
+%defattr(-,root,root)
+%{_libdir}/openscada/ui_QTStarter.so
+%_desktopdir/openscada.desktop
+%_desktopdir/openscada_demo.desktop
+%_iconsdir/openscada.png
+%endif
+
 %if 0%{?with_qtcfg}
 %files UI-QTCfg
 %defattr(-,root,root)
@@ -1075,13 +1099,6 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %files UI-QTVision
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_Vision.so
-%endif
-
-%if 0%{?with_qtstarter}
-%files UI-QTStarter
-%defattr(-,root,root)
-%{_libdir}/openscada/ui_QTStartter.so
-desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 %endif
 
 %if 0%{?with_ssl}
@@ -1138,12 +1155,15 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 %dir %{_localstatedir}/spool/openscada/DEMO
 %{_bindir}/openscada_demo
 %{_localstatedir}/spool/openscada/DEMO/*.db
-%if 0%{?with_qtstarter}
-    %_desktopdir/openscada_demo.desktop
-    %_iconsdir/openscada_demo.png
+%if %{?with_qtstarter}
+%_desktopdir/openscada_demo.desktop
+%_iconsdir/openscada_demo.png
 %endif
 
 %changelog
+* Wed Jun 17 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-5
+- Fixed critical bugs maked by me.
+
 * Tue Jun 16 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-4
 - Enabled Portaudio-devel library by Popkov Aleksey.
 
