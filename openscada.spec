@@ -63,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 5%{?dist}
+Release: 6%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -746,37 +746,37 @@ Dateien.
 Summary: Open SCADA demo data bases and config
 Group: Applications/Engineering
 Requires:%{name} = %{version}-%{release}
-Requires:%{name}-ARH-DBArch=%{version}-%{release}
-Requires:%{name}-ARH-FSArch=%{version}-%{release}
-Requires:%{name}-ARH-SQLite=%{version}-%{release}
+Requires:%{name}-ARH-DBArch = %{version}-%{release}
+Requires:%{name}-ARH-FSArch = %{version}-%{release}
+Requires:%{name}-ARH-SQLite = %{version}-%{release}
 
-Requires:%{name}-Special-FlibMath=%{version}-%{release}
-Requires:%{name}-Special-FlibComplex1=%{version}-%{release}
-Requires:%{name}-Special-FlibSys=%{version}-%{release}
+Requires:%{name}-Special-FlibMath = %{version}-%{release}
+Requires:%{name}-Special-FlibComplex1 = %{version}-%{release}
+Requires:%{name}-Special-FlibSys = %{version}-%{release}
 
-Requires:%{name}-DAQ-BlockCalc=%{version}-%{release}
-Requires:%{name}-DAQ-JavaLikeCalc=%{version}-%{release}
-Requires:%{name}-DAQ-LogicLevel=%{version}-%{release}
-Requires:%{name}-DAQ-System=%{version}-%{release}
-Requires:%{name}-DAQ-BlockCalc=%{version}-%{release}
-Requires:%{name}-DAQ-Gate=%{version}-%{release}
+Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
+Requires:%{name}-DAQ-JavaLikeCalc = %{version}-%{release}
+Requires:%{name}-DAQ-LogicLevel = %{version}-%{release}
+Requires:%{name}-DAQ-System = %{version}-%{release}
+Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
+Requires:%{name}-DAQ-Gate = %{version}-%{release}
 
-Requires:%{name}-Protocol-HTTP=%{version}-%{release}
-Requires:%{name}-Protocol-SelfSystem=%{version}-%{release}
+Requires:%{name}-Protocol-HTTP = %{version}-%{release}
+Requires:%{name}-Protocol-SelfSystem = %{version}-%{release}
 
-Requires:%{name}-Transport-Sockets=%{version}-%{release}
-Requires:%{name}-Transport-SSL=%{version}-%{release}
-Requires:%{name}-Transport-Serial=%{version}-%{release}
+Requires:%{name}-Transport-Sockets = %{version}-%{release}
+Requires:%{name}-Transport-SSL = %{version}-%{release}
+Requires:%{name}-Transport-Serial = %{version}-%{release}
 
 %if 0%{?with_qtstarter}
-Requires:%{name}-UI-QTStarter=%{version}-%{release}
-Requires:%{name}-UI-QTCfg=%{version}-%{release}
-Requires:%{name}-UI-QTVision=%{version}-%{release}
+Requires:%{name}-UI-QTStarter = %{version}-%{release}
+Requires:%{name}-UI-QTCfg = %{version}-%{release}
+Requires:%{name}-UI-QTVision = %{version}-%{release}
 %endif
 
-Requires:%{name}-UI-WebCfg=%{version}-%{release}
-Requires:%{name}-UI-WebCfgd=%{version}-%{release}
-Requires:%{name}-UI-WebVision=%{version}-%{release}
+Requires:%{name}-UI-WebCfg = %{version}-%{release}
+Requires:%{name}-UI-WebCfgd = %{version}-%{release}
+Requires:%{name}-UI-WebVision = %{version}-%{release}
 
 %description demo
 The %{name}-demo package includes demo data bases and configs.
@@ -1157,6 +1157,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Wed Jun 18 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-6
+- Workarounds for some bugs in rpmbuild by Peter Lemenkov <lemenkov@gmail.com>.
+
 * Wed Jun 17 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-5
 - Fixed critical bugs maked by me.
 
