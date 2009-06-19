@@ -63,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 6%{?dist}
+Release: 7%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -748,7 +748,6 @@ Group: Applications/Engineering
 Requires:%{name} = %{version}-%{release}
 Requires:%{name}-ARH-DBArch = %{version}-%{release}
 Requires:%{name}-ARH-FSArch = %{version}-%{release}
-Requires:%{name}-ARH-SQLite = %{version}-%{release}
 
 Requires:%{name}-Special-FlibMath = %{version}-%{release}
 Requires:%{name}-Special-FlibComplex1 = %{version}-%{release}
@@ -1157,6 +1156,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Wed Jun 19 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-7
+- Fixed bugs maked by me.
+
 * Wed Jun 18 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-6
 - Workarounds for some bugs in rpmbuild by Peter Lemenkov <lemenkov@gmail.com>.
 
