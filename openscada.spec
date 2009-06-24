@@ -32,17 +32,18 @@
 %bcond_without http
 # ========== QT Interfaces ==========
 # QT4 devel old in to CentOs
-%if 0%{?rhel}
-%bcond_with qtstarter
-%bcond_with qtcfg
-%bcond_with qtvision
-%else
+
+#%if 0%{?rhel}
+#%bcond_with qtstarter
+#%bcond_with qtcfg
+#%bcond_with qtvision
+#%else
 %bcond_without qtstarter
 %bcond_without qtcfg
 %bcond_without qtvision
 %define _desktopdir %_datadir/applications
 %define _iconsdir /usr/share/icons
-%endif
+#%endif
 # ========== Transports ==========
 %bcond_without ssl
 %bcond_without sockets
@@ -746,36 +747,84 @@ Dateien.
 Summary: Open SCADA demo data bases and config
 Group: Applications/Engineering
 Requires:%{name} = %{version}-%{release}
+# ############### ARH ########################
+%if 0%{?with_dbarch}
 Requires:%{name}-ARH-DBArch = %{version}-%{release}
+%endif
+%if 0%{?with_fsarch}
 Requires:%{name}-ARH-FSArch = %{version}-%{release}
-
+%endif
+# ############### Special ########################
+%if 0%{?with_flibmath}
 Requires:%{name}-Special-FlibMath = %{version}-%{release}
+%endif
+%if 0%{?with_flibcomplex}
+
 Requires:%{name}-Special-FlibComplex1 = %{version}-%{release}
+%endif
+%if 0%{?with_flibsys}
 Requires:%{name}-Special-FlibSys = %{version}-%{release}
-
+%endif
+%if 0%{?with_systemtests}
+Requires:%{name}-Special-SystemTests = %{version}-%{release}
+%endif
+# ############### DAQ ########################
+%if 0%{?with_blockcalc}
 Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
+%endif
+%if 0%{?with_javalikecalc}
 Requires:%{name}-DAQ-JavaLikeCalc = %{version}-%{release}
+%endif
+%if 0%{?with_logiclevel}
 Requires:%{name}-DAQ-LogicLevel = %{version}-%{release}
+%endif
+%if 0%{?with_system}
 Requires:%{name}-DAQ-System = %{version}-%{release}
+%endif
+%if 0%{?with_blockcalc}
 Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
+%endif
+%if 0%{?with_daqgate}
 Requires:%{name}-DAQ-Gate = %{version}-%{release}
-
+%endif
+# ############### HTTP ########################
+%if 0%{?with_http}
 Requires:%{name}-Protocol-HTTP = %{version}-%{release}
+%endif
+# ############### SelfSystem ########################
+%if 0%{?with_selfsystem}
 Requires:%{name}-Protocol-SelfSystem = %{version}-%{release}
-
+%endif
+# ############### Transport ########################
+%if 0%{?with_sockets}
 Requires:%{name}-Transport-Sockets = %{version}-%{release}
+%endif
+%if 0%{?with_ssl}
 Requires:%{name}-Transport-SSL = %{version}-%{release}
+%endif
+%if 0%{?with_serial}
 Requires:%{name}-Transport-Serial = %{version}-%{release}
-
+%endif
+# ############### GUI System ########################
 %if 0%{?with_qtstarter}
 Requires:%{name}-UI-QTStarter = %{version}-%{release}
+%endif
+%if 0%{?with_qtcfg}
 Requires:%{name}-UI-QTCfg = %{version}-%{release}
+%endif
+%if 0%{?with_qtvision}
 Requires:%{name}-UI-QTVision = %{version}-%{release}
 %endif
-
+# ############### Web Interfaces ########################
+%if 0%{?with_webcfg}
 Requires:%{name}-UI-WebCfg = %{version}-%{release}
+%endif
+%if 0%{?with_webcfgd}
 Requires:%{name}-UI-WebCfgd = %{version}-%{release}
+%endif
+%if 0%{?with_webvision}
 Requires:%{name}-UI-WebVision = %{version}-%{release}
+%endif
 
 %description demo
 The %{name}-demo package includes demo data bases and configs.
