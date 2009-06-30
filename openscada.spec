@@ -759,7 +759,6 @@ Requires:%{name}-ARH-FSArch = %{version}-%{release}
 Requires:%{name}-Special-FlibMath = %{version}-%{release}
 %endif
 %if 0%{?with_flibcomplex}
-
 Requires:%{name}-Special-FlibComplex1 = %{version}-%{release}
 %endif
 %if 0%{?with_flibsys}
