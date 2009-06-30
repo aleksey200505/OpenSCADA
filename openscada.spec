@@ -1211,6 +1211,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %changelog
 * Tue Jun 30 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-8
 - Added of dependences in to self package demo
+- Fixed %preun section by Peter Lemenkov <lemenkov@gmail.com>
 - Somes cosmics.
 
 * Wed Jun 19 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-7
