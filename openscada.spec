@@ -32,18 +32,17 @@
 %bcond_without http
 # ========== QT Interfaces ==========
 # QT4 devel old in to CentOs
-
-#%if 0%{?rhel}
-#%bcond_with qtstarter
-#%bcond_with qtcfg
-#%bcond_with qtvision
-#%else
+%if 0%{?rhel}
+%bcond_with qtstarter
+%bcond_with qtcfg
+%bcond_with qtvision
+%else
 %bcond_without qtstarter
 %bcond_without qtcfg
 %bcond_without qtvision
 %define _desktopdir %_datadir/applications
 %define _iconsdir /usr/share/icons
-#%endif
+%endif
 # ========== Transports ==========
 %bcond_without ssl
 %bcond_without sockets
@@ -64,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 7%{?dist}
+Release: 8%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -97,6 +96,10 @@ BuildRequires: desktop-file-utils
 BuildRequires: sed
 BuildRequires: chrpath
 
+Requires(post): chkconfig
+Requires(preun): chkconfig
+Requires(preun): initscripts
+
 %description
 Open SCADA system. For access use account "root" and password "openscada".
 %description -l ru_RU.UTF8
@@ -112,12 +115,14 @@ Kennwort "openscada" benutzen.
 %post
 /sbin/ldconfig
 /sbin/chkconfig --add openscadad
-/sbin/chkconfig openscadad off
 
 %postun -p /sbin/ldconfig
 
 %preun
-/sbin/chkconfig --del openscadad
+if [ $1 = 0 ]; then
+ /sbin/service openscadad stop > /dev/null 2>&1
+ /sbin/chkconfig --del openscadad
+fi
 
 %if 0%{?with_diamondboards}
 %package DAQ-DiamondBoards
@@ -1204,6 +1209,10 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Tue Jun 30 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-8
+- Added of dependences in to self package demo
+- Somes cosmics.
+
 * Wed Jun 19 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-7
 - Fixed bugs maked by me.
 
