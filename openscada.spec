@@ -63,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 8%{?dist}
+Release: 9%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -931,10 +931,12 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
+%find_lang {name} --all-name
+
 %clean
 %{__rm} -rf %{buildroot}
 
-%files
+%files -f {name}.lang
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/oscada.xml
 %config(noreplace) %{_sysconfdir}/oscada_start.xml
@@ -984,9 +986,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{?with_flibsys: %exclude %{_libdir}/openscada/spec_FLibSYS.so}
 %{?with_systemtests: %exclude %{_libdir}/openscada/spec_SystemTests.so}
 
-%lang(de) %{_datadir}/locale/de/LC_MESSAGES/*
-%lang(ru) %{_datadir}/locale/ru/LC_MESSAGES/*
-%lang(uk) %{_datadir}/locale/uk/LC_MESSAGES/*
+
 %{_localstatedir}/spool/openscada/DATA/info
 %{_localstatedir}/spool/openscada/icons/*
 %{_localstatedir}/spool/openscada/ARCHIVES/MESS/info
@@ -1209,6 +1209,10 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Tue Jul 14 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-9
+- Adding %find_lang macros by Peter Lemenkov <lemenkov@gmail.com>
+- Somes cosmetics.
+
 * Tue Jun 30 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-8
 - Added of dependences in to self package demo
 - Fixed %preun section by Peter Lemenkov <lemenkov@gmail.com>
