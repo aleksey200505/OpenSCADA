@@ -931,12 +931,12 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
-%find_lang {name} --all-name
+%find_lang %{name} --all-name
 
 %clean
 %{__rm} -rf %{buildroot}
 
-%files -f {name}.lang
+%files -f %{name}.lang
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/oscada.xml
 %config(noreplace) %{_sysconfdir}/oscada_start.xml
@@ -947,10 +947,10 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %dir %{_localstatedir}/spool/openscada/ARCHIVES
 %dir %{_localstatedir}/spool/openscada/ARCHIVES/MESS
 %dir %{_localstatedir}/spool/openscada/ARCHIVES/VAL
+%doc README README_ru COPYING ChangeLog
 %{_initrddir}/openscadad
 %{_bindir}/openscada
 %{_bindir}/openscada_start
-%doc README README_ru COPYING ChangeLog
 %{_libdir}/*.so.*
 %{_libdir}/openscada/*.so
 
