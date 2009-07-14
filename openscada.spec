@@ -986,7 +986,6 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{?with_flibsys: %exclude %{_libdir}/openscada/spec_FLibSYS.so}
 %{?with_systemtests: %exclude %{_libdir}/openscada/spec_SystemTests.so}
 
-
 %{_localstatedir}/spool/openscada/DATA/info
 %{_localstatedir}/spool/openscada/icons/*
 %{_localstatedir}/spool/openscada/ARCHIVES/MESS/info
