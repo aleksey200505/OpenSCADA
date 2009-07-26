@@ -63,7 +63,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.3.3
-Release: 9%{?dist}
+Release: 10%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -103,10 +103,10 @@ Requires(preun): initscripts
 %description
 Open SCADA system. For access use account "root" and password "openscada".
 %description -l ru_RU.UTF8
-Открытая SCADA система. Для доступа используйте запись "root" и пароль
+B:@KB0O SCADA A8AB5<0. ;O 4>ABC?0 8A?>;L7C9B5 70?8AL "root" 8 ?0@>;L
 "openscada".
 %description -l uk_UA.UTF8
-Відкрита SCADA система. Для доступу використовуйте запис "root" та пароль
+V4:@8B0 SCADA A8AB5<0. ;O 4>ABC?C 28:>@8AB>2C9B5 70?8A "root" B0 ?0@>;L
 "openscada".
 %description -l de_DE.UTF8
 Das offene SCADA System. Fuer den Zugang die Aufzeichnung "root" und das
@@ -133,12 +133,12 @@ Requires: %{name} = %{version}-%{release}
 The %name-DAQ-DiamondBoards allows access to Diamond systems DA boards.
 Includes support of Athena board.
 %description DAQ-DiamondBoards -l ru_RU.UTF8
-Пакет %name-DAQ-DiamondBoards предоставляет доступ к платам сбора
-данных фирмы Diamond systems. Включает поддержку системной платы
+0:5B %name-DAQ-DiamondBoards ?@54>AB02;O5B 4>ABC? : ?;0B0< A1>@0
+40==KE D8@<K Diamond systems. :;NG05B ?>445@6:C A8AB5<=>9 ?;0BK
 Athena.
 %description DAQ-DiamondBoards -l uk_UA.UTF8
-Пакет %name-DAQ-DiamondBoards надає доступ до плат збору даних фірми
-Diamond systems. Включає підтримку системної плати Athena.
+0:5B %name-DAQ-DiamondBoards =040T 4>ABC? 4> ?;0B 71>@C 40=8E DV@<8
+Diamond systems. :;NG0T ?V4B@8<:C A8AB5<=>W ?;0B8 Athena.
 %description DAQ-DiamondBoards -l de_DE.UTF8
 Das Paket %name-DAQ-DiamondBoards ermoeglicht den Zugang zur
 Datenerfassung der Firma Diamond systems.Es enthaelt die Unterstuetzung
@@ -154,11 +154,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-DAQ-DCON allows realisation of DCON client service.
 Supported I-7000 DCON protocol.
 %description DAQ-DCON -l ru_RU.UTF8
-Пакет %name-DAQ-DCON предоставляет реализацию клиентского сервиса
-протокола DCON. Поддерживается протокол I-7000 DCON.
+0:5B %name-DAQ-DCON ?@54>AB02;O5B @50;870F8N :;85=BA:>3> A5@28A0
+?@>B>:>;0 DCON. >445@68205BAO ?@>B>:>; I-7000 DCON.
 %description DAQ-DCON -l uk_UA.UTF8
-Пакет %name-DAQ-DCON надає реалізацію клієнтського сервісу DCON.
-Підтримується I-7000 DCON протокол.
+0:5B %name-DAQ-DCON =040T @50;V70FVN :;VT=BAL:>3> A5@2VAC DCON.
+V4B@8<CTBLAO I-7000 DCON ?@>B>:>;.
 %description DAQ-DCON -l de_DE.UTF8
 Das Paket %name-DAQ-DCON ermoeglicht Verwirklichung des
 Kundenservices des DCON-Protoklls. Unterstueuzung Prototkoll
@@ -174,16 +174,16 @@ Requires: %{name} = %{version}-%{release}
 The %name-DAQ-ModBus allows realisation of ModBus client service.
 Supported Modbus/TCP, Modbus/RTU and Modbus/ASCII protocols.
 %description DAQ-ModBus -l ru_RU.UTF8
-Пакет %name-DAQ-ModBus предоставляет реализацию клиентского сервиса
-протокола ModBus. Поддерживаются Modbus/TCP, Modbus/RTU и
-Modbus/ASCII протоколы.
+0:5B %name-DAQ-ModBus ?@54>AB02;O5B @50;870F8N :;85=BA:>3> A5@28A0
+?@>B>:>;0 ModBus. >445@6820NBAO Modbus/TCP, Modbus/RTU 8
+Modbus/ASCII ?@>B>:>;K.
 %description DAQ-ModBus -l uk_UA.UTF8
-Пакет %name-DAQ-ModBus надає реалізацію клієнтського ModBus сервісу.
-Підтримуються Modbus/TCP, Modbus/RTU та Modbus/ASCII протоколи.
+0:5B %name-DAQ-ModBus =040T @50;V70FVN :;VT=BAL:>3> ModBus A5@2VAC.
+V4B@8<CNBLAO Modbus/TCP, Modbus/RTU B0 Modbus/ASCII ?@>B>:>;8.
 %description DAQ-ModBus -l de_DE.UTF8
 Das Paket %name-DAQ-ModBus emoeglicht Realisierung des Kundenservices des
 ModBus - Protokolls. Unterstuetzt werden die Protokolle Modbus/TCP,
-Modbus/RTU и Modbus/ASCII.
+Modbus/RTU 8 Modbus/ASCII.
 %endif
 
 %if 0%{?with_soundcard}
@@ -194,9 +194,9 @@ Requires: %{name} = %{version}-%{release}
 %description DAQ-Soundcard
 The %name-DAQ-Soundcard allows access to sound card data.
 %description DAQ-Soundcard -l ru_RU.UTF8
-Пакет %name-DAQ-Soundcard предоставляет доступ к звуковой карте.
+0:5B %name-DAQ-Soundcard ?@54>AB02;O5B 4>ABC? : 72C:>2>9 :0@B5.
 %description DAQ-Soundcard -l uk_UA.UTF8
-Пакет %name-DAQ-Soundcard надає доступ до даних звукової карти.
+0:5B %name-DAQ-Soundcard =040T 4>ABC? 4> 40=8E 72C:>2>W :0@B8.
 %description DAQ-Soundcard -l de_DE.UTF8
 Das Paket %name-DAQ-Soundcard ermoeglicht den Zugang zur Schallkarte.
 %endif
@@ -210,10 +210,10 @@ Requires: %{name} = %{version}-%{release}
 %description DAQ-SNMP
 The %name-DAQ-SNMP allows realising of SNMP client service.
 %description DAQ-SNMP -l ru_RU.UTF8
-Пакет %name-DAQ-SNMP предоставляет реализацию клиентского
-сервиса протокола SNMP.
+0:5B %name-DAQ-SNMP ?@54>AB02;O5B @50;870F8N :;85=BA:>3>
+A5@28A0 ?@>B>:>;0 SNMP.
 %description DAQ-SNMP -l uk_UA.UTF8
-Пакет %name-DAQ-SNMP надає реалізацію клієнтського SNMP сервісу.
+0:5B %name-DAQ-SNMP =040T @50;V70FVN :;VT=BAL:>3> SNMP A5@2VAC.
 %description DAQ-SNMP -l de_DE.UTF8
 Das Paket %name-DAQ-SNMP ermoeglicht Realisierung des Kundenservices
 des SNMP - Protokolls.
@@ -229,13 +229,13 @@ The %name-DAQ-Siemens, allows data source Siemens PLC by CP of
 Hilscher CIF cards using MPI protocol and library Libnodave
 for other.
 %description DAQ-Siemens -l ru_RU.UTF8
-Пакет %name-DAQ-Siemens, предоставляет источник данных ПЛК Siemens
-посредством карт Hilscher CIF с использованием протокола MPI и
-библиотеки Libnodave для остального.
+0:5B %name-DAQ-Siemens, ?@54>AB02;O5B 8AB>G=8: 40==KE  Siemens
+?>A@54AB2>< :0@B Hilscher CIF A 8A?>;L7>20=85< ?@>B>:>;0 MPI 8
+181;8>B5:8 Libnodave 4;O >AB0;L=>3>.
 %description DAQ-Siemens -l uk_UA.UTF8
-Пакет %name-DAQ-Siemens, надає джерело даних ПЛК Siemens за
-допомогою карт Hilscher CIF з використанням протоколу MPI та
-бібліотеки Libnodave для іншого.
+0:5B %name-DAQ-Siemens, =040T 465@5;> 40=8E  Siemens 70
+4>?><>3>N :0@B Hilscher CIF 7 28:>@8AB0==O< ?@>B>:>;C MPI B0
+1V1;V>B5:8 Libnodave 4;O V=H>3>.
 %description DAQ-Siemens -l de_DE.UTF8
 Das Paket %name-DAQ-Siemens, enthaelt die Datenquelle PLC Siemens
 mittels der Karten Hilscher CIF durch Anwendung des MPI -
@@ -252,16 +252,16 @@ The %name-DAQ-System, allow operation system data acquisition.
 Support OS Linux data sources: HDDTemp, Sensors, Uptime, Memory, CPU and
 other.
 %description DAQ-System -l ru_RU.UTF8
-Пакет %name-DAQ-System, предоставляет сбор данных операционной
-системы. Поддерживаются источники данных ОС Linux: HDDTemp, Sensors,
-Uptime, Memory, CPU и другие.
+0:5B %name-DAQ-System, ?@54>AB02;O5B A1>@ 40==KE >?5@0F8>==>9
+A8AB5<K. >445@6820NBAO 8AB>G=8:8 40==KE ! Linux: HDDTemp, Sensors,
+Uptime, Memory, CPU 8 4@C385.
 %description DAQ-System -l uk_UA.UTF8
-Пакет %name-DAQ-System, Надає збір даних операційної системи.
-Підтримуються джерела даних ОС Linux: HDDTemp, Sensors, Uptime, Memory,
-CPU та інше.
+0:5B %name-DAQ-System, 040T 71V@ 40=8E >?5@0FV9=>W A8AB5<8.
+V4B@8<CNBLAO 465@5;0 40=8E ! Linux: HDDTemp, Sensors, Uptime, Memory,
+CPU B0 V=H5.
 %description DAQ-System -l de_DE.UTF8
 Das Paket %name-DAQ-System ermoeglicht Datenerfassung des
-Operationssystems. Es werden die Datenquellen ОС Linux: HDDTemp,
+Operationssystems. Es werden die Datenquellen ! Linux: HDDTemp,
 Sensors, Uptime, Memory, CPU und andere unterstuetzt.
 %endif
 
@@ -273,9 +273,9 @@ Requires: %{name} = %{version}-%{release}
 %description DAQ-BlockCalc
 The %name-DAQ-BlockCalc allows block based calculator.
 %description DAQ-BlockCalc -l ru_RU.UTF8
-Пакет %name-DAQ-BlockCalc, предоставляет блочный вычислитель.
+0:5B %name-DAQ-BlockCalc, ?@54>AB02;O5B 1;>G=K9 2KG8A;8B5;L.
 %description DAQ-BlockCalc -l uk_UA.UTF8
-Пакет %name-DAQ-BlockCalc, надає блоковий обчислювач.
+0:5B %name-DAQ-BlockCalc, =040T 1;>:>289 >1G8A;N20G.
 %description DAQ-BlockCalc -l de_DE.UTF8
 Das Paket %name-DAQ-BlockCalc gewaehrt den Blockrechner
 %endif
@@ -290,13 +290,13 @@ The %name-DAQ-JavaLikeCalc allows java-like based calculator and
 function's libraries engine. User can create and modify function and
 libraries.
 %description DAQ-JavaLikeCalc -l ru_RU.UTF8
-Пакет %name-DAQ-JavaLikeCalc, предоставляет основанные на java подобном
-языке вычислитель и движок библиотек. Пользователь может создавать и
-модифицировать функции и библиотеки.
+0:5B %name-DAQ-JavaLikeCalc, ?@54>AB02;O5B >A=>20==K5 =0 java ?>4>1=><
+O7K:5 2KG8A;8B5;L 8 4286>: 181;8>B5:. >;L7>20B5;L <>65B A>74020BL 8
+<>48D8F8@>20BL DC=:F88 8 181;8>B5:8.
 %description DAQ-JavaLikeCalc -l uk_UA.UTF8
-Пакет %name-DAQ-JavaLikeCalc, надає базовані на мові схожій на Java
-обчислювач та движок бібліотек функцї. Користувач може створювати та
-модифікувати функції та бібліотеки.
+0:5B %name-DAQ-JavaLikeCalc, =040T 107>20=V =0 <>2V AE>6V9 =0 Java
+>1G8A;N20G B0 4286>: 1V1;V>B5: DC=:FW. >@8ABC20G <>65 AB2>@N20B8 B0
+<>48DV:C20B8 DC=:FVW B0 1V1;V>B5:8.
 %description DAQ-JavaLikeCalc -l de_DE.UTF8
 Das %name-DAQ-JavaLikeCalc, entaelt die auf java - aehnlicher Sprache
 begruendeten Bibliothekenrechner und -laufer. Der Nutzer kann Funktionen
@@ -311,9 +311,9 @@ Requires: %{name} = %{version}-%{release}
 %description DAQ-LogicLevel
 The %name-DAQ-LogicLevel allows logic level paramers.
 %description DAQ-LogicLevel -l ru_RU.UTF8
-Пакет %name-DAQ-LogicLevel, предоставляет логический уровень параметров.
+0:5B %name-DAQ-LogicLevel, ?@54>AB02;O5B ;>38G5A:89 C@>25=L ?0@0<5B@>2.
 %description DAQ-LogicLevel -l uk_UA.UTF8
-Пакет %name-DAQ-LogicLevel, надає логічний рівень параметрів.
+0:5B %name-DAQ-LogicLevel, =040T ;>3VG=89 @V25=L ?0@0<5B@V2.
 %description DAQ-LogicLevel -l de_DE.UTF8
 Das Paket %name-DAQ-LogicLevel, enthaelt das logische Parameterlevel.
 %endif
@@ -327,11 +327,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-DAQ-Gate, Allow to make gate data sources of remote
 OpenSCADA station to local OpenSCADA station.
 %description DAQ-Gate -l ru_RU.UTF8
-Пакет %name-DAQ-Gate, позволяет выполнять шлюзование источников
-данных удалённых OpenSCADA станций в локальные.
+0:5B %name-DAQ-Gate, ?>72>;O5B 2K?>;=OBL H;N7>20=85 8AB>G=8:>2
+40==KE C40;Q==KE OpenSCADA AB0=F89 2 ;>:0;L=K5.
 %description DAQ-Gate -l uk_UA.UTF8
-Пакет %name-DAQ-Gate, дозволяє шлюзувати джерела даних віддалених
-OpenSCADA станцій до локальних.
+0:5B %name-DAQ-Gate, 4>72>;OT H;N7C20B8 465@5;0 40=8E 2V440;5=8E
+OpenSCADA AB0=FV9 4> ;>:0;L=8E.
 %description DAQ-Gate -l de_DE.UTF8
 Das Paket %name-DAQ-Gate, ermoeglicht das Einschleusen der Datenquellen der
 entfernten OpenSCADA Stationen in die lokale.
@@ -346,11 +346,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-Protocol-SelfSystem self OpenSCADA protocol, support
 generic functions.
 %description Protocol-SelfSystem -l ru_RU.UTF8
-Пакет %name-Protocol-SelfSystem, cобственный протокол OpenSCADA,
-поддерживает основные функции.
+0:5B %name-Protocol-SelfSystem, c>1AB25==K9 ?@>B>:>; OpenSCADA,
+?>445@68205B >A=>2=K5 DC=:F88.
 %description Protocol-SelfSystem -l uk_UA.UTF8
-Пакет %name-Protocol-SelfSystem, власний протокол OpenSCADA,
-підтримує основні функції.
+0:5B %name-Protocol-SelfSystem, 2;0A=89 ?@>B>:>; OpenSCADA,
+?V4B@8<CT >A=>2=V DC=:FVW.
 %description Protocol-SelfSystem -l de_DE.UTF8
 Das Paket %name-Protocol-SelfSystem, das eigene OpenSCADA -
 Protokoll, unterstuetzt Hauptfunktionen
@@ -365,9 +365,9 @@ Requires: %{name} = %{version}-%{release}
 %description DB-FireBird
 The %name-DB-FireBird allow support of the DB FireBird.
 %description DB-FireBird -l ru_RU.UTF8
-Пакет %name-DB-FireBird, предоставляет поддержку БД FireBird.
+0:5B %name-DB-FireBird, ?@54>AB02;O5B ?>445@6:C  FireBird.
 %description DB-FireBird -l uk_UA.UTF8
-Пакет %name-DB-FireBird, модуль БД. Надає підтримку БД FireBird.
+0:5B %name-DB-FireBird, <>4C;L . 040T ?V4B@8<:C  FireBird.
 %description DB-FireBird -l de_DE.UTF8
 Das Paket %name-DB-FireBird Ermoegliht die FireBird Dateibasenunterstuetzung.
 %endif
@@ -381,9 +381,9 @@ Requires: %{name} = %{version}-%{release}
 %description DB-MySQL
 The %name-DB-MySQL package allow support of the BD MySQL
 %description DB-MySQL -l ru_RU.UTF8
-Пакет %name-DB-MySQL, предоставляет поддержку БД MySQL.
+0:5B %name-DB-MySQL, ?@54>AB02;O5B ?>445@6:C  MySQL.
 %description DB-MySQL -l uk_UA.UTF8
-Пакет %name-DB-MySQL, Надає підтримку БД MySQL.
+0:5B %name-DB-MySQL, 040T ?V4B@8<:C  MySQL.
 %description DB-MySQL -l de_DE.UTF8
 Das Paket %name-DB-MySQL Ermoeglicht die MySQL-Dateibasenunterstuetzung.
 %endif
@@ -396,9 +396,9 @@ Requires: %{name} = %{version}-%{release}
 %description DB-DBF
 The %name-DB-DBF package allow support of the *.dbf files, version 3.0.
 %description DB-DBF -l ru_RU.UTF8
-Пакет %name-DB-DBF, предоставляет поддержку *.dbf файлов, версии 3.0..
+0:5B %name-DB-DBF, ?@54>AB02;O5B ?>445@6:C *.dbf D09;>2, 25@A88 3.0..
 %description DB-DBF -l uk_UA.UTF8
-Пакет %name-DB-DBF, надає підтримку *.dbf файлів, версії 3.0.
+0:5B %name-DB-DBF, =040T ?V4B@8<:C *.dbf D09;V2, 25@AVW 3.0.
 %description DB-DBF -l de_DE.UTF8
 Das Paket %name-DB-DBF ermoeglicht die *.dbf Dateiunterstutzung, Versionen 3.0..
 %endif
@@ -411,9 +411,9 @@ Requires: %{name} = %{version}-%{release}
 %description DB-SQLite
 The %name-DB-SQLite package allow support of the BD SQLite.
 %description DB-SQLite -l ru_RU.UTF8
-Пакет %name-DB-SQLite, предоставляет поддержку БД SQLite.
+0:5B %name-DB-SQLite, ?@54>AB02;O5B ?>445@6:C  SQLite.
 %description DB-SQLite -l uk_UA.UTF8
-Пакет %name-DB-SQLite, надає підтримку БД SQLite.
+0:5B %name-DB-SQLite, =040T ?V4B@8<:C  SQLite.
 %description DB-SQLite -l de_DE.UTF8
 Das Paket %name-DB-SQLite ermoeglicht die DB SQLite - Unterstuetzung.
 %endif
@@ -427,10 +427,10 @@ Requires: %{name} = %{version}-%{release}
 The %name-ARH-DBArch package allow functions for messages and values
 arhiving to DB.
 %description ARH-DBArch -l ru_RU.UTF8
-Пакет %name-ARH-DBArch, предоставляет функции архивирования сообщений и
-значений на БД.
+0:5B %name-ARH-DBArch, ?@54>AB02;O5B DC=:F88 0@E828@>20=8O A>>1I5=89 8
+7=0G5=89 =0 .
 %description ARH-DBArch -l uk_UA.UTF8
-Пакет %name-ARH-DBArch, надає функції архівації повідомлень та значень на БД.
+0:5B %name-ARH-DBArch, =040T DC=:FVW 0@EV20FVW ?>2V4><;5=L B0 7=0G5=L =0 .
 %description ARH-DBArch -l de_DE.UTF8
 Das Paket %name-ARH-DBArch gewaehrt Archivierungsfunktionen der Mitteilungen
 und Bedeutungen fuer DB.
@@ -445,11 +445,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-ARH-FSArch allow functions for messages and values arhiving
 to file system.
 %description ARH-FSArch -l ru_RU.UTF8
-Пакет %name-ARH-FSArch, предоставляет функции архивирования сообщений и
-значений на файловую систему.
+0:5B %name-ARH-FSArch, ?@54>AB02;O5B DC=:F88 0@E828@>20=8O A>>1I5=89 8
+7=0G5=89 =0 D09;>2CN A8AB5<C.
 %description ARH-FSArch -l uk_UA.UTF8
-Пакет %name-ARH-FSArch, надає функції архівації повідомлень та значень на
-файлову систему.
+0:5B %name-ARH-FSArch, =040T DC=:FVW 0@EV20FVW ?>2V4><;5=L B0 7=0G5=L =0
+D09;>2C A8AB5<C.
 %description ARH-FSArch -l de_DE.UTF8
 Das Paket %name-ARH-FSArch gewaert Archivierungsfunktionen fuer Mitteilungen
 und Bedeutungen fuer Dateisystem.
@@ -464,10 +464,10 @@ Requires: %{name} = %{version}-%{release}
 The %name-UI-WebCfg allows the WEB based OpenSCADA system
 configurator.
 %description UI-WebCfg -l ru_RU.UTF8
-Пакет %name-UI-WebCfg, предоставляет WEB основанный конфигуратор
-системы OpenSCADA.
+0:5B %name-UI-WebCfg, ?@54>AB02;O5B WEB >A=>20==K9 :>=D83C@0B>@
+A8AB5<K OpenSCADA.
 %description UI-WebCfg -l uk_UA.UTF8
-Пакет %name-UI-WebCfg, надає WEB базований конфігуратор системи
+0:5B %name-UI-WebCfg, =040T WEB 107>20=89 :>=DV3C@0B>@ A8AB5<8
 OpenSCADA.
 %description UI-WebCfg -l de_DE.UTF8
 Das Paket %name-UI-WebCfg ermoeglicht den WEB-begruendeten
@@ -483,11 +483,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-UI-WebCfgd allows the dynamic WEB based OpenSCADA system
 configurator. Use XHTML, CSS and JavaScript technologies.
 %description UI-WebCfgd -l ru_RU.UTF8
-Пакет %name-UI-WebCfgd, предоставляет динамический WEB основанный
-конфигуратор. Использует XHTML, CSS и JavaScript технологии.
+0:5B %name-UI-WebCfgd, ?@54>AB02;O5B 48=0<8G5A:89 WEB >A=>20==K9
+:>=D83C@0B>@. A?>;L7C5B XHTML, CSS 8 JavaScript B5E=>;>388.
 %description UI-WebCfgd -l uk_UA.UTF8
-Пакет %name-UI-WebCfgd, надає динамічний WEB базований конфігуратор.
-Використано XHTML, CSS та JavaScript технології.
+0:5B %name-UI-WebCfgd, =040T 48=0<VG=89 WEB 107>20=89 :>=DV3C@0B>@.
+8:>@8AB0=> XHTML, CSS B0 JavaScript B5E=>;>3VW.
 %description UI-WebCfgd -l de_DE.UTF8
 Das Paket %name-UI-WebCfgd ermoeglicht den dynamischen WEB-begruendeten
 Konfigurator. Nutzt XHTML, CSS and JavaScript technologies aus.
@@ -502,11 +502,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-UI-WebVision web operation user interface for visual control area
 (VCA) projects playing.
 %description UI-WebVision -l ru_UA.UTF8
-Пакет %name-UI-WebVision, web рабочий пользовательский интерфейс для
-исполнения визуальных сред управления (СВУ)
+0:5B %name-UI-WebVision, web @01>G89 ?>;L7>20B5;LA:89 8=B5@D59A 4;O
+8A?>;=5=8O 287C0;L=KE A@54 C?@02;5=8O (!#)
 %description UI-WebVision -l uk_RU.UTF8
-Пакет %name-UI-WebVision, web робочий інтерфейс користувача для виконання
-візуального середовища керування (СВК).
+0:5B %name-UI-WebVision, web @>1>G89 V=B5@D59A :>@8ABC20G0 4;O 28:>=0==O
+2V7C0;L=>3> A5@54>28I0 :5@C20==O (!).
 %description UI-WebVision -l de_DE.UTF8
 Das Paket %name-UI-WebVision, web-Arbeitsnutzersinterface fuer Ausfuehrung
 visueller Kontrollebereiche .
@@ -520,11 +520,11 @@ Requires: %{name} = %{version}-%{release}
 %description Protocol-HTTP
 The %name-Protocol-HTTP package allows support HTTP for WWW based UIs.
 %description Protocol-HTTP -l ru_RU.UTF8
-Пакет %name-Protocol-HTTP предоставляет поддержку HTTP для WWW основанных
-пользовательских интерфейсов.
+0:5B %name-Protocol-HTTP ?@54>AB02;O5B ?>445@6:C HTTP 4;O WWW >A=>20==KE
+?>;L7>20B5;LA:8E 8=B5@D59A>2.
 %description Protocol-HTTP -l uk_UA.UTF8
-Пакет %name-Protocol-HTTP Надає підтримку HTTP для WWW базозованих
-користувальницьких інтерфейсів.
+0:5B %name-Protocol-HTTP 040T ?V4B@8<:C HTTP 4;O WWW 107>7>20=8E
+:>@8ABC20;L=8FL:8E V=B5@D59AV2.
 %description Protocol-HTTP -l de_DE.UTF8
 Das Paket %name-Protocol-HTTP ermoeglicht die HTTP-Unterstuetzung fuer die
 WWW-basierenden Nutzersinterfaces .
@@ -539,11 +539,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-UI-QTStarter Allow QT GUI starter. It is single for
 all QT GUI modules!.
 %description UI-QTStarter -l ru_RU.UTF8
-Пакет %name-UI-QTStarter Предоставляет QT GUI пускатель.
-Он является единственным для всех QT GUI модулей!
+0:5B %name-UI-QTStarter @54>AB02;O5B QT GUI ?CA:0B5;L.
+= O2;O5BAO 548=AB25==K< 4;O 2A5E QT GUI <>4C;59!
 %description UI-QTStarter -l uk_UA.UTF8
-Пакет %name-UI-QTStarter Надає QT GUI пускач. Він є один для
-усіх QT GUI модулів!
+0:5B %name-UI-QTStarter 040T QT GUI ?CA:0G. V= T >48= 4;O
+CAVE QT GUI <>4C;V2!
 %description UI-QTStarter -l de_DE.UTF8
 Das Paket %name-UI-QTStarter  Enthaelt den QT GUI Starter.
 Ist das einzige fuer alle QT GUI Module!
@@ -557,10 +557,10 @@ Requires: %{name} = %{version}-%{release}
 %description UI-QTCfg
 The %name-UI-QTCfg allows the QT based OpenSCADA system configurator.
 %description UI-QTCfg -l ru_RU.UTF8
-Пакет %name-UI-QTCfg предоставляет QT основанный конфигуратор системы
+0:5B %name-UI-QTCfg ?@54>AB02;O5B QT >A=>20==K9 :>=D83C@0B>@ A8AB5<K
 OpenSCADA.
 %description UI-QTCfg -l uk_UA.UTF8
-Пакет %name-UI-QTCfg містить файли QTCfg-конфігуратору.
+0:5B %name-UI-QTCfg <VAB8BL D09;8 QTCfg-:>=DV3C@0B>@C.
 %description UI-QTCfg -l de_DE.UTF8
 Das Paket %name-UI-QTCfg emrmoeglicht den QT-begruendeten
 OpenSCADA-Systemkonfigurator.
@@ -575,11 +575,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-UI-QTVision package includes files visual operation user
 interface.
 %description UI-QTVision -l ru_RU.UTF8
-Пакет %name-UI-QTVision включает файлы рабочего пользовательского
-интерфейса.
+0:5B %name-UI-QTVision 2:;NG05B D09;K @01>G53> ?>;L7>20B5;LA:>3>
+8=B5@D59A0.
 %description UI-QTVision -l uk_UA.UTF8
-Пакет %name-UI-QTVision включає файли робочого інтерфейсу
-користувача.
+0:5B %name-UI-QTVision 2:;NG0T D09;8 @>1>G>3> V=B5@D59AC
+:>@8ABC20G0.
 %description UI-QTVision -l de_DE.UTF8
 Das Paket %name-UI-QTVision enthaelt die Arbeitsnutzersinterfacedaten
 %endif
@@ -593,12 +593,12 @@ Requires: %{name} = %{version}-%{release}
 The %name-Transport-SSL allows security socket layer based transport.
 Used OpenSSL and supported SSLv2, SSLv3 and TLSv1.
 %description Transport-SSL -l ru_RU.UTF8
-Пакет %name-Transport-SSL предоставляет транспорт основанный на слое
-безопасных сокетов. Используется OpenSSL и поддерживаютя SSLv2, SSLv3
+0:5B %name-Transport-SSL ?@54>AB02;O5B B@0=A?>@B >A=>20==K9 =0 A;>5
+157>?0A=KE A>:5B>2. A?>;L7C5BAO OpenSSL 8 ?>445@6820NBO SSLv2, SSLv3
 and TLSv1.
 %description Transport-SSL -l uk_UA.UTF8
-Пакет %name-Transport-SSL надає транспорт базований на безпечному шарі сокетів.
- Використано OpenSSL та підтримуються SSLv2, SSLv3 and TLSv1.
+0:5B %name-Transport-SSL =040T B@0=A?>@B 107>20=89 =0 157?5G=><C H0@V A>:5BV2.
+ 8:>@8AB0=> OpenSSL B0 ?V4B@8<CNBLAO SSLv2, SSLv3 and TLSv1.
 %description Transport-SSL -l de_DE.UTF8
 Das Paket %name-Transport-SSL enthaelt den auf der Schicht der unfallfesten
 Sockets begruendeten Transport. Es werden OpenSSL benutzt und SSLv2, SSLv3
@@ -614,13 +614,13 @@ Requires: %{name} = %{version}-%{release}
 The %name-Transport-Sockets allows sockets based transport. Supports inet
 and unix sockets. Inet socket uses TCP and UDP protocols.
 %description Transport-Sockets -l ru_RU.UTF8
-Пакет %name-Transport-Sockets педоставляет транспорт основанный на сокетах.
-Поддерживаются интернет и UNIX сокеты. Интернет сокет использует TCP и UDP
-протоколы.
+0:5B %name-Transport-Sockets ?54>AB02;O5B B@0=A?>@B >A=>20==K9 =0 A>:5B0E.
+>445@6820NBAO 8=B5@=5B 8 UNIX A>:5BK. =B5@=5B A>:5B 8A?>;L7C5B TCP 8 UDP
+?@>B>:>;K.
 %description Transport-Sockets -l uk_UA.UTF8
-Пакет %name-Transport-Sockets надає транспорт базований на сокетах.
-Підтримуються інтернет та UNIX сокети. Інтернет сокет використовує TCP
-та UDP протоколи.
+0:5B %name-Transport-Sockets =040T B@0=A?>@B 107>20=89 =0 A>:5B0E.
+V4B@8<CNBLAO V=B5@=5B B0 UNIX A>:5B8. =B5@=5B A>:5B 28:>@8AB>2CT TCP
+B0 UDP ?@>B>:>;8.
 %description Transport-Sockets -l de_DE.UTF8
 Das Paket %name-Transport-Sockets ermoeglicht den auf Sockets begruendeten
 Transport. Unterstuetzt werden Internet- und UNIX-Sockets. Internetsocket
@@ -637,13 +637,13 @@ The %name-Transport-Serial, allow serial based interfaces. Used for
 data exchanging through serial interfaces like RS232, RS485, GSM
 and other.
 %description Transport-Serial -l ru_RU.UTF8
-Пакет %name-Transport-Serial, предоставляет последовательный интерфейс.
-Используется для обмена данными через последовательные интерфейсы
-типа RS232, RS485, GSM и другое.
+0:5B %name-Transport-Serial, ?@54>AB02;O5B ?>A;54>20B5;L=K9 8=B5@D59A.
+A?>;L7C5BAO 4;O >1<5=0 40==K<8 G5@57 ?>A;54>20B5;L=K5 8=B5@D59AK
+B8?0 RS232, RS485, GSM 8 4@C3>5.
 %description Transport-Serial -l uk_UA.UTF8
-Пакет %name-Transport-Serial, надає послідовні інтерфейси.
-Використовується для обміну даними через послідовні інтерфейсти
-типу RS232, RS485, GSM та інше.
+0:5B %name-Transport-Serial, =040T ?>A;V4>2=V V=B5@D59A8.
+8:>@8AB>2CTBLAO 4;O >1<V=C 40=8<8 G5@57 ?>A;V4>2=V V=B5@D59AB8
+B8?C RS232, RS485, GSM B0 V=H5.
 %description Transport-Serial -l de_DE.UTF8
 Das Paket %name-Transport-Serial, ermoeglicht konsequenten
 Nutzersinterface. Wird fuer das Umtauschen von Daten durch konsequente
@@ -659,11 +659,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-Special-FlibComplex1 allows static function library
 Complex1 (SCADA Complex1 functions).
 %description Special-FlibComplex1 -l ru_RU.UTF8
-Пакет %name-Special-FlibComplex1-Sockets предоставляет статическую
-библиотеку функций Complex1 (функции SCADA Complex1).
+0:5B %name-Special-FlibComplex1-Sockets ?@54>AB02;O5B AB0B8G5A:CN
+181;8>B5:C DC=:F89 Complex1 (DC=:F88 SCADA Complex1).
 %description Special-FlibComplex1 -l uk_UA.UTF8
-Пакет %name-Special-FlibComplex1 надає статичну бібліотеку функцій
-Complex1 (функції SCADA Complex1).
+0:5B %name-Special-FlibComplex1 =040T AB0B8G=C 1V1;V>B5:C DC=:FV9
+Complex1 (DC=:FVW SCADA Complex1).
 %description Special-FlibComplex1 -l de_DE.UTF8
 Das Paket %name-Special-FlibComplex1s enthaelt statische
 Bibliothek der Complex1-Funktionen (Funktionen SCADA Complex1).
@@ -677,10 +677,10 @@ Requires: %{name} = %{version}-%{release}
 %description Special-FlibMath
 The %name-Special-FlibMath allows mathematic static function library.
 %description Special-FlibMath -l ru_RU.UTF8
-Пакет %name-Special-FlibMath предоставляет библиотеку стандартных
-математических функций.
+0:5B %name-Special-FlibMath ?@54>AB02;O5B 181;8>B5:C AB0=40@B=KE
+<0B5<0B8G5A:8E DC=:F89.
 %description Special-FlibMath -l uk_UA.UTF8
-Пакет %name-Special-FlibMath надає статичну бібліотеку математичних функцій.
+0:5B %name-Special-FlibMath =040T AB0B8G=C 1V1;V>B5:C <0B5<0B8G=8E DC=:FV9.
 %description Special-FlibMath -l de_DE.UTF8
 The %name-Special-FlibMath : #Das Paket %name-Special-FlibMath enthaelt
 Standardbibliothek der mathematischen Funktionen.
@@ -695,11 +695,11 @@ Requires: %{name} = %{version}-%{release}
 The %name-Special-FlibSys allows system API functions library
 of the user programming area.
 %description Special-FlibSys -l ru_RU.UTF8
-Пакет %name-Special-FlibSys предоставляет в систему библиотеку
-системного API среды пользовательского программирования.
+0:5B %name-Special-FlibSys ?@54>AB02;O5B 2 A8AB5<C 181;8>B5:C
+A8AB5<=>3> API A@54K ?>;L7>20B5;LA:>3> ?@>3@0<<8@>20=8O.
 %description Special-FlibSys -l uk_UA.UTF8
-Пакет %name-Special-FlibSys надає в систему бібліотеку системного API
-середовища програмування користувача.
+0:5B %name-Special-FlibSys =040T 2 A8AB5<C 1V1;V>B5:C A8AB5<=>3> API
+A5@54>28I0 ?@>3@0<C20==O :>@8ABC20G0.
 %description Special-FlibSys -l de_DE.UTF8
 Das Paket %name-Special-FlibSys ermoeglicht in das System die
 Bibliothek der API-Systemprogrammierung des Nutzersbereiches.
@@ -713,10 +713,10 @@ Requires: %{name} = %{version}-%{release}
 %description Special-SystemTests
 The %name-Special-SystemTests allows the group tests for OpenSCADA system.
 %description Special-SystemTests -l ru_RU.UTF8
-Пакет %name-Special-SystemTests предоставляет группу тестов для системы
+0:5B %name-Special-SystemTests ?@54>AB02;O5B 3@C??C B5AB>2 4;O A8AB5<K
 OpenSCADA.
 %description Special-SystemTests -l uk_UA.UTF8
-Пакет %name-Special-SystemTests надає групу тестів для системи OpenSCADA.
+0:5B %name-Special-SystemTests =040T 3@C?C B5ABV2 4;O A8AB5<8 OpenSCADA.
 %description Special-SystemTests -l de_DE.UTF8
 Das Paket %name-Special-SystemTests enthaelt die Testgruppe fuer das
 OpenSCADA-System
@@ -728,9 +728,9 @@ Group: Documentation
 %description doc
 The %name-doc package include documents files.
 %description doc -l ru_RU.UTF8
-Пакет %name-doc включает файлы документации.
+0:5B %name-doc 2:;NG05B D09;K 4>:C<5=B0F88.
 %description doc -l uk_UA.UTF8
-Пакет %name-doc включає файли документації.
+0:5B %name-doc 2:;NG0T D09;8 4>:C<5=B0FVW.
 %description doc -l de_DE.UTF8
 Das Paket %name-doc enthaelt Dokumentationsdateien.
 
@@ -741,9 +741,9 @@ Requires: %{name} = %{version}-%{release}
 %description devel
 The %name-devel package includes library archives and include files.
 %description devel -l ru_RU.UTF8
-Пакет %name-devel включает архив библиотек и включаемые файлы.
+0:5B %name-devel 2:;NG05B 0@E82 181;8>B5: 8 2:;NG05<K5 D09;K.
 %description devel -l uk_UA.UTF8
-Пакет %name-devel включає архів бібліотек та включаємі файли.
+0:5B %name-devel 2:;NG0T 0@EV2 1V1;V>B5: B0 2:;NG0T<V D09;8.
 %description devel -l de_DE.UTF8
 Das Paket %name-devel enthaelt Bibliothekenarchiv und eingeschlossene
 Dateien.
@@ -835,13 +835,13 @@ The %{name}-demo package includes demo data bases and configs.
 For start use command <openscada_demo>. For access use account
 "root" and password "openscada" or account "user" without password.
 %description demo -l ru_RU.UTF8
-Пакет %{name}-demo включает демонстрационные базы данных и конфигурации.
-Для старта используйте команду <openscada_demo>. Для доступа используйте запись
-"root" и пароль "openscada" или запись "user" без пароля.
+0:5B %{name}-demo 2:;NG05B 45<>=AB@0F8>==K5 107K 40==KE 8 :>=D83C@0F88.
+;O AB0@B0 8A?>;L7C9B5 :><0=4C <openscada_demo>. ;O 4>ABC?0 8A?>;L7C9B5 70?8AL
+"root" 8 ?0@>;L "openscada" 8;8 70?8AL "user" 157 ?0@>;O.
 %description demo -l uk_UA.UTF8
-Пакет %{name}-demo включає демонстраційні бази даних та конфігурації. Для
-старту використовуйте команду <openscada_demo>. Для доступу використовуйте
-запис "root" та пароль "openscada" або запис "user" без пароля.
+0:5B %{name}-demo 2:;NG0T 45<>=AB@0FV9=V 1078 40=8E B0 :>=DV3C@0FVW. ;O
+AB0@BC 28:>@8AB>2C9B5 :><0=4C <openscada_demo>. ;O 4>ABC?C 28:>@8AB>2C9B5
+70?8A "root" B0 ?0@>;L "openscada" 01> 70?8A "user" 157 ?0@>;O.
 %description demo -l de_DE.UTF8
 Das Paket %{name}-demo enthaelt Demodatenbanken und Konfigurationen. Fuers
 Starten wird Kommando <openscada_demo> benutzt. Fuer den Zugang benutzen Sie
@@ -1208,6 +1208,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.3.3-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Tue Jul 14 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-9
 - Adding %find_lang macros by Peter Lemenkov <lemenkov@gmail.com>
 - Somes cosmetics.
