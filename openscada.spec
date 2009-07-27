@@ -931,12 +931,14 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
-%find_lang {name} --all-name
+#%find_lang {name} --all-name
+%find_lang o.* {name}.lang
 
 %clean
 %{__rm} -rf %{buildroot}
 
 %files -f {name}.lang
+
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/oscada.xml
 %config(noreplace) %{_sysconfdir}/oscada_start.xml
@@ -1208,8 +1210,11 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Mon Jul 27 2009 Popkov Aleksey <aleksey@oscada.org.ua> - 0.6.3.3-10
+- Fixed of macros %find_lang for epel-5 by Peter Lemenkov <lemenkov@gmail.com>.
+
 * Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.3.3-10
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild.
 
 * Tue Jul 14 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-9
 - Adding %find_lang macros by Peter Lemenkov <lemenkov@gmail.com>
