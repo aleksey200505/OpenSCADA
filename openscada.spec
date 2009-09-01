@@ -67,6 +67,7 @@ Release: 12%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
+Patch1: openscada-0.6.3.3-openssl.patch
 License: GPLv2
 Group: Applications/Engineering
 URL: http://oscada.org.ua
@@ -460,6 +461,14 @@ und Bedeutungen fuer Dateisystem.
 Summary: Open SCADA interfaces
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
+# ############### Transport ########################
+%if 0%{?with_sockets}
+Requires:%{name}-Transport-Sockets = %{version}-%{release}
+%endif
+%if 0%{?with_ssl}
+Requires:%{name}-Transport-SSL = %{version}-%{release}
+%endif
+# ##################################################
 %description UI-WebCfg
 The %name-UI-WebCfg allows the WEB based OpenSCADA system
 configurator.
@@ -479,6 +488,14 @@ OpenSCADA-Konfigurator.
 Summary: Open SCADA interfaces
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
+# ############### Transport ########################
+%if 0%{?with_sockets}
+Requires:%{name}-Transport-Sockets = %{version}-%{release}
+%endif
+%if 0%{?with_ssl}
+Requires:%{name}-Transport-SSL = %{version}-%{release}
+%endif
+# ##################################################
 %description UI-WebCfgd
 The %name-UI-WebCfgd allows the dynamic WEB based OpenSCADA system
 configurator. Use XHTML, CSS and JavaScript technologies.
@@ -498,6 +515,14 @@ Konfigurator. Nutzt XHTML, CSS and JavaScript technologies aus.
 Summary: Open SCADA interfaces
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
+# ############### Transport ########################
+%if 0%{?with_sockets}
+Requires:%{name}-Transport-Sockets = %{version}-%{release}
+%endif
+%if 0%{?with_ssl}
+Requires:%{name}-Transport-SSL = %{version}-%{release}
+%endif
+# ##################################################
 %description UI-WebVision
 The %name-UI-WebVision web operation user interface for visual control area
 (VCA) projects playing.
@@ -517,6 +542,14 @@ visueller Kontrollebereiche .
 Summary: Open SCADA http
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
+# ############### Transport ########################
+%if 0%{?with_sockets}
+Requires:%{name}-Transport-Sockets = %{version}-%{release}
+%endif
+%if 0%{?with_ssl}
+Requires:%{name}-Transport-SSL = %{version}-%{release}
+%endif
+# ##################################################
 %description Protocol-HTTP
 The %name-Protocol-HTTP package allows support HTTP for WWW based UIs.
 %description Protocol-HTTP -l ru_RU.UTF8
@@ -851,6 +884,7 @@ die Anschreibung "root" und das Kennwort "openscada" oder die Anschreibung
 %prep
 %setup -q -n %{srcname}
 %patch0 -p1 -b .fedora
+%patch1 -p1 -b .openssl
 %{__sed} -i 's|/usr/lib/|%{_libdir}/|' data/oscada*.xml
 
 %build
@@ -1209,7 +1243,10 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
-* Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 0.6.3.3-12
+* Tue Sep 1 2009 Aleksey Popkovz <aleksey@oscada.org.ua> - 0.6.3.3-12
+- Adding some Requires for webcfg, webcfgd, webvision and http.
+
+* Tue Aug 25 2009 Tomas Mraz <tmraz@redhat.com> - 0.6.3.3-12
 - rebuilt with new openssl
 
 * Mon Jul 27 2009 Popkov Aleksey <aleksey@oscada.org.ua> - 0.6.3.3-11
