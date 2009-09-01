@@ -96,6 +96,7 @@ BuildRequires: libtool
 BuildRequires: desktop-file-utils
 BuildRequires: sed
 BuildRequires: chrpath
+BuildRequires: net-snmp-devel
 
 Requires(post): chkconfig
 Requires(preun): chkconfig
@@ -208,6 +209,7 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 BuildRequires: net-snmp-devel
 Requires: %{name} = %{version}-%{release}
+Requires: net-snmp-devel
 %description DAQ-SNMP
 The %name-DAQ-SNMP allows realising of SNMP client service.
 %description DAQ-SNMP -l ru_RU.UTF8
@@ -862,7 +864,6 @@ Requires:%{name}-UI-WebCfgd = %{version}-%{release}
 %if 0%{?with_webvision}
 Requires:%{name}-UI-WebVision = %{version}-%{release}
 %endif
-
 %description demo
 The %{name}-demo package includes demo data bases and configs.
 For start use command <openscada_demo>. For access use account
