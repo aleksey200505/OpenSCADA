@@ -1245,7 +1245,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
-* Tue Sep 1 2009 Aleksey Popkovz <aleksey@oscada.org.ua> - 0.6.3.3-13
+* Tue Sep 1 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.3-13
 - Adding some Requires for webcfg, webcfgd, webvision, http and snmp
 - Some cosmetics.
 
