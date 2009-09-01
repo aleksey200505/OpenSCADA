@@ -928,6 +928,7 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
 make %{?_smp_mflags}
 
 %install
+%{__rm} -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
 # let's try to get rid of rpath
@@ -1244,8 +1245,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
-* Tue Sep 1 2009 Aleksey Popkovz <aleksey@oscada.org.ua> - 0.6.3.3-12
-- Adding some Requires for webcfg, webcfgd, webvision and http.
+* Tue Sep 1 2009 Aleksey Popkovz <aleksey@oscada.org.ua> - 0.6.3.3-13
+- Adding some Requires for webcfg, webcfgd, webvision, http and snmp
+- Some cosmetics.
 
 * Tue Aug 25 2009 Tomas Mraz <tmraz@redhat.com> - 0.6.3.3-12
 - rebuilt with new openssl
