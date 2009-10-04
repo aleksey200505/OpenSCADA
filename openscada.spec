@@ -907,10 +907,10 @@ For start use command <openscada_demo>. For access use account
 старту використовуйте команду <openscada_demo>. Для доступу використовуйте
 запис "root" та пароль "openscada" або запис "user" без пароля.
 %description demo -l de_DE.UTF8
-Das Paket %{name}-demo enthält die Demodatenbanken und Konfigurationen. Fürs
-Starten wird Kommando <openscada_demo> benutzt. Für den Zugang benutzen Sie
-die Anschreibung "root" und das Kennwort "openscada" oder die Anschreibung
-"user" ohne Kennwort.
+Das Paket %{name}-demo enthält die Demodatenbanken und Konfigurationen.
+Fürs Starten wird Kommando <openscada_demo> benutzt. Für den Zugang
+benutzen Sie die Anschreibung "root" und das Kennwort "openscada"
+oder die Anschreibung "user" ohne Kennwort.
 
 %prep
 %setup -q -n %{srcname}
@@ -1385,7 +1385,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 - add Athena board specific build
 
 * Wed Nov 03 2004 Roman Savochenko <rom_as@fromru.com>
-- move the message arhives data to /var/spool/%{name}/ARHIVE/MESS
+- move the message arhives data to /var/spool/{name}/ARHIVE/MESS
 
 * Tue Apr 06 2004 Roman Savochenko <rom_as@fromru.com>
 - make 3 packages: OpenScada, OpenScada-devel, OpenScada-testdata
