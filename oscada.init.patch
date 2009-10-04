@@ -2,15 +2,6 @@ diff --git a/data/oscada.init b/data/oscada.init
 index 21744dd..cdecaf8 100644
 --- a/data/oscada.init
 +++ b/data/oscada.init
-@@ -2,7 +2,7 @@
- #
- # Init file for OpenSCADA system demon.
- #
--# chkconfig: 2345 99 05
-+# chkconfig: - 99 05
- # description: Open SCADA System server daemon
- #
- # processname: openscada
 @@ -13,25 +13,45 @@ WITHOUT_RC_COMPAT=1
  # Source function library.
  . /etc/init.d/functions
