@@ -1296,18 +1296,18 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 - rebuilt with new openssl
 
 * Mon Jul 27 2009 Popkov Aleksey <aleksey@oscada.org.ua> - 0.6.3.3-11
-- Fixed of macros %find_lang for epel-5 by Peter Lemenkov <lemenkov@gmail.com>.
+- Fixed of macros find_lang for epel-5 by Peter Lemenkov <lemenkov@gmail.com>.
 
 * Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.3.3-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild.
 
 * Tue Jul 14 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-9
-- Adding %find_lang macros by Peter Lemenkov <lemenkov@gmail.com>
+- Adding find_lang macros by Peter Lemenkov <lemenkov@gmail.com>
 - Somes cosmetics.
 
 * Tue Jun 30 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-8
 - Added of dependences in to self package demo
-- Fixed %preun section by Peter Lemenkov <lemenkov@gmail.com>
+- Fixed preun section by Peter Lemenkov <lemenkov@gmail.com>
 - Somes cosmetics.
 
 * Wed Jun 19 2009 Popkov Aleksey <aleksey@oscada.org.ua> 0.6.3.3-7
