@@ -130,6 +130,7 @@ if [ $1 = 0 ]; then
  /sbin/chkconfig --del openscadad
 fi
 
+################## DAQ-System ###########################
 %if 0%{?with_diamondboards}
 %package DAQ-DiamondBoards
 Summary: Open SCADA DAQ
@@ -365,9 +366,9 @@ ICP DAS. Включаючи I-87000 та I-7000 DCON модулі
 та I-8000 швидкі модулі.
 %description DAQ-IcpDas -l de_DE.UTF8
 Das Paket %name-DAQ-IcpDas, gewährt die Implementierung der
-Unterstützung der installierten Ausrüstung ICP DAS. Die Unterstützung
-von Modulen I-87000 und I-7000 und Schnell-Modulen I-8000
-DCON ist eingeschlossen.
+Unterstützung der installierten Ausrüstung ICP DAS.
+Die Unterstützung von Modulen I-87000 und I-7000
+und Schnell-Modulen I-8000 DCON ist eingeschlossen.
 %endif
 
 %if 0%{?with_selfsystem}
@@ -389,6 +390,7 @@ Das Paket %name-Protocol-SelfSystem, das eigene OpenSCADA -
 Protokoll, unterstützt die Hauptfunktionen
 %endif
 
+########################### BD-System ############################
 %if 0%{?with_firebird}
 %package DB-FireBird
 Summary: Open SCADA database
@@ -455,14 +457,15 @@ The %name-DB-SQLite package allow support of the BD SQLite.
 Das Paket %name-DB-SQLite gewährt die DB SQLite - Unterstützung.
 %endif
 
+############################# ARH-System ############################
 %if 0%{?with_dbarch}
 %package ARH-DBArch
 Summary: Open SCADA arch
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description ARH-DBArch
-The %name-ARH-DBArch package allow functions for messages and values
-arhiving to DB.
+The %name-ARH-DBArch package allow functions for messages and
+values arhiving to DB.
 %description ARH-DBArch -l ru_RU.UTF8
 Пакет %name-ARH-DBArch, предоставляет функции архивирования
 сообщений и значений на БД.
@@ -493,6 +496,7 @@ Das Paket %name-ARH-FSArch gewährt Archivierungsfunktionen
 für Nachrichte und Bedeutungen für Dateisystem.
 %endif
 
+############################# UI-System ##############################
 %if 0%{?with_webcfg}
 %package UI-WebCfg
 Summary: Open SCADA interfaces
@@ -601,6 +605,7 @@ Das Paket %name-Protocol-HTTP gewährt die HTTP-Unterstützung für die
 WWW-basierenden Nutzersinterfaces.
 %endif
 
+############################### GUI-System ##################################
 %if 0%{?with_qtstarter}
 %package UI-QTStarter
 Summary: Open SCADA QT Starter
@@ -656,6 +661,7 @@ interface.
 Das Paket %name-UI-QTVision enthält die Arbeitsnutzersinterfacedaten
 %endif
 
+############################# Transport-System ##############################
 %if 0%{?with_ssl}
 %package Transport-SSL
 Summary: Open SCADA transports
@@ -726,6 +732,7 @@ Nutzersinterface. Wird für das Umtauschen von Daten durch konsequente
 Interfaces wie RS232, RS485, GSM und andere benutzt.
 %endif
 
+############################# Functions-System #########################
 %if 0%{?with_flibcomplex}
 %package Special-FlibComplex1
 Summary: Open SCADA special
@@ -783,6 +790,7 @@ Das Paket %name-Special-FlibSys gewährt in das System die
 Bibliothek der API-Systemprogrammierung des Nutzersbereiches.
 %endif
 
+######################### Tests-System ##############################
 %if 0%{?with_systemtests}
 %package Special-SystemTests
 Summary: Open SCADA special
