@@ -14,7 +14,7 @@
 %bcond_without javalikecalc
 %bcond_without logiclevel
 %bcond_without daqgate
-%bcond_without icpdas
+%bcond_with icpdas
 # ======== Protocol ========
 %bcond_without selfsystem
 # ========= DATA BASES =====
@@ -57,7 +57,10 @@
 # DIAMONDBOARDS - Only for x86_32
 %ifarch x86_64
 %if 0%{?with_diamondboards}
-%{error: DIAMONDBOARDS support available only for %{ix86} target}
+  %{error: DIAMONDBOARDS support available only for %{ix86} target}
+%endif
+%if 0%{?with_icpdas}
+  %{error: ICP_DAS support available only for %{ix86} target}
 %endif
 %endif
 
@@ -1282,7 +1285,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %changelog
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
 - Adding self module ICP_DAS
-- Fixed Germany translations.
+- Fixed Germany Language translations by Popkova Irina
+- Delete openscada-0.6.3.3-openssl.patch from previouns version.
 
 * Tue Sep 1 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.3-13
 - Adding some Requires for webcfg, webcfgd, webvision, http and snmp
