@@ -136,15 +136,15 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-DiamondBoards
-The %name-DAQ-DiamondBoards allows access to Diamond systems DA boards.
-Includes support of Athena board.
+The %name-DAQ-DiamondBoards allows access to Diamond systems
+DA boards. Includes support of Athena board.
 %description DAQ-DiamondBoards -l ru_RU.UTF8
 Пакет %name-DAQ-DiamondBoards предоставляет доступ к платам сбора
 данных фирмы Diamond systems. Включает поддержку системной платы
 Athena.
 %description DAQ-DiamondBoards -l uk_UA.UTF8
-Пакет %name-DAQ-DiamondBoards надає доступ до плат збору даних фірми
-Diamond systems. Включає підтримку системної плати Athena.
+Пакет %name-DAQ-DiamondBoards надає доступ до плат збору даних
+фірми Diamond systems. Включає підтримку системної плати Athena.
 %description DAQ-DiamondBoards -l de_DE.UTF8
 Das Paket %name-DAQ-DiamondBoards ermöglicht den Zugang zur
 Datenerfassung der Firma Diamond Systems.Es enthält die Unterstützung
@@ -184,12 +184,13 @@ Supported Modbus/TCP, Modbus/RTU and Modbus/ASCII protocols.
 протокола ModBus. Поддерживаются Modbus/TCP, Modbus/RTU и
 Modbus/ASCII протоколы.
 %description DAQ-ModBus -l uk_UA.UTF8
-Пакет %name-DAQ-ModBus надає реалізацію клієнтського ModBus сервісу.
+Пакет %name-DAQ-ModBus надає реалізацію клієнтського
+ModBus сервісу.
 Підтримуються Modbus/TCP, Modbus/RTU та Modbus/ASCII протоколи.
 %description DAQ-ModBus -l de_DE.UTF8
-Das Paket %name-DAQ-ModBus emöglicht die Implementierung des Kundenservices des
-ModBus-Protokolls. Unterstützt werden die Protokolle Modbus/TCP,
-Modbus/RTU и Modbus/ASCII.
+Das Paket %name-DAQ-ModBus emöglicht die Implementierung des
+Kundenservices des ModBus-Protokolls. Unterstützt werden die
+Protokolle Modbus/TCP, Modbus/RTU и Modbus/ASCII.
 %endif
 
 %if 0%{?with_soundcard}
@@ -222,8 +223,8 @@ The %name-DAQ-SNMP allows realising of SNMP client service.
 %description DAQ-SNMP -l uk_UA.UTF8
 Пакет %name-DAQ-SNMP надає реалізацію клієнтського SNMP сервісу.
 %description DAQ-SNMP -l de_DE.UTF8
-Das Paket %name-DAQ-SNMP emöglicht die Implementierung des Kundenservices
-des SNMP-Protokolls.
+Das Paket %name-DAQ-SNMP emöglicht die Implementierung des
+Kundenservices des SNMP-Protokolls.
 %endif
 
 %if 0%{?with_siemens}
@@ -256,16 +257,16 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-System
 The %name-DAQ-System, allow operation system data acquisition.
-Support OS Linux data sources: HDDTemp, Sensors, Uptime, Memory, CPU and
-other.
+Support OS Linux data sources: HDDTemp, Sensors, Uptime, Memory,
+CPU and other.
 %description DAQ-System -l ru_RU.UTF8
 Пакет %name-DAQ-System, предоставляет сбор данных операционной
 системы. Поддерживаются источники данных ОС Linux: HDDTemp, Sensors,
 Uptime, Memory, CPU и другие.
 %description DAQ-System -l uk_UA.UTF8
 Пакет %name-DAQ-System, Надає збір даних операційної системи.
-Підтримуються джерела даних ОС Linux: HDDTemp, Sensors, Uptime, Memory,
-CPU та інше.
+Підтримуються джерела даних ОС Linux: HDDTemp, Sensors, Uptime,
+Memory, CPU та інше.
 %description DAQ-System -l de_DE.UTF8
 Das Paket %name-DAQ-System ermöglicht die Datenerfassung des
 Operationssystems. Es werden die Datenquellen ОС Linux: HDDTemp,
@@ -297,17 +298,18 @@ The %name-DAQ-JavaLikeCalc allows java-like based calculator and
 function's libraries engine. User can create and modify function and
 libraries.
 %description DAQ-JavaLikeCalc -l ru_RU.UTF8
-Пакет %name-DAQ-JavaLikeCalc, предоставляет основанные на java подобном
-языке вычислитель и движок библиотек. Пользователь может создавать и
-модифицировать функции и библиотеки.
+Пакет %name-DAQ-JavaLikeCalc, предоставляет основанные на java
+подобном языке вычислитель и движок библиотек. Пользователь может
+создавать и модифицировать функции и библиотеки.
 %description DAQ-JavaLikeCalc -l uk_UA.UTF8
 Пакет %name-DAQ-JavaLikeCalc, надає базовані на мові схожій на Java
 обчислювач та движок бібліотек функцї. Користувач може створювати та
 модифікувати функції та бібліотеки.
 %description DAQ-JavaLikeCalc -l de_DE.UTF8
-Das %name-DAQ-JavaLikeCalc, entält die auf der Java - ähnlicher Sprache
-begründeten Bibliothekenrechner und -läufer. Der Nutzer kann Funktionen
-und Bibliotheken schaffen und modifizieren.
+Das %name-DAQ-JavaLikeCalc, entält die auf der Java - ähnlicher
+Sprache begründeten Bibliothekenrechner und -läufer.
+Der Nutzer kann Funktionen und Bibliotheken schaffen und
+modifizieren.
 %endif
 
 %if 0%{?with_logiclevel}
@@ -318,11 +320,13 @@ Requires: %{name} = %{version}-%{release}
 %description DAQ-LogicLevel
 The %name-DAQ-LogicLevel allows logic level paramers.
 %description DAQ-LogicLevel -l ru_RU.UTF8
-Пакет %name-DAQ-LogicLevel, предоставляет логический уровень параметров.
+Пакет %name-DAQ-LogicLevel, предоставляет логический уровень
+параметров.
 %description DAQ-LogicLevel -l uk_UA.UTF8
 Пакет %name-DAQ-LogicLevel, надає логічний рівень параметрів.
 %description DAQ-LogicLevel -l de_DE.UTF8
-Das Paket %name-DAQ-LogicLevel, enthält das logische Parameterlevel.
+Das Paket %name-DAQ-LogicLevel, enthält das logische
+Parameterlevel.
 %endif
 
 %if 0%{?with_daqgate}
@@ -340,8 +344,8 @@ OpenSCADA station to local OpenSCADA station.
 Пакет %name-DAQ-Gate, дозволяє шлюзувати джерела даних віддалених
 OpenSCADA станцій до локальних.
 %description DAQ-Gate -l de_DE.UTF8
-Das Paket %name-DAQ-Gate, ermöglicht das Einschleusen der Datenquellen der
-entfernten OpenSCADA Stationen in die lokale.
+Das Paket %name-DAQ-Gate, ermöglicht das Einschleusen der
+Datenquellen der entfernten OpenSCADA Stationen in die lokale.
 %endif
 
 %if 0%{?with_icpdas}
@@ -362,9 +366,10 @@ and I-8000 fast modules.
 ICP DAS. Включаючи I-87000 та I-7000 DCON модулі
 та I-8000 швидкі модулі.
 %description DAQ-IcpDas -l de_DE.UTF8
-Das Paket %name-DAQ-IcpDas, gewährt die Implementierung der Unterstützung
-der installierten Ausrüstung ICP DAS. Die Unterstützung von Modulen
-I-87000 und I-7000 und Schnell-Modulen I-8000 DCON ist eingeschlossen.
+Das Paket %name-DAQ-IcpDas, gewährt die Implementierung der
+Unterstützung der installierten Ausrüstung ICP DAS. Die Unterstützung
+von Modulen I-87000 und I-7000 und Schnell-Modulen I-8000
+DCON ist eingeschlossen.
 %endif
 
 %if 0%{?with_selfsystem}
@@ -399,7 +404,8 @@ The %name-DB-FireBird allow support of the DB FireBird.
 %description DB-FireBird -l uk_UA.UTF8
 Пакет %name-DB-FireBird, модуль БД. Надає підтримку БД FireBird.
 %description DB-FireBird -l de_DE.UTF8
-Das Paket %name-DB-FireBird Gewährt die FireBird-Dateibasenunterstützung.
+Das Paket %name-DB-FireBird Gewährt die
+FireBird-Dateibasenunterstützung.
 %endif
 
 %if 0%{?with_mysql}
@@ -424,13 +430,16 @@ Summary: Open SCADA database
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DB-DBF
-The %name-DB-DBF package allow support of the *.dbf files, version 3.0.
+The %name-DB-DBF package allow support of the *.dbf files,
+version 3.0.
 %description DB-DBF -l ru_RU.UTF8
-Пакет %name-DB-DBF, предоставляет поддержку *.dbf файлов, версии 3.0..
+Пакет %name-DB-DBF, предоставляет поддержку *.dbf файлов,
+версии 3.0.
 %description DB-DBF -l uk_UA.UTF8
 Пакет %name-DB-DBF, надає підтримку *.dbf файлів, версії 3.0.
 %description DB-DBF -l de_DE.UTF8
-Das Paket %name-DB-DBF gewährt die *.dbf Dateiunterstützung, Versionen 3.0..
+Das Paket %name-DB-DBF gewährt die *.dbf Dateiunterstützung,
+Versionen 3.0.
 %endif
 
 %if 0%{?with_sqlite}
@@ -457,13 +466,14 @@ Requires: %{name} = %{version}-%{release}
 The %name-ARH-DBArch package allow functions for messages and values
 arhiving to DB.
 %description ARH-DBArch -l ru_RU.UTF8
-Пакет %name-ARH-DBArch, предоставляет функции архивирования сообщений и
-значений на БД.
+Пакет %name-ARH-DBArch, предоставляет функции архивирования
+сообщений и значений на БД.
 %description ARH-DBArch -l uk_UA.UTF8
-Пакет %name-ARH-DBArch, надає функції архівації повідомлень та значень на БД.
+Пакет %name-ARH-DBArch, надає функції архівації повідомлень
+та значень на БД.
 %description ARH-DBArch -l de_DE.UTF8
-Das Paket %name-ARH-DBArch gewährt Archivierungsfunktionen der Nachrichten
-und Bedeutungen für DB.
+Das Paket %name-ARH-DBArch gewährt Archivierungsfunktionen
+der Nachrichten und Bedeutungen für DB.
 %endif
 
 %if 0%{?with_fsarch}
@@ -472,17 +482,17 @@ Summary: Open SCADA arch
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description ARH-FSArch
-The %name-ARH-FSArch allow functions for messages and values arhiving
-to file system.
+The %name-ARH-FSArch allow functions for messages and values
+arhiving to file system.
 %description ARH-FSArch -l ru_RU.UTF8
-Пакет %name-ARH-FSArch, предоставляет функции архивирования сообщений и
-значений на файловую систему.
+Пакет %name-ARH-FSArch, предоставляет функции архивирования
+сообщений и значений на файловую систему.
 %description ARH-FSArch -l uk_UA.UTF8
-Пакет %name-ARH-FSArch, надає функції архівації повідомлень та значень на
-файлову систему.
+Пакет %name-ARH-FSArch, надає функції архівації повідомлень
+та значень на файлову систему.
 %description ARH-FSArch -l de_DE.UTF8
-Das Paket %name-ARH-FSArch gewährt Archivierungsfunktionen für Nachrichte
-und Bedeutungen für Dateisystem.
+Das Paket %name-ARH-FSArch gewährt Archivierungsfunktionen
+für Nachrichte und Bedeutungen für Dateisystem.
 %endif
 
 %if 0%{?with_webcfg}
@@ -553,17 +563,17 @@ Requires:%{name}-Transport-SSL = %{version}-%{release}
 %endif
 # ##################################################
 %description UI-WebVision
-The %name-UI-WebVision web operation user interface for visual control area
-(VCA) projects playing.
+The %name-UI-WebVision web operation user interface for visual
+control area (VCA) projects playing.
 %description UI-WebVision -l ru_UA.UTF8
 Пакет %name-UI-WebVision, web рабочий пользовательский интерфейс для
 исполнения визуальных сред управления (СВУ)
 %description UI-WebVision -l uk_RU.UTF8
-Пакет %name-UI-WebVision, web робочий інтерфейс користувача для виконання
-візуального середовища керування (СВК).
+Пакет %name-UI-WebVision, web робочий інтерфейс користувача для
+виконання візуального середовища керування (СВК).
 %description UI-WebVision -l de_DE.UTF8
-Das Paket %name-UI-WebVision, web-Arbeitsnutzersinterface für die Ausführung
-visueller Kontrollebereiche .
+Das Paket %name-UI-WebVision, web-Arbeitsnutzersinterface für die
+Ausführung visueller Kontrollebereiche.
 %endif
 
 %if 0%{?with_http}
@@ -580,16 +590,17 @@ Requires:%{name}-Transport-SSL = %{version}-%{release}
 %endif
 # ##################################################
 %description Protocol-HTTP
-The %name-Protocol-HTTP package allows support HTTP for WWW based UIs.
+The %name-Protocol-HTTP package allows support HTTP
+for WWW based UIs.
 %description Protocol-HTTP -l ru_RU.UTF8
-Пакет %name-Protocol-HTTP предоставляет поддержку HTTP для WWW основанных
-пользовательских интерфейсов.
+Пакет %name-Protocol-HTTP предоставляет поддержку HTTP для WWW
+основанных пользовательских интерфейсов.
 %description Protocol-HTTP -l uk_UA.UTF8
 Пакет %name-Protocol-HTTP Надає підтримку HTTP для WWW базозованих
 користувальницьких інтерфейсів.
 %description Protocol-HTTP -l de_DE.UTF8
 Das Paket %name-Protocol-HTTP gewährt die HTTP-Unterstützung für die
-WWW-basierenden Nutzersinterfaces .
+WWW-basierenden Nutzersinterfaces.
 %endif
 
 %if 0%{?with_qtstarter}
@@ -599,7 +610,7 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description UI-QTStarter
 The %name-UI-QTStarter Allow QT GUI starter. It is single for
-all QT GUI modules!.
+all QT GUI modules!
 %description UI-QTStarter -l ru_RU.UTF8
 Пакет %name-UI-QTStarter Предоставляет QT GUI пускатель.
 Он является единственным для всех QT GUI модулей!
@@ -617,10 +628,11 @@ Summary: Open SCADA QT interfaces
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description UI-QTCfg
-The %name-UI-QTCfg allows the QT based OpenSCADA system configurator.
+The %name-UI-QTCfg allows the QT based OpenSCADA system
+configurator.
 %description UI-QTCfg -l ru_RU.UTF8
-Пакет %name-UI-QTCfg предоставляет QT основанный конфигуратор системы
-OpenSCADA.
+Пакет %name-UI-QTCfg предоставляет QT основанный конфигуратор
+системы OpenSCADA.
 %description UI-QTCfg -l uk_UA.UTF8
 Пакет %name-UI-QTCfg містить файли QTCfg-конфігуратору.
 %description UI-QTCfg -l de_DE.UTF8
@@ -652,17 +664,19 @@ Summary: Open SCADA transports
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description Transport-SSL
-The %name-Transport-SSL allows security socket layer based transport.
-Used OpenSSL and supported SSLv2, SSLv3 and TLSv1.
+The %name-Transport-SSL allows security socket layer based
+transport. Used OpenSSL and supported SSLv2, SSLv3 and TLSv1.
 %description Transport-SSL -l ru_RU.UTF8
 Пакет %name-Transport-SSL предоставляет транспорт основанный на слое
 безопасных сокетов. Используется OpenSSL и поддерживаютя SSLv2, SSLv3
 and TLSv1.
 %description Transport-SSL -l uk_UA.UTF8
-Пакет %name-Transport-SSL надає транспорт базований на безпечному шарі сокетів.
- Використано OpenSSL та підтримуються SSLv2, SSLv3 and TLSv1.
+Пакет %name-Transport-SSL надає транспорт базований на
+безпечному шарі сокетів.
+Використано OpenSSL та підтримуються SSLv2, SSLv3 and TLSv1.
 %description Transport-SSL -l de_DE.UTF8
-Das Paket %name-Transport-SSL enthält den auf der Schicht der unfallfesten
+Das Paket %name-Transport-SSL enthält den auf der Schicht der
+unfallfesten.
 Sockets begründeten Transport. Es werden OpenSSL und SSLv2, SSLv3
 und TLSv1 benutzt und unterstützt.
 %endif
@@ -673,20 +687,22 @@ Summary: Open SCADA transports
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description Transport-Sockets
-The %name-Transport-Sockets allows sockets based transport. Supports inet
-and unix sockets. Inet socket uses TCP and UDP protocols.
+The %name-Transport-Sockets allows sockets based transport.
+Supports inet and unix sockets.
+Inet socket uses TCP and UDP protocols.
 %description Transport-Sockets -l ru_RU.UTF8
-Пакет %name-Transport-Sockets педоставляет транспорт основанный на сокетах.
-Поддерживаются интернет и UNIX сокеты. Интернет сокет использует TCP и UDP
-протоколы.
+Пакет %name-Transport-Sockets педоставляет транспорт основанный
+на сокетах. Поддерживаются интернет и UNIX сокеты.
+Интернет сокет использует TCP и UDP протоколы.
 %description Transport-Sockets -l uk_UA.UTF8
 Пакет %name-Transport-Sockets надає транспорт базований на сокетах.
 Підтримуються інтернет та UNIX сокети. Інтернет сокет використовує TCP
 та UDP протоколи.
 %description Transport-Sockets -l de_DE.UTF8
-Das Paket %name-Transport-Sockets gewährt den auf Sockets begründeten
-Transport. Unterstützt werden die Internet- und UNIX-Sockets. Das Internetsocket
-benutzt die TCP und UDP-Protokolle.
+Das Paket %name-Transport-Sockets gewährt den auf Sockets
+begründeten Transport.
+Unterstützt werden die Internet- und UNIX-Sockets.
+Das Internetsocket benutzt die TCP und UDP-Protokolle.
 %endif
 
 %if 0%{?with_serial}
@@ -699,8 +715,8 @@ The %name-Transport-Serial, allow serial based interfaces. Used for
 data exchanging through serial interfaces like RS232, RS485, GSM
 and other.
 %description Transport-Serial -l ru_RU.UTF8
-Пакет %name-Transport-Serial, предоставляет последовательный интерфейс.
-Используется для обмена данными через последовательные интерфейсы
+Пакет %name-Transport-Serial, предоставляет последовательный
+интерфейс. Используется для обмена данными через последовательные интерфейсы
 типа RS232, RS485, GSM и другое.
 %description Transport-Serial -l uk_UA.UTF8
 Пакет %name-Transport-Serial, надає послідовні інтерфейси.
@@ -737,15 +753,17 @@ Summary: Open SCADA special
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description Special-FlibMath
-The %name-Special-FlibMath allows mathematic static function library.
+The %name-Special-FlibMath allows mathematic static function
+library.
 %description Special-FlibMath -l ru_RU.UTF8
 Пакет %name-Special-FlibMath предоставляет библиотеку стандартных
 математических функций.
 %description Special-FlibMath -l uk_UA.UTF8
-Пакет %name-Special-FlibMath надає статичну бібліотеку математичних функцій.
+Пакет %name-Special-FlibMath надає статичну бібліотеку математичних
+функцій.
 %description Special-FlibMath -l de_DE.UTF8
-The %name-Special-FlibMath : #Das Paket %name-Special-FlibMath enthält die
-Standardbibliothek der mathematischen Funktionen.
+Das Paket %name-Special-FlibMath enthält die Standardbibliothek der
+mathematischen Funktionen.
 %endif
 
 %if 0%{?with_flibsys}
@@ -760,8 +778,8 @@ of the user programming area.
 Пакет %name-Special-FlibSys предоставляет в систему библиотеку
 системного API среды пользовательского программирования.
 %description Special-FlibSys -l uk_UA.UTF8
-Пакет %name-Special-FlibSys надає в систему бібліотеку системного API
-середовища програмування користувача.
+Пакет %name-Special-FlibSys надає в систему бібліотеку
+системного API середовища програмування користувача.
 %description Special-FlibSys -l de_DE.UTF8
 Das Paket %name-Special-FlibSys gewährt in das System die
 Bibliothek der API-Systemprogrammierung des Nutzersbereiches.
@@ -773,12 +791,14 @@ Summary: Open SCADA special
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description Special-SystemTests
-The %name-Special-SystemTests allows the group tests for OpenSCADA system.
+The %name-Special-SystemTests allows the group tests
+for OpenSCADA system.
 %description Special-SystemTests -l ru_RU.UTF8
-Пакет %name-Special-SystemTests предоставляет группу тестов для системы
-OpenSCADA.
+Пакет %name-Special-SystemTests предоставляет группу тестов
+для системы OpenSCADA.
 %description Special-SystemTests -l uk_UA.UTF8
-Пакет %name-Special-SystemTests надає групу тестів для системи OpenSCADA.
+Пакет %name-Special-SystemTests надає групу тестів
+для системи OpenSCADA.
 %description Special-SystemTests -l de_DE.UTF8
 Das Paket %name-Special-SystemTests enthält die Testgruppe für das
 OpenSCADA-System
@@ -807,7 +827,8 @@ The %name-devel package includes library archives and include files.
 %description devel -l uk_UA.UTF8
 Пакет %name-devel включає архів бібліотек та включаємі файли.
 %description devel -l de_DE.UTF8
-Das Paket %name-devel enthält das Bibliothekenarchiv und die eingeschlossenen
+Das Paket %name-devel enthält das Bibliothekenarchiv und die
+eingeschlossenen
 Dateien.
 
 %package demo
@@ -904,8 +925,8 @@ For start use command <openscada_demo>. For access use account
 Для доступа используйте запись "root" и пароль "openscada"
 или запись "user" без пароля.
 %description demo -l uk_UA.UTF8
-Пакет %{name}-demo включає демонстраційні бази даних та конфігурації.
-Для старту використовуйте команду <openscada_demo>.
+Пакет %{name}-demo включає демонстраційні бази даних та
+конфігурації. Для старту використовуйте команду <openscada_demo>.
 Для доступу використовуйте запис "root" та пароль "openscada"
 або запис "user" без пароля.
 %description demo -l de_DE.UTF8
@@ -1288,7 +1309,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
 - Adding self module ICP_DAS
 - Fixed Germany Language translations by Popkova Irina
-- Delete openscada-0.6.3.3-openssl.patch from previouns version.
+- Delete openscada-0.6.3.3-openssl.patch from previouns version
+- Adding the next version of the package.
 
 * Tue Sep 1 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.3-13
 - Adding some Requires for webcfg, webcfgd, webvision, http and snmp
