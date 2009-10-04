@@ -147,8 +147,8 @@ Athena.
 фірми Diamond systems. Включає підтримку системної плати Athena.
 %description DAQ-DiamondBoards -l de_DE.UTF8
 Das Paket %name-DAQ-DiamondBoards ermöglicht den Zugang zur
-Datenerfassung der Firma Diamond Systems.Es enthält die Unterstützung
-der Systemplatte Athena.
+Datenerfassung der Firma Diamond Systems.Es enthält die
+Unterstützung der Systemplatte Athena.
 %endif
 
 %if 0%{?with_dcon}
@@ -212,9 +212,7 @@ Das Paket %name-DAQ-Soundcard gewährt den Zugang zur Schallkarte.
 %package DAQ-SNMP
 Summary: Open SCADA DAQ
 Group: Applications/Engineering
-BuildRequires: net-snmp-devel
 Requires: %{name} = %{version}-%{release}
-Requires: net-snmp-devel
 %description DAQ-SNMP
 The %name-DAQ-SNMP allows realising of SNMP client service.
 %description DAQ-SNMP -l ru_RU.UTF8
