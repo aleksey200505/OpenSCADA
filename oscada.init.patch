@@ -1,0 +1,92 @@
+diff --git a/data/oscada.init b/data/oscada.init
+index 21744dd..cdecaf8 100644
+--- a/data/oscada.init
++++ b/data/oscada.init
+@@ -2,7 +2,7 @@
+ #
+ # Init file for OpenSCADA system demon.
+ #
+-# chkconfig: 2345 99 05
++# chkconfig: - 99 05
+ # description: Open SCADA System server daemon
+ #
+ # processname: openscada
+@@ -13,25 +13,45 @@ WITHOUT_RC_COMPAT=1
+ # Source function library.
+ . /etc/init.d/functions
+ 
+-LOCKFILE=/var/lock/subsys/openscada
+-OPENSCADA=/usr/bin/openscada
++bindir=/usr/bin
++lockfile=/var/lock/subsys/openscadad
++OPENSCADA_BIN=${bindir}/openscada
+ ARGS="--demon &> /dev/null"
+ RETVAL=0
+ 
++# Sanity checks.
++[ -x $OPENSCADA_BIN ] || exit 1
++
++# so we can rearrange this easily
++servicename=openscada
++pidfile=/var/run/openscada.pid
++
++RETVAL=0
++
+ start()
+ {
+-	export LANG=uk_UA.UTF-8
+-	export LANGUAGE=uk_UA.UTF-8:ru_RU.UTF-8
+-	start_daemon --lockfile "$LOCKFILE" --expect-user root -- $OPENSCADA $ARGS
++	echo $"Starting OpenSCADA daemon: "
++	daemon $servicename $ARGS --pid-file=$pidfile
+ 	RETVAL=$?
+-	return $RETVAL
++	if [ $RETVAL -eq 0 ]; then
++	pidproc=$(ps -C $servicename -o pid=|sed 's/ //g')
++	if [ $pidproc ]; then
++	echo "$pidproc" > $pidfile
++	touch $lockfile
++        fi
++    fi
+ }
+ 
+ stop()
+ {
+-	stop_daemon --lockfile "$LOCKFILE" --expect-user root -- $OPENSCADA
++	echo -n $"Stopping OpenSCADA daemon: "
++	killproc -p $pidfile $servicename
+ 	RETVAL=$?
+-	return $RETVAL
++	echo
++	if [ $RETVAL -eq 0 ]; then
++		rm -f $lockfile
++		rm -f $pidfile
++	fi
+ }
+ 
+ restart()
+@@ -57,17 +77,18 @@ case "$1" in
+ 		fi
+ 		;;
+ 	condrestart)
+-		if [ -e "$LOCKFILE" ]; then
+-			restart
++		if [ -f $lockfile ]; then
++			stop
++			start
+ 		fi
+ 		;;
+ 	status)
+-		status --expect-user root -- $OPENSCADA
++		status $servicename
+ 		RETVAL=$?
+ 		;;
+-	*)
+-		msg_usage "${0##*/} {start|stop|restart|condstop|condrestart|status}"
+-		RETVAL=1
++		*)
++		echo $"Usage: $0 {start|stop|restart|condstop|condrestart|status}"
++		RETVAL=2
+ esac
+ 
+ exit $RETVAL
