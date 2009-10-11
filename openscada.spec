@@ -36,11 +36,13 @@
 %if 0%{?rhel}
 %bcond_with qtstarter
 %bcond_with qtcfg
-%bcond_with qtvision
+%bcond_with uivision
+%bcond_with uivcaengine
 %else
 %bcond_without qtstarter
 %bcond_without qtcfg
-%bcond_without qtvision
+%bcond_without uivision
+%bcond_without uivcaengine
 %define _desktopdir %_datadir/applications
 %define _iconsdir /usr/share/icons
 %endif
@@ -66,7 +68,7 @@
 
 Summary: Open SCADA system project
 Name: openscada
-Version: 0.6.3.4
+Version: 0.6.4
 Release: 1%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
@@ -643,22 +645,39 @@ Das Paket %name-UI-QTCfg gewährt den QT-begründeten
 OpenSCADA-Systemkonfigurator.
 %endif
 
-%if 0%{?with_qtvision}
-%package UI-QTVision
+############################### UI-System ##################################
+
+%if 0%{?with_uivision}
+%package UI-Vision
 Summary: Open SCADA QT interfaces
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
-%description UI-QTVision
-The %name-UI-QTVision package includes files visual operation user
+%description UI-Vision
+The %name-UI-Vision package includes files visual operation user
 interface.
-%description UI-QTVision -l ru_RU.UTF8
-Пакет %name-UI-QTVision включает файлы рабочего пользовательского
+%description UI-Vision -l ru_RU.UTF8
+Пакет %name-UI-Vision включает файлы рабочего пользовательского
 интерфейса.
-%description UI-QTVision -l uk_UA.UTF8
-Пакет %name-UI-QTVision включає файли робочого інтерфейсу
+%description UI-Vision -l uk_UA.UTF8
+Пакет %name-UI-Vision включає файли робочого інтерфейсу
 користувача.
-%description UI-QTVision -l de_DE.UTF8
-Das Paket %name-UI-QTVision enthält die Arbeitsnutzersinterfacedaten
+%description UI-Vision -l de_DE.UTF8
+Das Paket %name-UI-Vision enthält die Arbeitsnutzersinterfacedaten
+%endif
+
+%if 0%{?with_uivcaengine}
+%package UI-VCAEngine
+Summary: Open SCADA QT interfaces
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description UI-VCAEngine
+The %{name}-UI-VCAEngine package - generic visual control area engine.
+%description UI-VCAEngine -l ru_RU.UTF8
+Пакет %{name}-UI-VCAEngine - общий движок среды визуализации и управления.
+%description UI-VCAEngine -l uk_UA.UTF8
+Пакет %{name}-UI-VCAEngine - загальний рущій середовища візуалізації та керування.
+%description UI-VCAEngine -l de_DE.UTF8
+Das Paket %{name}-UI-VCAEngine - allgemeine Visualisierungssteuerung.
 %endif
 
 ############################# Transport-System ##############################
@@ -841,6 +860,10 @@ Dateien.
 Summary: Open SCADA demo data bases and config
 Group: Applications/Engineering
 Requires:%{name} = %{version}-%{release}
+# ############### DB ########################
+%if 0%{?with_dbarch}
+Requires:%{name}-DB-SQLite = %{version}-%{release}
+%endif
 # ############### ARH ########################
 %if 0%{?with_dbarch}
 Requires:%{name}-ARH-DBArch = %{version}-%{release}
@@ -865,6 +888,9 @@ Requires:%{name}-Special-SystemTests = %{version}-%{release}
 %if 0%{?with_blockcalc}
 Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
 %endif
+%if 0%{?with_modbus}
+Requires:%{name}-DAQ-ModBus = %{version}-%{release}
+%endif
 %if 0%{?with_javalikecalc}
 Requires:%{name}-DAQ-JavaLikeCalc = %{version}-%{release}
 %endif
@@ -873,9 +899,6 @@ Requires:%{name}-DAQ-LogicLevel = %{version}-%{release}
 %endif
 %if 0%{?with_system}
 Requires:%{name}-DAQ-System = %{version}-%{release}
-%endif
-%if 0%{?with_blockcalc}
-Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
 %endif
 %if 0%{?with_daqgate}
 Requires:%{name}-DAQ-Gate = %{version}-%{release}
@@ -908,8 +931,11 @@ Requires:%{name}-UI-QTStarter = %{version}-%{release}
 %if 0%{?with_qtcfg}
 Requires:%{name}-UI-QTCfg = %{version}-%{release}
 %endif
-%if 0%{?with_qtvision}
-Requires:%{name}-UI-QTVision = %{version}-%{release}
+%if 0%{?with_uivision}
+Requires:%{name}-UI-Vision = %{version}-%{release}
+%endif
+%if 0%{?with_uivcaengine}
+Requires:%{name}-UI-VCAEngane = %{version}-%{release}
 %endif
 # ############### Web Interfaces ########################
 %if 0%{?with_webcfg}
@@ -964,7 +990,8 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
 	%{!?with_modbus:--disable-ModBus} \
 	%{!?with_soundcard:--disable-SoundCard} \
 	%{!?with_qtcfg:--disable-QTCfg} \
-	%{!?with_qtvision:--disable-Vision} \
+	%{!?with_uivision:--disable-Vision} \
+	%{!?with_uivcaengine:--disable-VCAEngine} \
 	%{!?with_ssl:--disable-SSL} \
 	%{!?with_serial:--disable-Serial} \
 	%{!?with_sockets:--disable-Sockets} \
@@ -1075,7 +1102,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{?with_webvision: %exclude %{_libdir}/openscada/ui_WebVision.so}
 %{?with_http: %exclude %{_libdir}/openscada/prot_HTTP.so}
 %{?with_qtcfg: %exclude %{_libdir}/openscada/ui_QTCfg.so}
-%{?with_qtvision: %exclude %{_libdir}/openscada/ui_Vision.so}
+%{?with_uivision: %exclude %{_libdir}/openscada/ui_Vision.so}
+%{?with_uivcaengine: %exclude %{_libdir}/openscada/ui_VCAEngine.so}
 %{?with_ssl: %exclude %{_libdir}/openscada/tr_SSL.so}
 %{?with_sockets: %exclude %{_libdir}/openscada/tr_Sockets.so}
 %{?with_ssl: %exclude %{_libdir}/openscada/tr_Serial.so}
@@ -1246,10 +1274,16 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{_libdir}/openscada/ui_QTCfg.so
 %endif
 
-%if 0%{?with_qtvision}
-%files UI-QTVision
+%if 0%{?with_uivision}
+%files UI-Vision
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_Vision.so
+%endif
+
+%if 0%{?with_uivcaengine}
+%files UI-VCAEngine
+%defattr(-,root,root)
+%{_libdir}/openscada/ui_VCAEngine.so
 %endif
 
 %if 0%{?with_ssl}
@@ -1312,6 +1346,10 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Sun Oct 11 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-1
+- The change version for release 0.6.4
+- Moved Ui.VCAEngane module to the self package.
+
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
 - Adding self module ICP_DAS
 - Fixed Germany Language translations by Popkova Irina
