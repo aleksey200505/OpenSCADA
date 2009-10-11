@@ -545,8 +545,8 @@ configurator. Use XHTML, CSS and JavaScript technologies.
 Пакет %name-UI-WebCfgd, предоставляет динамический WEB основанный
 конфигуратор. Использует XHTML, CSS и JavaScript технологии.
 %description UI-WebCfgd -l uk_UA.UTF8
-Пакет %name-UI-WebCfgd, надає динамічний WEB базований конфігуратор.
-Використано XHTML, CSS та JavaScript технології.
+Пакет %name-UI-WebCfgd, надає динамічний WEB базований
+конфігуратор. Використано XHTML, CSS та JavaScript технології.
 %description UI-WebCfgd -l de_DE.UTF8
 Das Paket %name-UI-WebCfgd gewährt den dynamischen WEB-begründeten
 Konfigurator. Nutzt die XHTML, CSS und JavaScript-Technologien aus.
@@ -569,8 +569,8 @@ Requires:%{name}-Transport-SSL = %{version}-%{release}
 The %name-UI-WebVision web operation user interface for visual
 control area (VCA) projects playing.
 %description UI-WebVision -l ru_UA.UTF8
-Пакет %name-UI-WebVision, web рабочий пользовательский интерфейс для
-исполнения визуальных сред управления (СВУ)
+Пакет %name-UI-WebVision, web рабочий пользовательский интерфейс
+для исполнения визуальных сред управления (СВУ)
 %description UI-WebVision -l uk_RU.UTF8
 Пакет %name-UI-WebVision, web робочий інтерфейс користувача для
 виконання візуального середовища керування (СВК).
@@ -602,8 +602,8 @@ for WWW based UIs.
 Пакет %name-Protocol-HTTP Надає підтримку HTTP для WWW базозованих
 користувальницьких інтерфейсів.
 %description Protocol-HTTP -l de_DE.UTF8
-Das Paket %name-Protocol-HTTP gewährt die HTTP-Unterstützung für die
-WWW-basierenden Nutzersinterfaces.
+Das Paket %name-Protocol-HTTP gewährt die HTTP-Unterstützung
+für die WWW-basierenden Nutzersinterfaces.
 %endif
 
 ############################### GUI-System ##################################
@@ -676,8 +676,8 @@ area engine.
 Пакет %{name}-UI-VCAEngine - общий движок среды визуализации
 и управления.
 %description UI-VCAEngine -l uk_UA.UTF8
-Пакет %{name}-UI-VCAEngine - загальний рущій середовища візуалізації
-та керування.
+Пакет %{name}-UI-VCAEngine - загальний рущій середовища
+візуалізації та керування.
 %description UI-VCAEngine -l de_DE.UTF8
 Das Paket %{name}-UI-VCAEngine - allgemeine
 Visualisierungssteuerung.
@@ -693,8 +693,8 @@ Requires: %{name} = %{version}-%{release}
 The %name-Transport-SSL allows security socket layer based
 transport. Used OpenSSL and supported SSLv2, SSLv3 and TLSv1.
 %description Transport-SSL -l ru_RU.UTF8
-Пакет %name-Transport-SSL предоставляет транспорт основанный на слое
-безопасных сокетов. Используется OpenSSL и поддерживаютя SSLv2, SSLv3
+Пакет %name-Transport-SSL предоставляет транспорт основанный
+на слое безопасных сокетов. Используется OpenSSL и поддерживаютя SSLv2, SSLv3
 and TLSv1.
 %description Transport-SSL -l uk_UA.UTF8
 Пакет %name-Transport-SSL надає транспорт базований на
@@ -786,11 +786,11 @@ library.
 Пакет %name-Special-FlibMath предоставляет библиотеку стандартных
 математических функций.
 %description Special-FlibMath -l uk_UA.UTF8
-Пакет %name-Special-FlibMath надає статичну бібліотеку математичних
-функцій.
+Пакет %name-Special-FlibMath надає статичну бібліотеку
+математичних функцій.
 %description Special-FlibMath -l de_DE.UTF8
-Das Paket %name-Special-FlibMath enthält die Standardbibliothek der
-mathematischen Funktionen.
+Das Paket %name-Special-FlibMath enthält die Standardbibliothek
+der mathematischen Funktionen.
 %endif
 
 %if 0%{?with_flibsys}
@@ -1482,7 +1482,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 - The change version for release 0.6.4
 - Moved Ui-VCAEngane module to the self package
 - Removed QTStarter module from the main package
-- Added virtual packages plc, server,visStation.
+- Added the virtual plc, server,visStation packages
+- Some cosmetics.
 
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
 - Adding self module ICP_DAS
@@ -1491,7 +1492,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 - Adding the next version of the package.
 
 * Tue Sep 1 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.3-13
-- Adding some Requires for webcfg, webcfgd, webvision, http and snmp
+- Adding Requires for webcfg, webcfgd, webvision, http and snmp
 - Some cosmetics.
 
 * Tue Aug 25 2009 Tomas Mraz <tmraz@redhat.com> - 0.6.3.3-12
