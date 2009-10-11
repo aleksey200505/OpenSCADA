@@ -32,17 +32,16 @@
 # ========== HTTP Protocol =========
 %bcond_without http
 # ========== QT Interfaces ==========
+%bcond_without uivcaengine
 # QT4 devel old in to CentOs
 %if 0%{?rhel}
 %bcond_with qtstarter
 %bcond_with qtcfg
 %bcond_with uivision
-%bcond_with uivcaengine
 %else
 %bcond_without qtstarter
 %bcond_without qtcfg
 %bcond_without uivision
-%bcond_without uivcaengine
 %define _desktopdir %_datadir/applications
 %define _iconsdir /usr/share/icons
 %endif
@@ -671,13 +670,17 @@ Summary: Open SCADA QT interfaces
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description UI-VCAEngine
-The %{name}-UI-VCAEngine package - generic visual control area engine.
+The %{name}-UI-VCAEngine package - generic visual control
+area engine.
 %description UI-VCAEngine -l ru_RU.UTF8
-Пакет %{name}-UI-VCAEngine - общий движок среды визуализации и управления.
+Пакет %{name}-UI-VCAEngine - общий движок среды визуализации
+и управления.
 %description UI-VCAEngine -l uk_UA.UTF8
-Пакет %{name}-UI-VCAEngine - загальний рущій середовища візуалізації та керування.
+Пакет %{name}-UI-VCAEngine - загальний рущій середовища візуалізації
+та керування.
 %description UI-VCAEngine -l de_DE.UTF8
-Das Paket %{name}-UI-VCAEngine - allgemeine Visualisierungssteuerung.
+Das Paket %{name}-UI-VCAEngine - allgemeine
+Visualisierungssteuerung.
 %endif
 
 ############################# Transport-System ##############################
@@ -967,6 +970,125 @@ Konfigurationen. Fürs Starten wird Kommando <openscada_demo>
 benutzt. Für den Zugang benutzen Sie die Anschreibung "root"
 und das Kennwort "openscada" oder die Anschreibung "user" ohne Kennwort.
 
+# ############################### Virtual Packages ###################################
+%package plc
+Summary: OpenSCADA PLC.
+Group: Applications/Engineering
+Requires: %name = %version-%release
+Requires: %name-Archive-FSArch
+Requires: %name-DAQ-BlockCalc
+Requires: %name-DAQ-ICP_DAS
+Requires: %name-DAQ-JavaLikeCalc
+Requires: %name-DAQ-LogicLev
+Requires: %name-DAQ-ModBus
+Requires: %name-DAQ-System
+Requires: %name-DB-SQLite
+Requires: %name-Protocol-HTTP
+Requires: %name-Protocol-SelfSystem
+Requires: %name-Special-FLibComplex1
+Requires: %name-Special-FLibMath
+Requires: %name-Special-FLibSYS
+Requires: %name-Transport-SSL
+Requires: %name-Transport-Serial
+Requires: %name-Transport-Sockets
+Requires: %name-UI-VCAEngine
+Requires: %name-UI-WebCfgD
+Requires: %name-UI-WebVision
+%description plc
+The %name-plc package is virtual package for PLC.
+%description plc -l ru_RU.UTF8
+Пакет %name-plc это виртуальный пакет для ПЛК.
+%description plc -l uk_UA.UTF8
+Пакет %name-plc це віртуальний пакет для ПЛК.
+%description plc -l de_RU.UTF8
+Пакет %name-plc ist das Virtualpaket für PLC.
+
+%package server
+Summary: OpenSCADA server.
+Group: Applications/Engineering
+Requires: %name = %version-%release
+Requires: %name-DB-SQLite
+Requires: %name-DB-MySQL
+Requires: %name-DB-FireBird
+Requires: %name-DAQ-System
+Requires: %name-DAQ-BlockCalc
+Requires: %name-DAQ-JavaLikeCalc
+Requires: %name-DAQ-DiamondBoards
+Requires: %name-DAQ-LogicLev
+Requires: %name-DAQ-SNMP
+Requires: %name-DAQ-Siemens
+Requires: %name-DAQ-ModBus
+Requires: %name-DAQ-DCON
+Requires: %name-DAQ-DAQGate
+Requires: %name-DAQ-SoundCard
+Requires: %name-DAQ-ICP_DAS
+Requires: %name-Archive-FSArch
+Requires: %name-Archive-DBArch
+Requires: %name-Transport-Sockets
+Requires: %name-Transport-SSL
+Requires: %name-Transport-Serial
+Requires: %name-Protocol-HTTP
+Requires: %name-Protocol-SelfSystem
+Requires: %name-UI-VCAEngine
+Requires: %name-UI-WebCfg
+Requires: %name-UI-WebVision
+Requires: %name-WebCfgD
+Requires: %name-Special-FLibComplex1
+Requires: %name Special-FLibMath
+Requires: %name-Special-FLibSYS
+%description server
+The %name-server package is virtual package for OpenSCADA-server.
+%description server -l ru_RU.UTF8
+Пакет %name-server это виртуальный пакет для сервера OpenSCADA.
+%description server -l uk_UA.UTF8
+Пакет %name-server це віртуальний пакет для сервера OpenSCADA.
+%description server -l de_RU.UTF8
+Пакет %name-server это виртуальный пакет для сервера OpenSCADA.
+
+%package visStation
+Summary: OpenSCADA visual station.
+Group: Applications/Engineering
+Requires: %name = %version-%release
+Requires: %name-DB-SQLite
+Requires: %name-DB-MySQL
+Requires: %name-DAQ-System
+Requires: %name-DAQ-BlockCalc
+Requires: %name-DAQ-JavaLikeCalc
+Requires: %name-DAQ-LogicLev
+Requires: %name-DAQ-SNMP
+Requires: %name-DAQ-Siemens
+Requires: %name-DAQ-ModBus
+Requires: %name-DAQ-DCON
+Requires: %name-DAQ-DAQGate
+Requires: %name-DAQ-SoundCard
+Requires: %name-Archive-FSArch
+Requires: %name-Archive-DBArch
+Requires: %name-Transport-Sockets
+Requires: %name-Transport-SSL
+Requires: %name-Transport-Serial
+Requires: %name-Protocol-SelfSystem
+Requires: %name-UI-VCAEngine
+Requires: %name-UI-Vision
+%if 0%{?rhel}
+Requires: %name-UI-QTStarter
+Requires: %name-UI-QTCfg
+%endif
+Requires: %name-Special-FLibComplex1
+Requires: %name-Special-FLibMath
+Requires: %name-Special-FLibSYS
+%description visStation
+The %name-visStation package is virtual package for visual
+station (OpenSCADA).
+%description visStation -l ru_RU.UTF8
+Пакет %name-visStation это виртуальный пакет для визуальной
+станции (OpenSCADA).
+%description visStation -l uk_UA.UTF8
+Пакет %name-visStation це віртуальний пакет для сервера
+візуальної станції (OpenSCADA).
+%description visStation -l de_RU.UTF8
+Пакет %name-visStation это виртуальный пакет для визуальной
+станции (OpenSCADA).
+
 %prep
 %setup -q -n %{srcname}
 %patch0 -p1 -b .fedora
@@ -1101,6 +1223,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{?with_webcfgd: %exclude %{_libdir}/openscada/ui_WebCfgD.so}
 %{?with_webvision: %exclude %{_libdir}/openscada/ui_WebVision.so}
 %{?with_http: %exclude %{_libdir}/openscada/prot_HTTP.so}
+%{?with_qtstarter: %exclude %{_libdir}/openscada/ui_QTStarter.so}
 %{?with_qtcfg: %exclude %{_libdir}/openscada/ui_QTCfg.so}
 %{?with_uivision: %exclude %{_libdir}/openscada/ui_Vision.so}
 %{?with_uivcaengine: %exclude %{_libdir}/openscada/ui_VCAEngine.so}
@@ -1116,6 +1239,15 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{_localstatedir}/spool/openscada/icons/*
 %{_localstatedir}/spool/openscada/ARCHIVES/MESS/info
 %{_localstatedir}/spool/openscada/ARCHIVES/VAL/info
+
+%files plc
+%defattr(-,root,root)
+
+%files server
+%defattr(-,root,root)
+
+%files visStation
+%defattr(-,root,root)
 
 %files doc
 %defattr(-,root,root)
@@ -1348,7 +1480,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %changelog
 * Sun Oct 11 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-1
 - The change version for release 0.6.4
-- Moved Ui.VCAEngane module to the self package.
+- Moved Ui-VCAEngane module to the self package
+- Removed QTStarter module from the main package
+- Added virtual packages plc, server,visStation.
 
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
 - Adding self module ICP_DAS
