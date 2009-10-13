@@ -3,13 +3,7 @@
 # bcond_with "--disable compiling"
 # bcond_without "--enable compiling"
 # ======== DAQ =========
-%ifarch x86_64
 %bcond_with diamondboards
-%bcond_with icpdas
-%else
-%bcond_without diamondboards
-%bcond_without icpdas
-%endif
 %bcond_without dcon
 %bcond_without modbus
 %bcond_without soundcard
@@ -20,6 +14,7 @@
 %bcond_without javalikecalc
 %bcond_without logiclevel
 %bcond_without daqgate
+%bcond_with icpdas
 # ======== Protocol ========
 %bcond_without selfsystem
 # ========= DATA BASES =====
@@ -59,6 +54,16 @@
 %bcond_without flibmath
 %bcond_without flibsys
 %bcond_without systemtests
+
+# Only for x86_32
+%ifarch x86_64
+  %if 0%{?with_diamondboards}
+  %{error: DIAMONDBOARDS support available only for %{ix86} target }  
+%endif
+  %if 0%{?with_icpdas}
+  %{error: ICP_DAS support available only for %{ix86} target }
+  %endif
+%endif
 
 Summary: Open SCADA system project
 Name: openscada
