@@ -3,7 +3,13 @@
 # bcond_with "--disable compiling"
 # bcond_without "--enable compiling"
 # ======== DAQ =========
+%ifarch x86_64
 %bcond_with diamondboards
+%bcond_with icpdas
+%else
+%bcond_without diamondboards
+%bcond_without icpdas
+%endif
 %bcond_without dcon
 %bcond_without modbus
 %bcond_without soundcard
@@ -14,7 +20,6 @@
 %bcond_without javalikecalc
 %bcond_without logiclevel
 %bcond_without daqgate
-%bcond_with icpdas
 # ======== Protocol ========
 %bcond_without selfsystem
 # ========= DATA BASES =====
@@ -55,16 +60,6 @@
 %bcond_without flibsys
 %bcond_without systemtests
 
-# DIAMONDBOARDS - Only for x86_32
-%ifarch x86_64
-%if 0%{?with_diamondboards}
-  %{error: DIAMONDBOARDS support available only for %{ix86} target}
-%endif
-%if 0%{?with_icpdas}
-  %{error: ICP_DAS support available only for %{ix86} target}
-%endif
-%endif
-
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.4
@@ -72,7 +67,6 @@ Release: 1%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
-#Patch1: openscada-0.6.3.3-openssl.patch
 License: GPLv2
 Group: Applications/Engineering
 URL: http://oscada.org.ua
@@ -1482,7 +1476,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 - The change version for release 0.6.4
 - Moved Ui-VCAEngane module to the self package
 - Removed QTStarter module from the main package
-- Added the virtual plc, server,visStation packages
+- Added the virtual plc, server, visStation packages
 - Some cosmetics.
 
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
