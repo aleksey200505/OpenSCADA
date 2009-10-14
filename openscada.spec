@@ -106,6 +106,9 @@ Requires(post): chkconfig
 Requires(preun): chkconfig
 Requires(preun): initscripts
 
+Obsoletes: %{name}-UI-QTVision
+Provides: %{name}-UI-QTVision = %{version}-%{release}
+
 %description
 Open SCADA system. For access use account "root" and password "openscada".
 %description -l ru_RU.UTF8
@@ -1482,7 +1485,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 - Moved Ui-VCAEngine module to the self package
 - Removed QTStarter module from the main package
 - Added the virtual plc, server, visStation packages
-- Some cosmetics.
+- Some cosmetics
+- Fixed somes bugs Peter Lemenkov <lemenkov@gmail.com>.
 
 * Sun Oct 4 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.3.4-1
 - Adding self module ICP_DAS
