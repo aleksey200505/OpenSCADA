@@ -106,7 +106,7 @@ Requires(post): chkconfig
 Requires(preun): chkconfig
 Requires(preun): initscripts
 
-Obsoletes: %{name}-UI-QTVision
+Obsoletes: %{name}-UI-QTVision < %{version}-%{release}
 Provides: %{name}-UI-QTVision = %{version}-%{release}
 
 %description
