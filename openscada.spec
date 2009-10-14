@@ -984,9 +984,9 @@ Requires: %{name}-DAQ-System
 Requires: %{name}-DB-SQLite
 Requires: %{name}-Protocol-HTTP
 Requires: %{name}-Protocol-SelfSystem
-Requires: %{name}-Special-FLibComplex1
-Requires: %{name}-Special-FLibMath
-Requires: %{name}-Special-FLibSYS
+Requires: %{name}-Special-FlibComplex1
+Requires: %{name}-Special-FlibMath
+Requires: %{name}-Special-FlibSys
 Requires: %{name}-Transport-SSL
 Requires: %{name}-Transport-Serial
 Requires: %{name}-Transport-Sockets
@@ -1019,7 +1019,7 @@ Requires: %{name}-DAQ-Siemens
 Requires: %{name}-DAQ-ModBus
 Requires: %{name}-DAQ-DCON
 Requires: %{name}-DAQ-Gate
-Requires: %{name}-DAQ-SoundCard
+Requires: %{name}-DAQ-Soundcard
 Requires: %{name}-DAQ-IcpDas
 Requires: %{name}-ARH-FSArch
 Requires: %{name}-ARH-DBArch
@@ -1031,10 +1031,10 @@ Requires: %{name}-Protocol-SelfSystem
 Requires: %{name}-UI-VCAEngine
 Requires: %{name}-UI-WebCfg
 Requires: %{name}-UI-WebVision
-Requires: %{name}-WebCfgd
+Requires: %{name}-UI-WebCfgd
 Requires: %{name}-Special-FLibComplex1
 Requires: %{name} Special-FLibMath
-Requires: %{name}-Special-FLibSYS
+Requires: %{name}-Special-FlibSys
 %description server
 The %name-server package is virtual package for OpenSCADA-server.
 %description server -l ru_RU.UTF8
@@ -1053,15 +1053,15 @@ Requires: %name-DB-MySQL
 Requires: %name-DAQ-System
 Requires: %name-DAQ-BlockCalc
 Requires: %name-DAQ-JavaLikeCalc
-Requires: %name-DAQ-LogicLev
+Requires: %name-DAQ-LogicLevel
 Requires: %name-DAQ-SNMP
 Requires: %name-DAQ-Siemens
 Requires: %name-DAQ-ModBus
 Requires: %name-DAQ-DCON
-Requires: %name-DAQ-DAQGate
-Requires: %name-DAQ-SoundCard
-Requires: %name-Archive-FSArch
-Requires: %name-Archive-DBArch
+Requires: %name-DAQ-Gate
+Requires: %name-DAQ-Soundcard
+Requires: %name-ARH-FSArch
+Requires: %name-ARH-DBArch
 Requires: %name-Transport-Sockets
 Requires: %name-Transport-SSL
 Requires: %name-Transport-Serial
