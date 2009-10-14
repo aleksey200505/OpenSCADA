@@ -937,7 +937,7 @@ Requires:%{name}-UI-QTCfg = %{version}-%{release}
 Requires:%{name}-UI-Vision = %{version}-%{release}
 %endif
 %if 0%{?with_uivcaengine}
-Requires:%{name}-UI-VCAEngane = %{version}-%{release}
+Requires:%{name}-UI-VCAEngine = %{version}-%{release}
 %endif
 # ############### Web Interfaces ########################
 %if 0%{?with_webcfg}
@@ -973,68 +973,68 @@ und das Kennwort "openscada" oder die Anschreibung "user" ohne Kennwort.
 %package plc
 Summary: OpenSCADA PLC.
 Group: Applications/Engineering
-Requires: %name = %version-%release
-Requires: %name-Archive-FSArch
-Requires: %name-DAQ-BlockCalc
-Requires: %name-DAQ-ICP_DAS
-Requires: %name-DAQ-JavaLikeCalc
-Requires: %name-DAQ-LogicLev
-Requires: %name-DAQ-ModBus
-Requires: %name-DAQ-System
-Requires: %name-DB-SQLite
-Requires: %name-Protocol-HTTP
-Requires: %name-Protocol-SelfSystem
-Requires: %name-Special-FLibComplex1
-Requires: %name-Special-FLibMath
-Requires: %name-Special-FLibSYS
-Requires: %name-Transport-SSL
-Requires: %name-Transport-Serial
-Requires: %name-Transport-Sockets
-Requires: %name-UI-VCAEngine
-Requires: %name-UI-WebCfgD
-Requires: %name-UI-WebVision
+Requires: %{name} = %{version}-%{release}
+Requires: %{name}-ARH-FSArch
+Requires: %{name}-DAQ-BlockCalc
+Requires: %{name}-DAQ-IcpDas
+Requires: %{name}-DAQ-JavaLikeCalc
+Requires: %{name}-DAQ-LogicLevel
+Requires: %{name}-DAQ-ModBus
+Requires: %{name}-DAQ-System
+Requires: %{name}-DB-SQLite
+Requires: %{name}-Protocol-HTTP
+Requires: %{name}-Protocol-SelfSystem
+Requires: %{name}-Special-FLibComplex1
+Requires: %{name}-Special-FLibMath
+Requires: %{name}-Special-FLibSYS
+Requires: %{name}-Transport-SSL
+Requires: %{name}-Transport-Serial
+Requires: %{name}-Transport-Sockets
+Requires: %{name}-UI-VCAEngine
+Requires: %{name}-UI-WebCfgd
+Requires: %{name}-UI-WebVision
 %description plc
-The %name-plc package is virtual package for PLC.
+The %{name}-plc package is virtual package for PLC.
 %description plc -l ru_RU.UTF8
-Пакет %name-plc это виртуальный пакет для ПЛК.
+Пакет %{name}-plc это виртуальный пакет для ПЛК.
 %description plc -l uk_UA.UTF8
-Пакет %name-plc це віртуальний пакет для ПЛК.
+Пакет %{name}-plc це віртуальний пакет для ПЛК.
 %description plc -l de_RU.UTF8
-Пакет %name-plc ist das Virtualpaket für PLC.
+Пакет %{name}-plc ist das Virtualpaket für PLC.
 
 %package server
 Summary: OpenSCADA server.
 Group: Applications/Engineering
-Requires: %name = %version-%release
-Requires: %name-DB-SQLite
-Requires: %name-DB-MySQL
-Requires: %name-DB-FireBird
-Requires: %name-DAQ-System
-Requires: %name-DAQ-BlockCalc
-Requires: %name-DAQ-JavaLikeCalc
-Requires: %name-DAQ-DiamondBoards
-Requires: %name-DAQ-LogicLev
-Requires: %name-DAQ-SNMP
-Requires: %name-DAQ-Siemens
-Requires: %name-DAQ-ModBus
-Requires: %name-DAQ-DCON
-Requires: %name-DAQ-DAQGate
-Requires: %name-DAQ-SoundCard
-Requires: %name-DAQ-ICP_DAS
-Requires: %name-Archive-FSArch
-Requires: %name-Archive-DBArch
-Requires: %name-Transport-Sockets
-Requires: %name-Transport-SSL
-Requires: %name-Transport-Serial
-Requires: %name-Protocol-HTTP
-Requires: %name-Protocol-SelfSystem
-Requires: %name-UI-VCAEngine
-Requires: %name-UI-WebCfg
-Requires: %name-UI-WebVision
-Requires: %name-WebCfgD
-Requires: %name-Special-FLibComplex1
-Requires: %name Special-FLibMath
-Requires: %name-Special-FLibSYS
+Requires: %{name} = %{version}-%{release}
+Requires: %{name}-DB-SQLite
+Requires: %{name}-DB-MySQL
+Requires: %{name}-DB-FireBird
+Requires: %{name}-DAQ-System
+Requires: %{name}-DAQ-BlockCalc
+Requires: %{name}-DAQ-JavaLikeCalc
+Requires: %{name}-DAQ-DiamondBoards
+Requires: %{name}-DAQ-LogicLevel
+Requires: %{name}-DAQ-SNMP
+Requires: %{name}-DAQ-Siemens
+Requires: %{name}-DAQ-ModBus
+Requires: %{name}-DAQ-DCON
+Requires: %{name}-DAQ-Gate
+Requires: %{name}-DAQ-SoundCard
+Requires: %{name}-DAQ-IcpDas
+Requires: %{name}-ARH-FSArch
+Requires: %{name}-ARH-DBArch
+Requires: %{name}-Transport-Sockets
+Requires: %{name}-Transport-SSL
+Requires: %{name}-Transport-Serial
+Requires: %{name}-Protocol-HTTP
+Requires: %{name}-Protocol-SelfSystem
+Requires: %{name}-UI-VCAEngine
+Requires: %{name}-UI-WebCfg
+Requires: %{name}-UI-WebVision
+Requires: %{name}-WebCfgd
+Requires: %{name}-Special-FLibComplex1
+Requires: %{name} Special-FLibMath
+Requires: %{name}-Special-FLibSYS
 %description server
 The %name-server package is virtual package for OpenSCADA-server.
 %description server -l ru_RU.UTF8
@@ -1479,7 +1479,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %changelog
 * Sun Oct 11 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-1
 - The change version for release 0.6.4
-- Moved Ui-VCAEngane module to the self package
+- Moved Ui-VCAEngine module to the self package
 - Removed QTStarter module from the main package
 - Added the virtual plc, server, visStation packages
 - Some cosmetics.
