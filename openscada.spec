@@ -106,8 +106,7 @@ Requires(post): chkconfig
 Requires(preun): chkconfig
 Requires(preun): initscripts
 
-Obsoletes: %{name}-UI-QTVision < %{version}-%{release}
-Provides: %{name}-UI-QTVision = %{version}-%{release}
+Obsoletes: %{name}-UI-QTVision
 
 %description
 Open SCADA system. For access use account "root" and password "openscada".
