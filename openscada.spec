@@ -68,7 +68,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -973,7 +973,7 @@ und das Kennwort "openscada" oder die Anschreibung "user" ohne Kennwort.
 
 # ############################### Virtual Packages ###################################
 %package plc
-Summary: OpenSCADA PLC.
+Summary: OpenSCADA PLC
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-ARH-FSArch
@@ -1005,7 +1005,7 @@ The %{name}-plc package is virtual package for PLC.
 Пакет %{name}-plc ist das Virtualpaket für PLC.
 
 %package server
-Summary: OpenSCADA server.
+Summary: OpenSCADA server
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-DB-SQLite
@@ -1047,7 +1047,7 @@ The %name-server package is virtual package for OpenSCADA-server.
 Пакет %name-server это виртуальный пакет для сервера OpenSCADA.
 
 %package visStation
-Summary: OpenSCADA visual station.
+Summary: OpenSCADA visual station
 Group: Applications/Engineering
 Requires: %name = %version-%release
 Requires: %name-DB-SQLite
@@ -1479,6 +1479,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Fri Oct 16 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-2
+- Added of Obsoletes directive by Peter Lemenkov <lemenkov@gmail.com>.
+
 * Sun Oct 11 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-1
 - The change version for release 0.6.4
 - Moved Ui-VCAEngine module to the self package
