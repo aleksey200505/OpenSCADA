@@ -58,7 +58,7 @@
 # Only for x86_32
 %ifarch x86_64
   %if 0%{?with_diamondboards}
-  %{error: DIAMONDBOARDS support available only for %{ix86} target }  
+  %{error: DIAMONDBOARDS support available only for %{ix86} target }
 %endif
   %if 0%{?with_icpdas}
   %{error: ICP_DAS support available only for %{ix86} target }
@@ -68,7 +68,7 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.6.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -1093,8 +1093,8 @@ station (OpenSCADA).
 %prep
 %setup -q -n %{srcname}
 %patch0 -p1 -b .fedora
-#%patch1 -p1 -b .openssl
 %{__sed} -i 's|/usr/lib/|%{_libdir}/|' data/oscada*.xml
+%{__sed} -i 's|/usr/lib/|%{_libdir}/|' demo/oscada_demo.xml
 
 %build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
@@ -1170,6 +1170,7 @@ install -m 644 demo/*.db %{buildroot}/var/spool/openscada/DEMO
 echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
 echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/VAL/info
+
 
 # installation of *.desktop files
 %if 0%{?with_qtstarter}
@@ -1479,6 +1480,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Sat Jan 9 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-3
+- Fixed of libpath in the oscada_demo.xml.
+
 * Fri Oct 16 2009 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-2
 - Added of Obsoletes directive by Peter Lemenkov <lemenkov@gmail.com>.
 
