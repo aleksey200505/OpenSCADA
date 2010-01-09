@@ -1093,8 +1093,6 @@ station (OpenSCADA).
 %prep
 %setup -q -n %{srcname}
 %patch0 -p1 -b .fedora
-%{__sed} -i 's|/usr/lib/|%{_libdir}/|' data/oscada*.xml
-%{__sed} -i 's|/usr/lib/|%{_libdir}/|' demo/oscada_demo.xml
 
 %build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
@@ -1171,6 +1169,7 @@ echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
 echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/VAL/info
 
+%{__sed} -i 's|/usr/lib/|%{_libdir}/|' %{buildroot}%{_sysconfdir}/oscada*.xml
 
 # installation of *.desktop files
 %if 0%{?with_qtstarter}
