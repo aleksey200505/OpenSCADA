@@ -757,59 +757,59 @@ Interfaces wie RS232, RS485, GSM und andere benutzt.
 
 ############################# Functions-System #########################
 %if 0%{?with_flibcomplex}
-%package Special-FlibComplex1
+%package Special-FLibComplex1
 Summary: Open SCADA special
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
-%description Special-FlibComplex1
-The %name-Special-FlibComplex1 allows static function library
+%description Special-FLibComplex1
+The %name-Special-FLibComplex1 allows static function library
 Complex1 (SCADA Complex1 functions).
-%description Special-FlibComplex1 -l ru_RU.UTF8
-Пакет %name-Special-FlibComplex1-Sockets предоставляет статическую
+%description Special-FLibComplex1 -l ru_RU.UTF8
+Пакет %name-Special-FLibComplex1-Sockets предоставляет статическую
 библиотеку функций Complex1 (функции SCADA Complex1).
-%description Special-FlibComplex1 -l uk_UA.UTF8
-Пакет %name-Special-FlibComplex1 надає статичну бібліотеку функцій
+%description Special-FLibComplex1 -l uk_UA.UTF8
+Пакет %name-Special-FLibComplex1 надає статичну бібліотеку функцій
 Complex1 (функції SCADA Complex1).
-%description Special-FlibComplex1 -l de_DE.UTF8
-Das Paket %name-Special-FlibComplex1s enthält statische
+%description Special-FLibComplex1 -l de_DE.UTF8
+Das Paket %name-Special-FLibComplex1s enthält statische
 Bibliothek der Complex1-Funktionen (Funktionen SCADA Complex1).
 %endif
 
 %if 0%{?with_flibmath}
-%package Special-FlibMath
+%package Special-FLibMath
 Summary: Open SCADA special
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
-%description Special-FlibMath
-The %name-Special-FlibMath allows mathematic static function
+%description Special-FLibMath
+The %name-Special-FLibMath allows mathematic static function
 library.
-%description Special-FlibMath -l ru_RU.UTF8
-Пакет %name-Special-FlibMath предоставляет библиотеку стандартных
+%description Special-FLibMath -l ru_RU.UTF8
+Пакет %name-Special-FLibMath предоставляет библиотеку стандартных
 математических функций.
-%description Special-FlibMath -l uk_UA.UTF8
-Пакет %name-Special-FlibMath надає статичну бібліотеку
+%description Special-FLibMath -l uk_UA.UTF8
+Пакет %name-Special-FLibMath надає статичну бібліотеку
 математичних функцій.
-%description Special-FlibMath -l de_DE.UTF8
-Das Paket %name-Special-FlibMath enthält die Standardbibliothek
+%description Special-FLibMath -l de_DE.UTF8
+Das Paket %name-Special-FLibMath enthält die Standardbibliothek
 der mathematischen Funktionen.
 %endif
 
 %if 0%{?with_flibsys}
-%package Special-FlibSys
+%package Special-FLibSys
 Summary: Open SCADA special
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
-%description Special-FlibSys
-The %name-Special-FlibSys allows system API functions library
+%description Special-FLibSys
+The %name-Special-FLibSys allows system API functions library
 of the user programming area.
-%description Special-FlibSys -l ru_RU.UTF8
-Пакет %name-Special-FlibSys предоставляет в систему библиотеку
+%description Special-FLibSys -l ru_RU.UTF8
+Пакет %name-Special-FLibSys предоставляет в систему библиотеку
 системного API среды пользовательского программирования.
-%description Special-FlibSys -l uk_UA.UTF8
-Пакет %name-Special-FlibSys надає в систему бібліотеку
+%description Special-FLibSys -l uk_UA.UTF8
+Пакет %name-Special-FLibSys надає в систему бібліотеку
 системного API середовища програмування користувача.
-%description Special-FlibSys -l de_DE.UTF8
-Das Paket %name-Special-FlibSys gewährt in das System die
+%description Special-FLibSys -l de_DE.UTF8
+Das Paket %name-Special-FLibSys gewährt in das System die
 Bibliothek der API-Systemprogrammierung des Nutzersbereiches.
 %endif
 
@@ -877,13 +877,13 @@ Requires:%{name}-ARH-FSArch = %{version}-%{release}
 %endif
 # ############### Special ########################
 %if 0%{?with_flibmath}
-Requires:%{name}-Special-FlibMath = %{version}-%{release}
+Requires:%{name}-Special-FLibMath = %{version}-%{release}
 %endif
 %if 0%{?with_flibcomplex}
-Requires:%{name}-Special-FlibComplex1 = %{version}-%{release}
+Requires:%{name}-Special-FLibComplex1 = %{version}-%{release}
 %endif
 %if 0%{?with_flibsys}
-Requires:%{name}-Special-FlibSys = %{version}-%{release}
+Requires:%{name}-Special-FLibSys = %{version}-%{release}
 %endif
 %if 0%{?with_systemtests}
 Requires:%{name}-Special-SystemTests = %{version}-%{release}
@@ -986,9 +986,9 @@ Requires: %{name}-DAQ-System
 Requires: %{name}-DB-SQLite
 Requires: %{name}-Protocol-HTTP
 Requires: %{name}-Protocol-SelfSystem
-Requires: %{name}-Special-FlibComplex1
-Requires: %{name}-Special-FlibMath
-Requires: %{name}-Special-FlibSys
+Requires: %{name}-Special-FLibComplex1
+Requires: %{name}-Special-FLibMath
+Requires: %{name}-Special-FLibSys
 Requires: %{name}-Transport-SSL
 Requires: %{name}-Transport-Serial
 Requires: %{name}-Transport-Sockets
@@ -1010,11 +1010,15 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-DB-SQLite
 Requires: %{name}-DB-MySQL
+%if 0%{?with_firebird}
 Requires: %{name}-DB-FireBird
+%endif
 Requires: %{name}-DAQ-System
 Requires: %{name}-DAQ-BlockCalc
 Requires: %{name}-DAQ-JavaLikeCalc
+%if 0%{?with_diamondboards}
 Requires: %{name}-DAQ-DiamondBoards
+%endif
 Requires: %{name}-DAQ-LogicLevel
 Requires: %{name}-DAQ-SNMP
 Requires: %{name}-DAQ-Siemens
@@ -1022,7 +1026,9 @@ Requires: %{name}-DAQ-ModBus
 Requires: %{name}-DAQ-DCON
 Requires: %{name}-DAQ-Gate
 Requires: %{name}-DAQ-Soundcard
+%if 0%{?with_icpdas}
 Requires: %{name}-DAQ-IcpDas
+%endif
 Requires: %{name}-ARH-FSArch
 Requires: %{name}-ARH-DBArch
 Requires: %{name}-Transport-Sockets
@@ -1035,8 +1041,8 @@ Requires: %{name}-UI-WebCfg
 Requires: %{name}-UI-WebVision
 Requires: %{name}-UI-WebCfgd
 Requires: %{name}-Special-FLibComplex1
-Requires: %{name} Special-FLibMath
-Requires: %{name}-Special-FlibSys
+Requires: %{name}-Special-FLibMath
+Requires: %{name}-Special-FLibSys
 %description server
 The %name-server package is virtual package for OpenSCADA-server.
 %description server -l ru_RU.UTF8
@@ -1127,8 +1133,8 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
 	%{!?with_daqgate:--disable-DAQGate} \
 	%{!?with_icpdas:--disable-ICP_DAS} \
 	%{!?with_selfsystem:--disable-SelfSystem} \
-	%{!?with_flibcomplex:--disable-FlibComplex1} \
-	%{!?with_flibmath:--disable-FlibMath} \
+	%{!?with_flibcomplex:--disable-FLibComplex1} \
+	%{!?with_flibmath:--disable-FLibMath} \
 	%{!?with_flibsys:-disable-FlibSYS} \
 	%{!?with_systemtests:--disable-SelfSystem} \
 	%{!?with_qtstarter:--disable-QTStarter}
@@ -1438,19 +1444,19 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %if 0%{?with_flibcomplex}
-%files Special-FlibComplex1
+%files Special-FLibComplex1
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibComplex1.so
 %endif
 
 %if 0%{?with_flibmath}
-%files Special-FlibMath
+%files Special-FLibMath
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibMath.so
 %endif
 
 %if 0%{?with_flibsys}
-%files Special-FlibSys
+%files Special-FLibSys
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibSYS.so
 %endif
