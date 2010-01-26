@@ -67,8 +67,8 @@
 
 Summary: Open SCADA system project
 Name: openscada
-Version: 0.6.4
-Release: 3%{?dist}
+Version: 0.6.4.1
+Release: 4%{?dist}
 Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -1197,7 +1197,7 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{_initrddir}/openscadad
 %{_bindir}/openscada
 %{_bindir}/openscada_start
-%doc README README_ru COPYING ChangeLog
+%doc README README_ru README_uk COPYING ChangeLog INSTALL TODO TODO_ru TODO_uk
 %{_libdir}/*.so.*
 %{_libdir}/openscada/*.so
 
@@ -1479,6 +1479,9 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Tue Jan 26 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-4
+- The macros doc is edited.
+
 * Sat Jan 9 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4-3
 - Fixed of libpath in the oscada_demo.xml.
 
