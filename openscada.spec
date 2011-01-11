@@ -1291,6 +1291,7 @@ echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVE
 echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/VAL/info
 
 %{__sed} -i 's|/usr/lib/|%{_libdir}/|' %{buildroot}%{_sysconfdir}/oscada*.xml
+%{__sed} -i 's|OPENSCADA_BIN=|OPENSCADA_BIN=%{_bindir}/openscada|' %{buildroot}%{_initrddir}/openscadad
 
 # installation of *.desktop files
 %if 0%{?with_qtstarter}
@@ -1298,13 +1299,13 @@ desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
 desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
-%find_lang o.* {name}.lang
+%find_lang o.* %{name}.lang
 
 %clean
 %{__rm} -rf %{buildroot}
 
-%files -f {name}.lang
-
+%files -f %{name}.lang
+ 
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/oscada.xml
 %config(noreplace) %{_sysconfdir}/oscada_start.xml
@@ -1757,6 +1758,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %changelog
 * Tue Jan 11 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-5
 - Moved files of messages from main package to the self package
+- Fixed macros errors
+- Fixed of error in oscada.init.patch file
 - Fixed somes of spelling-error.
 
 * Tue Jan 4 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-4
