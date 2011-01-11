@@ -1,6 +1,6 @@
 #===== Generic Info ======
 %define srcname openscada-%version
-%define mo_mess %{_datadir}/locale
+%define langmess %{_datadir}/locale
 # bcond_with "--disable compiling"
 # bcond_without "--enable compiling"
 # ======== DAQ =========
@@ -168,7 +168,7 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-DCON
-The %name-DAQ-DCON allows realisation of DCON client service.
+The %name-DAQ-DCON allows realization of DCON client service.
 Supported I-7000 DCON protocol.
 %description DAQ-DCON -l ru_RU.UTF8
 Пакет %name-DAQ-DCON предоставляет реализацию клиентского сервиса
@@ -188,7 +188,7 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-ModBus
-The %name-DAQ-ModBus allows realisation of ModBus client service.
+The %name-DAQ-ModBus allows realization of ModBus client service.
 Supported Modbus/TCP, Modbus/RTU and Modbus/ASCII protocols.
 %description DAQ-ModBus -l ru_RU.UTF8
 Пакет %name-DAQ-ModBus предоставляет реализацию клиентского сервиса
@@ -329,7 +329,7 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-LogicLevel
-The %name-DAQ-LogicLevel allows logic level paramers.
+The %name-DAQ-LogicLevel allows logic level parameters.
 %description DAQ-LogicLevel -l ru_RU.UTF8
 Пакет %name-DAQ-LogicLevel, предоставляет логический уровень
 параметров.
@@ -365,7 +365,7 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-IcpDas
-The %name-DAQ-IcpDas, package allow realisation of ICP DAS
+The %name-DAQ-IcpDas, package allow realization of ICP DAS
 hardware support. Include I87000 and I-7000 DCON modules
 and I-8000 fast modules.
 %description DAQ-IcpDas -l ru_RU.UTF8
@@ -427,7 +427,7 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-OpcUa
-The %name-DAQ-OpcUa, package allow realisation of OPC UA protocol.
+The %name-DAQ-OpcUa, package allow realization of OPC UA protocol.
 %description DAQ-OpcUa -l ru_RU.UTF8
 Пакет %name-DAQ-OpcUa, предоставляет реализацию OPC UA протокола.
 %description DAQ-OpcUa -l uk_UA.UTF8
@@ -543,7 +543,7 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description ARH-DBArch
 The %name-ARH-DBArch package allow functions for messages and
-values arhiving to DB.
+values archiving to DB.
 %description ARH-DBArch -l ru_RU.UTF8
 Пакет %name-ARH-DBArch, предоставляет функции архивирования
 сообщений и значений на БД.
@@ -562,7 +562,7 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description ARH-FSArch
 The %name-ARH-FSArch allow functions for messages and values
-arhiving to file system.
+archiving to file system.
 %description ARH-FSArch -l ru_RU.UTF8
 Пакет %name-ARH-FSArch, предоставляет функции архивирования
 сообщений и значений на файловую систему.
@@ -789,7 +789,7 @@ The %name-Transport-SSL allows security socket layer based
 transport. Used OpenSSL and supported SSLv2, SSLv3 and TLSv1.
 %description Transport-SSL -l ru_RU.UTF8
 Пакет %name-Transport-SSL предоставляет транспорт основанный
-на слое безопасных сокетов. Используется OpenSSL и поддерживаютя SSLv2, SSLv3
+на слое безопасных сокетов. Используется OpenSSL и поддерживаются SSLv2, SSLv3
 and TLSv1.
 %description Transport-SSL -l uk_UA.UTF8
 Пакет %name-Transport-SSL надає транспорт базований на
@@ -812,7 +812,7 @@ The %name-Transport-Sockets allows sockets based transport.
 Supports inet and unix sockets.
 Inet socket uses TCP and UDP protocols.
 %description Transport-Sockets -l ru_RU.UTF8
-Пакет %name-Transport-Sockets педоставляет транспорт основанный
+Пакет %name-Transport-Sockets предоставляет транспорт основанный
 на сокетах. Поддерживаются интернет и UNIX сокеты.
 Интернет сокет использует TCP и UDP протоколы.
 %description Transport-Sockets -l uk_UA.UTF8
@@ -1321,12 +1321,12 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %doc README README_ru README_uk COPYING ChangeLog INSTALL TODO TODO_ru TODO_uk
 %{_libdir}/*.so.*
 %{_libdir}/openscada/*.so
-%exclude %{mo_mess}/de/LC_MESSAGES/oscd_*
-%exclude %{mo_mess}/ru/LC_MESSAGES/oscd_*
-%exclude %{mo_mess}/uk/LC_MESSAGES/oscd_*
-%lang(de) %{mo_mess}/de/LC_MESSAGES/openscada.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/openscada.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/openscada.mo
+%exclude %{langmess}/de/LC_MESSAGES/oscd_*
+%exclude %{langmess}/ru/LC_MESSAGES/oscd_*
+%exclude %{langmess}/uk/LC_MESSAGES/oscd_*
+%lang(de) %{langmess}/de/LC_MESSAGES/openscada.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/openscada.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/openscada.mo
 
 %{?with_diamondboards: %exclude %{_libdir}/openscada/daq_DiamondBoards.so}
 %{?with_dcon: %exclude %{_libdir}/openscada/daq_DCON.so}
@@ -1396,243 +1396,243 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %files DAQ-DCON
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_DCON.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DCON.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DCON.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DCON.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_DCON.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_DCON.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_DCON.mo
 %endif
 
 %if 0%{?with_modbus}
 %files DAQ-ModBus
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_ModBus.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_ModBus.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_ModBus.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_ModBus.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_ModBus.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_ModBus.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_ModBus.mo
 %endif
 
 %if 0%{?with_soundcard}
 %files DAQ-Soundcard
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_SoundCard.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SoundCard.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SoundCard.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SoundCard.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_SoundCard.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_SoundCard.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_SoundCard.mo
 %endif
 
 %if 0%{?with_snmp}
 %files DAQ-SNMP
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_SNMP.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SNMP.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SNMP.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SNMP.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_SNMP.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_SNMP.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_SNMP.mo
 %endif
 
 %if 0%{?with_siemens}
 %files DAQ-Siemens
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_Siemens.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Siemens.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Siemens.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Siemens.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_Siemens.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_Siemens.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_Siemens.mo
 %endif
 
 %if 0%{?with_system}
 %files DAQ-System
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_System.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_System.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_System.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_System.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_System.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_System.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_System.mo
 %endif
 
 %if 0%{?with_blockcalc}
 %files DAQ-BlockCalc
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_BlockCalc.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_BlockCalc.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_BlockCalc.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_BlockCalc.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_BlockCalc.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_BlockCalc.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_BlockCalc.mo
 %endif
 
 %if 0%{?with_javalikecalc}
 %files DAQ-JavaLikeCalc
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_JavaLikeCalc.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_JavaLikeCalc.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_JavaLikeCalc.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_JavaLikeCalc.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_JavaLikeCalc.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_JavaLikeCalc.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_JavaLikeCalc.mo
 %endif
 
 %if 0%{?with_logiclevel}
 %files DAQ-LogicLevel
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_LogicLev.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_LogicLev.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_LogicLev.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_LogicLev.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_LogicLev.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_LogicLev.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_LogicLev.mo
 %endif
 
 %if 0%{?with_daqgate}
 %files DAQ-Gate
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_DAQGate.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DAQGate.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DAQGate.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DAQGate.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_DAQGate.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_DAQGate.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_DAQGate.mo
 %endif
 
 %if 0%{?with_icpdas}
 %files DAQ-IcpDas
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_ICP_DAS.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_ICP_DAS.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_ICP_DAS.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_ICP_DAS.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_ICP_DAS.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_ICP_DAS.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_ICP_DAS.mo
 %endif
 
 %if 0%{?with_opcua}
 %files DAQ-OpcUa
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_OPC_UA.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_OPC_UA.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_OPC_UA.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_OPC_UA.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_OPC_UA.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_OPC_UA.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_OPC_UA.mo
 %endif
 
 %if 0%{?with_amrdevs}
 %files DAQ-AMRDevs
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_AMRDevs.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_AMRDevs.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_AMRDevs.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_AMRDevs.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_AMRDevs.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_AMRDevs.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_AMRDevs.mo
 %endif
 
 %if 0%{?with_selfsystem}
 %files Protocol-SelfSystem
 %defattr(-,root,root)
 %{_libdir}/openscada/prot_SelfSystem.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SelfSystem.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SelfSystem.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SelfSystem.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_SelfSystem.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_SelfSystem.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_SelfSystem.mo
 %endif
 
 %if 0%{?with_userprotocol}
 %files Protocol-UserProtocol
 %defattr(-,root,root)
 %{_libdir}/openscada/prot_UserProtocol.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_UserProtocol.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_UserProtocol.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_UserProtocol.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_UserProtocol.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_UserProtocol.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_UserProtocol.mo
 %endif
 
 %if 0%{?with_firebird}
 %files DB-FireBird
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_FireBird.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FireBird.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FireBird.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FireBird.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_FireBird.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_FireBird.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_FireBird.mo
 %endif
 
 %if 0%{?with_mysql}
 %files DB-MySQL
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_MySQL.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_MySQL.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_MySQL.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_MySQL.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_MySQL.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_MySQL.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_MySQL.mo
 %endif
 
 %if 0%{?with_dbf}
 %files DB-DBF
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_DBF.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DBF.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DBF.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DBF.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_DBF.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_DBF.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_DBF.mo
 %endif
 
 %if 0%{?with_sqlite}
 %files DB-SQLite
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_SQLite.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SQLite.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SQLite.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SQLite.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_SQLite.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_SQLite.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_SQLite.mo
 %endif
 
 %if 0%{?with_postgresql}
 %files DB-PostgreSQL
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_PostgreSQL.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_PostgreSQL.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_PostgreSQL.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_PostgreSQL.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_PostgreSQL.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_PostgreSQL.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_PostgreSQL.mo
 %endif
 
 %if 0%{?with_dbarch}
 %files ARH-DBArch
 %defattr(-,root,root)
 %{_libdir}/openscada/arh_DBArch.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DBArch.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DBArch.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DBArch.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_DBArch.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_DBArch.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_DBArch.mo
 %endif
 
 %if 0%{?with_fsarch}
 %files ARH-FSArch
 %defattr(-,root,root)
 %{_libdir}/openscada/arh_FSArch.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FSArch.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FSArch.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FSArch.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_FSArch.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_FSArch.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_FSArch.mo
 %endif
 
 %if 0%{?with_webcfg}
 %files UI-WebCfg
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebCfg.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebCfg.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebCfg.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebCfg.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_WebCfg.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_WebCfg.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_WebCfg.mo
 %endif
 
 %if 0%{?with_webcfgd}
 %files UI-WebCfgd
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebCfgD.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebCfgD.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebCfgD.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebCfgD.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_WebCfgD.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_WebCfgD.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_WebCfgD.mo
 %endif
 
 %if 0%{?with_webvision}
 %files UI-WebVision
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebVision.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebVision.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebVision.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebVision.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_WebVision.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_WebVision.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_WebVision.mo
 %endif
 
 %if 0%{?with_webuser}
 %files UI-WebUser
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebUser.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebUser.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebUser.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebUser.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_WebUser.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_WebUser.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_WebUser.mo
 %endif
 
 %if 0%{?with_http}
 %files Protocol-HTTP
 %defattr(-,root,root)
 %{_libdir}/openscada/prot_HTTP.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_HTTP.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_HTTP.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_HTTP.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_HTTP.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_HTTP.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_HTTP.mo
 %endif
 
 %if 0%{?with_qtstarter}
@@ -1642,99 +1642,99 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %_desktopdir/openscada.desktop
 %_desktopdir/openscada_demo.desktop
 %_iconsdir/openscada.png
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_QTStarter.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_QTStarter.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_QTStarter.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_QTStarter.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_QTStarter.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_QTStarter.mo
 %endif
 
 %if 0%{?with_qtcfg}
 %files UI-QTCfg
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_QTCfg.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_QTCfg.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_QTCfg.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_QTCfg.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_QTCfg.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_QTCfg.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_QTCfg.mo
 %endif
 
 %if 0%{?with_uivision}
 %files UI-Vision
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_Vision.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Vision.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Vision.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Vision.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_Vision.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_Vision.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_Vision.mo
 %endif
 
 %if 0%{?with_uivcaengine}
 %files UI-VCAEngine
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_VCAEngine.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_VCAEngine.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_VCAEngine.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_VCAEngine.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_VCAEngine.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_VCAEngine.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_VCAEngine.mo
 %endif
 
 %if 0%{?with_ssl}
 %files Transport-SSL
 %defattr(-,root,root)
 %{_libdir}/openscada/tr_SSL.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SSL.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SSL.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SSL.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_SSL.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_SSL.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_SSL.mo
 %endif
 
 %if 0%{?with_sockets}
 %files Transport-Sockets
 %defattr(-,root,root)
 %{_libdir}/openscada/tr_Sockets.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Sockets.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Sockets.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Sockets.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_Sockets.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_Sockets.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_Sockets.mo
 %endif
 
 %if 0%{?with_serial}
 %files Transport-Serial
 %defattr(-,root,root)
 %{_libdir}/openscada/tr_Serial.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Serial.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Serial.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Serial.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_Serial.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_Serial.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_Serial.mo
 %endif
 
 %if 0%{?with_flibcomplex}
 %files Special-FLibComplex1
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibComplex1.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FLibComplex1.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FLibComplex1.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FLibComplex1.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_FLibComplex1.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_FLibComplex1.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_FLibComplex1.mo
 %endif
 
 %if 0%{?with_flibmath}
 %files Special-FLibMath
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibMath.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FLibMath.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FLibMath.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FLibMath.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_FLibMath.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_FLibMath.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_FLibMath.mo
 %endif
 
 %if 0%{?with_flibsys}
 %files Special-FLibSYS
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibSYS.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FLibSYS.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FLibSYS.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FLibSYS.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_FLibSYS.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_FLibSYS.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_FLibSYS.mo
 %endif
 
 %if 0%{?with_systemtests}
 %files Special-SystemTests
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_SystemTests.so
-%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SystemTests.mo
-%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SystemTests.mo
-%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SystemTests.mo
+%lang(de) %{langmess}/de/LC_MESSAGES/oscd_SystemTests.mo
+%lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_SystemTests.mo
+%lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_SystemTests.mo
 %endif
 
 %files devel
@@ -1756,7 +1756,8 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 
 %changelog
 * Tue Jan 11 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-5
-- Moved files of messages from main package to the self package.
+- Moved files of messages from main package to the self package
+- Fixed somes of spelling-error.
 
 * Tue Jan 4 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-4
 - My mistake fixing. Sorry!
