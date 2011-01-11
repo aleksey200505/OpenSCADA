@@ -1,5 +1,6 @@
 #===== Generic Info ======
 %define srcname openscada-%version
+%define mo_mess %{_datadir}/locale
 # bcond_with "--disable compiling"
 # bcond_without "--enable compiling"
 # ======== DAQ =========
@@ -15,13 +16,17 @@
 %bcond_without logiclevel
 %bcond_without daqgate
 %bcond_with icpdas
+%bcond_without opcua
+%bcond_with amrdevs
 # ======== Protocol ========
 %bcond_without selfsystem
+%bcond_without userprotocol
 # ========= DATA BASES =====
 %bcond_with firebird
 %bcond_without mysql
 %bcond_without dbf
 %bcond_without sqlite
+%bcond_without postgresql
 # =========== ARH ===========
 %bcond_without dbarch
 %bcond_without fsarch
@@ -29,6 +34,7 @@
 %bcond_without webcfg
 %bcond_without webcfgd
 %bcond_without webvision
+%bcond_without webuser
 # ========== HTTP Protocol =========
 %bcond_without http
 # ========== QT Interfaces ==========
@@ -67,9 +73,9 @@
 
 Summary: Open SCADA system project
 Name: openscada
-Version: 0.6.4.1
-Release: 4%{?dist}
-Source0: ftp://oscada.org.ua/OpenSCADA/0.6.3/openscada-%version.tar.gz
+Version: 0.7.0.1
+Release: 5%{?dist}
+Source0: ftp://oscada.org/OpenSCADA/0.7.0/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
 License: GPLv2
@@ -82,16 +88,13 @@ ExclusiveArch:  %{ix86} x86_64
 BuildRequires: gettext
 BuildRequires: gd-devel
 BuildRequires: expat-devel
-BuildRequires: sqlite-devel
 BuildRequires: byacc
 BuildRequires: bison
-BuildRequires: portaudio-devel
 %if 0%{?rhel}
 BuildRequires: qt4-devel
 %else
 BuildRequires: qt-devel
 %endif
-BuildRequires: lm_sensors-devel
 BuildRequires: openssl-devel
 BuildRequires: fftw-devel
 BuildRequires: autoconf
@@ -101,12 +104,17 @@ BuildRequires: desktop-file-utils
 BuildRequires: sed
 BuildRequires: chrpath
 BuildRequires: net-snmp-devel
+BuildRequires: glibc-devel
+BuildRequires: gcc-c++
+BuildRequires: pcre-devel
 
 Requires(post): chkconfig
 Requires(preun): chkconfig
 Requires(preun): initscripts
 
-Obsoletes: %{name}-UI-QTVision
+Obsoletes: %{name}-Special-FlibComplex1
+Obsoletes: %{name}-Special-FlibMath
+Obsoletes: %{name}-Special-FlibSys
 
 %description
 Open SCADA system. For access use account "root" and password "openscada".
@@ -200,6 +208,7 @@ Protokolle Modbus/TCP, Modbus/RTU и Modbus/ASCII.
 %package DAQ-Soundcard
 Summary: Open SCADA DAQ
 Group: Applications/Engineering
+BuildRequires: portaudio-devel
 Requires: %{name} = %{version}-%{release}
 %description DAQ-Soundcard
 The %name-DAQ-Soundcard allows access to sound card data.
@@ -255,6 +264,7 @@ Protokolls und der Bibliothek Libnodave für Anderes.
 %package DAQ-System
 Summary: Open SCADA DAQ
 Group: Applications/Engineering
+BuildRequires: lm_sensors-devel
 Requires: %{name} = %{version}-%{release}
 %description DAQ-System
 The %name-DAQ-System, allow operation system data acquisition.
@@ -392,6 +402,55 @@ Das Paket %name-Protocol-SelfSystem, das eigene OpenSCADA -
 Protokoll, unterstützt die Hauptfunktionen
 %endif
 
+%if 0%{?with_userprotocol}
+%package Protocol-UserProtocol
+Summary: Open SCADA DAQ
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description Protocol-UserProtocol
+The %{name}-Protocol-UserProtocol package - allow creation self-user
+protocols on any OpenSCADA language.
+%description Protocol-UserProtocol -l ru_RU.UTF8
+Пакет %{name}-Protocol-UserProtocol - позволяет создавать
+собственные пользовательские протоколы на любом OpenSCADA языке.
+%description Protocol-UserProtocol -l uk_UA.UTF8
+Пакет %{name}-Protocol-UserProtocol - дозволяє створювати власні
+протоколи користувача на будьякій мові OpenSCADA.
+%description Protocol-UserProtocol -l de_DE.UTF8
+Das Paket %{name}-Protocol-UserProtocol - ermöglicht das Schaffen der
+eigenen Usersprotokolle in jeder OpenSCADA - Sprache.
+%endif
+
+%if 0%{?with_opcua}
+%package DAQ-OpcUa
+Summary: Open SCADA DAQ
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description DAQ-OpcUa
+The %name-DAQ-OpcUa, package allow realisation of OPC UA protocol.
+%description DAQ-OpcUa -l ru_RU.UTF8
+Пакет %name-DAQ-OpcUa, предоставляет реализацию OPC UA протокола.
+%description DAQ-OpcUa -l uk_UA.UTF8
+Пакет %name-DAQ-OpcUa,надає реалізацію OPC UA протокола.
+%description DAQ-OpcUa -l de_DE.UTF8
+Das Paket %name-DAQ-OpcUa gewährt den Einsatz des OPC UA -Protokolls
+%endif
+
+%if 0%{?with_amrdevs}
+%package DAQ-AMRDevs
+Summary: Open SCADA DAQ
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description DAQ-AMRDevs
+The %name-DAQ-AMRDevs.
+%description DAQ-AMRDevs -l ru_RU.UTF8
+Пакет %name-DAQ-AMRDevs.
+%description DAQ-AMRDevs -l uk_UA.UTF8
+Пакет %name-DAQ-AMRDevs.
+%description DAQ-AMRDevs -l de_DE.UTF8
+Das Paket %name-DAQ-AMRDevs.
+%endif
+
 ########################### BD-System ############################
 %if 0%{?with_firebird}
 %package DB-FireBird
@@ -448,6 +507,7 @@ Versionen 3.0.
 %package DB-SQLite
 Summary: Open SCADA bases
 Group: Applications/Engineering
+BuildRequires: sqlite-devel
 Requires: %{name} = %{version}-%{release}
 %description DB-SQLite
 The %name-DB-SQLite package allow support of the BD SQLite.
@@ -457,6 +517,22 @@ The %name-DB-SQLite package allow support of the BD SQLite.
 Пакет %name-DB-SQLite, надає підтримку БД SQLite.
 %description DB-SQLite -l de_DE.UTF8
 Das Paket %name-DB-SQLite gewährt die DB SQLite - Unterstützung.
+%endif
+
+%if 0%{?with_postgresql}
+%package DB-PostgreSQL
+BuildRequires: postgresql-devel
+Summary: Open SCADA bases
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description DB-PostgreSQL
+The %name-DB-PostgreSQL package allow support of the BD PostgreSQL.
+%description DB-PostgreSQL -l ru_RU.UTF8
+Пакет %name-DB-PostgreSQL, предоставляет поддержку БД PostgreSQL.
+%description DB-PostgreSQL -l uk_UA.UTF8
+Пакет %name-DB-PostgreSQL, надає підтримку БД PostgreSQL.
+%description DB-PostgreSQL -l de_DE.UTF8
+Das Paket %name-DB-PostgreSQL gewährt die DB PostgreSQL - Unterstützung.
 %endif
 
 ############################# ARH-System ############################
@@ -578,6 +654,24 @@ control area (VCA) projects playing.
 %description UI-WebVision -l de_DE.UTF8
 Das Paket %name-UI-WebVision, web-Arbeitsnutzersinterface für die
 Ausführung visueller Kontrollebereiche.
+%endif
+
+%if 0%{?with_webuser}
+%package UI-WebUser
+Summary: Open SCADA interfaces
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+%description UI-WebUser
+The %name-UI-WebUser web operation user interface for visual
+control area (VCA) projects playing.
+%description UI-WebUser -l ru_UA.UTF8
+Пакет %name-UI-WebUser, web рабочий пользовательский интерфейс
+для исполнения визуальных сред управления (СВУ)
+%description UI-WebUser -l uk_RU.UTF8
+Пакет %name-UI-WebUser, web робочий інтерфейс користувача для
+виконання візуального середовища керування (СВК).
+%description UI-WebUser -l de_DE.UTF8
+Das Paket %name-UI-WebUser, web Arbeitsnutzersinterface
 %endif
 
 %if 0%{?with_http}
@@ -795,21 +889,21 @@ der mathematischen Funktionen.
 %endif
 
 %if 0%{?with_flibsys}
-%package Special-FLibSys
+%package Special-FLibSYS
 Summary: Open SCADA special
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
-%description Special-FLibSys
-The %name-Special-FLibSys allows system API functions library
+%description Special-FLibSYS
+The %name-Special-FLibSYS allows system API functions library
 of the user programming area.
-%description Special-FLibSys -l ru_RU.UTF8
-Пакет %name-Special-FLibSys предоставляет в систему библиотеку
+%description Special-FLibSYS -l ru_RU.UTF8
+Пакет %name-Special-FLibSYS предоставляет в систему библиотеку
 системного API среды пользовательского программирования.
-%description Special-FLibSys -l uk_UA.UTF8
-Пакет %name-Special-FLibSys надає в систему бібліотеку
+%description Special-FLibSYS -l uk_UA.UTF8
+Пакет %name-Special-FLibSYS надає в систему бібліотеку
 системного API середовища програмування користувача.
-%description Special-FLibSys -l de_DE.UTF8
-Das Paket %name-Special-FLibSys gewährt in das System die
+%description Special-FLibSYS -l de_DE.UTF8
+Das Paket %name-Special-FLibSYS gewährt in das System die
 Bibliothek der API-Systemprogrammierung des Nutzersbereiches.
 %endif
 
@@ -883,7 +977,7 @@ Requires:%{name}-Special-FLibMath = %{version}-%{release}
 Requires:%{name}-Special-FLibComplex1 = %{version}-%{release}
 %endif
 %if 0%{?with_flibsys}
-Requires:%{name}-Special-FLibSys = %{version}-%{release}
+Requires:%{name}-Special-FLibSYS = %{version}-%{release}
 %endif
 %if 0%{?with_systemtests}
 Requires:%{name}-Special-SystemTests = %{version}-%{release}
@@ -910,6 +1004,12 @@ Requires:%{name}-DAQ-Gate = %{version}-%{release}
 %if 0%{?with_icpdas}
 Requires:%{name}-DAQ-IcpDas = %{version}-%{release}
 %endif
+%if 0%{?with_opcua}
+Requires:%{name}-DAQ-OpcUa = %{version}-%{release}
+%endif
+%if 0%{?with_amrdevs}
+Requires:%{name}-DAQ-AMRDevs = %{version}-%{release}
+%endif
 # ############### HTTP ########################
 %if 0%{?with_http}
 Requires:%{name}-Protocol-HTTP = %{version}-%{release}
@@ -917,6 +1017,9 @@ Requires:%{name}-Protocol-HTTP = %{version}-%{release}
 # ############### SelfSystem ########################
 %if 0%{?with_selfsystem}
 Requires:%{name}-Protocol-SelfSystem = %{version}-%{release}
+%endif
+%if 0%{?with_userprotocol}
+Requires:%{name}-Protocol-UserProtocol = %{version}-%{release}
 %endif
 # ############### Transport ########################
 %if 0%{?with_sockets}
@@ -951,6 +1054,9 @@ Requires:%{name}-UI-WebCfgd = %{version}-%{release}
 %if 0%{?with_webvision}
 Requires:%{name}-UI-WebVision = %{version}-%{release}
 %endif
+%if 0%{?with_webuser}
+Requires:%{name}-UI-WebUser = %{version}-%{release}
+%endif
 %description demo
 The %{name}-demo package includes demo data bases and configs.
 For start use command <openscada_demo>. For access use account
@@ -978,7 +1084,9 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-ARH-FSArch
 Requires: %{name}-DAQ-BlockCalc
+%if 0%{?with_icpdas}
 Requires: %{name}-DAQ-IcpDas
+%endif
 Requires: %{name}-DAQ-JavaLikeCalc
 Requires: %{name}-DAQ-LogicLevel
 Requires: %{name}-DAQ-ModBus
@@ -988,7 +1096,7 @@ Requires: %{name}-Protocol-HTTP
 Requires: %{name}-Protocol-SelfSystem
 Requires: %{name}-Special-FLibComplex1
 Requires: %{name}-Special-FLibMath
-Requires: %{name}-Special-FLibSys
+Requires: %{name}-Special-FLibSYS
 Requires: %{name}-Transport-SSL
 Requires: %{name}-Transport-Serial
 Requires: %{name}-Transport-Sockets
@@ -1010,6 +1118,7 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-DB-SQLite
 Requires: %{name}-DB-MySQL
+Requires: %{name}-DB-PostgreSQL
 %if 0%{?with_firebird}
 Requires: %{name}-DB-FireBird
 %endif
@@ -1042,7 +1151,7 @@ Requires: %{name}-UI-WebVision
 Requires: %{name}-UI-WebCfgd
 Requires: %{name}-Special-FLibComplex1
 Requires: %{name}-Special-FLibMath
-Requires: %{name}-Special-FLibSys
+Requires: %{name}-Special-FLibSYS
 %description server
 The %name-server package is virtual package for OpenSCADA-server.
 %description server -l ru_RU.UTF8
@@ -1058,6 +1167,7 @@ Group: Applications/Engineering
 Requires: %name = %version-%release
 Requires: %name-DB-SQLite
 Requires: %name-DB-MySQL
+Requires: %name-DB-PostgreSQL
 Requires: %name-DAQ-System
 Requires: %name-DAQ-BlockCalc
 Requires: %name-DAQ-JavaLikeCalc
@@ -1074,9 +1184,9 @@ Requires: %name-Transport-Sockets
 Requires: %name-Transport-SSL
 Requires: %name-Transport-Serial
 Requires: %name-Protocol-SelfSystem
+%if 0%{!?rhel}
 Requires: %name-UI-VCAEngine
 Requires: %name-UI-Vision
-%if 0%{?rhel}
 Requires: %name-UI-QTStarter
 Requires: %name-UI-QTCfg
 %endif
@@ -1103,41 +1213,46 @@ station (OpenSCADA).
 %build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
   %configure --disable-static \
-	%{!?with_dcon:--disable-DCON} \
-	%{!?with_diamondboards:--disable-DiamondBoards} \
-	%{!?with_mysql:--disable-MySQL} \
-	%{!?with_firebird:--disable-FireBird} \
-	%{?with_firebird:--with-firebird=%{_libdir}/firebird} \
-	%{!?with_dbf:--disable-DBF} \
-	%{!?with_sqlite:--disable-SQLite} \
-	%{!?with_webcfg:--disable-WebCfg} \
-	%{!?with_webcfgd:--disable-WebCfgD} \
-	%{!?with_webvision:--disable-WebVision} \
-	%{!?with_http:--disable-HTTP} \
-	%{!?with_modbus:--disable-ModBus} \
-	%{!?with_soundcard:--disable-SoundCard} \
-	%{!?with_qtcfg:--disable-QTCfg} \
-	%{!?with_uivision:--disable-Vision} \
-	%{!?with_uivcaengine:--disable-VCAEngine} \
-	%{!?with_ssl:--disable-SSL} \
-	%{!?with_serial:--disable-Serial} \
-	%{!?with_sockets:--disable-Sockets} \
-	%{!?with_snmp:--disable-SNMP} \
-	%{!?with_siemens:--disable-Siemens} \
-	%{!?with_dbarch:--disable-DBArch} \
-	%{!?with_fsarch:--disable-FSArch} \
-	%{!?with_system:--disable-System} \
-	%{!?with_blockcalc:--disable-BlockCalc} \
-	%{!?with_javalikecalc:--disable-JavaLikeCalc} \
-	%{!?with_logiclevel:--disable-LogicLev} \
-	%{!?with_daqgate:--disable-DAQGate} \
-	%{!?with_icpdas:--disable-ICP_DAS} \
-	%{!?with_selfsystem:--disable-SelfSystem} \
-	%{!?with_flibcomplex:--disable-FLibComplex1} \
-	%{!?with_flibmath:--disable-FLibMath} \
-	%{!?with_flibsys:-disable-FlibSYS} \
-	%{!?with_systemtests:--disable-SelfSystem} \
-	%{!?with_qtstarter:--disable-QTStarter}
+%{!?with_dcon:--disable-DCON} \
+%{!?with_diamondboards:--disable-DiamondBoards} \
+%{!?with_mysql:--disable-MySQL} \
+%{!?with_firebird:--disable-FireBird} \
+%{?with_firebird:--with-firebird=%{_libdir}/firebird} \
+%{!?with_dbf:--disable-DBF} \
+%{!?with_sqlite:--disable-SQLite} \
+%{!?with_postgresql:--disable-PostgreSQL} \
+%{!?with_webcfg:--disable-WebCfg} \
+%{!?with_webcfgd:--disable-WebCfgD} \
+%{!?with_webvision:--disable-WebVision} \
+%{!?with_webuser:--disable-WebUser} \
+%{!?with_http:--disable-HTTP} \
+%{!?with_modbus:--disable-ModBus} \
+%{!?with_soundcard:--disable-SoundCard} \
+%{!?with_qtcfg:--disable-QTCfg} \
+%{!?with_uivision:--disable-Vision} \
+%{!?with_uivcaengine:--disable-VCAEngine} \
+%{!?with_ssl:--disable-SSL} \
+%{!?with_serial:--disable-Serial} \
+%{!?with_sockets:--disable-Sockets} \
+%{!?with_snmp:--disable-SNMP} \
+%{!?with_siemens:--disable-Siemens} \
+%{!?with_dbarch:--disable-DBArch} \
+%{!?with_fsarch:--disable-FSArch} \
+%{!?with_system:--disable-System} \
+%{!?with_blockcalc:--disable-BlockCalc} \
+%{!?with_javalikecalc:--disable-JavaLikeCalc} \
+%{!?with_logiclevel:--disable-LogicLev} \
+%{!?with_daqgate:--disable-DAQGate} \
+%{!?with_icpdas:--disable-ICP_DAS} \
+%{!?with_opcua:--disable-OPC_UA} \
+%{!?with_amrdevs:--disable-AMRDevs} \
+%{!?with_selfsystem:--disable-SelfSystem} \
+%{!?with_userprotocol:--disable-UserProtocol} \
+%{!?with_flibcomplex:--disable-FLibComplex1} \
+%{!?with_flibmath:--disable-FLibMath} \
+%{!?with_flibsys:-disable-FlibSYS} \
+%{!?with_systemtests:--disable-SelfSystem} \
+%{!?with_qtstarter:--disable-QTStarter}
 
 make %{?_smp_mflags}
 
@@ -1152,24 +1267,24 @@ chrpath --delete %{buildroot}%{_bindir}/openscada
 rm -f %{buildroot}%{_libdir}/*.*a
 rm -f %{buildroot}%{_libdir}/openscada/*.*a
 
-install -m 755 -d %{buildroot}%{_includedir}/openscada/
-install -m 644 *.h %{buildroot}%{_includedir}/openscada
-install -m 644 src/*.h %{buildroot}%{_includedir}/openscada
-install -m 644 -pD data/oscada.xml %{buildroot}%{_sysconfdir}/oscada.xml
-install -m 644 -pD data/oscada_start.xml %{buildroot}%{_sysconfdir}/oscada_start.xml
-install -m 755 -pD data/openscada_start %{buildroot}%{_bindir}/openscada_start
-install -m 755 -pD data/oscada.init %{buildroot}%{_initrddir}/openscadad
-install -m 755 -d %{buildroot}/var/spool/openscada/{DATA,icons}
-install -m 644 data/icons/* %{buildroot}/var/spool/openscada/icons
-install -m 755 -d %{buildroot}/var/spool/openscada/ARCHIVES/{MESS,VAL}
-install -m 644 -pD demo/oscada_demo.xml %{buildroot}%{_sysconfdir}/oscada_demo.xml
-install -m 755 -pD demo/openscada_demo %{buildroot}%{_bindir}/openscada_demo
+%{__install} -m 755 -d %{buildroot}%{_includedir}/openscada/
+%{__install} -m 644 *.h %{buildroot}%{_includedir}/openscada
+%{__install} -m 644 src/*.h %{buildroot}%{_includedir}/openscada
+%{__install} -m 644 -pD data/oscada.xml %{buildroot}%{_sysconfdir}/oscada.xml
+%{__install} -m 644 -pD data/oscada_start.xml %{buildroot}%{_sysconfdir}/oscada_start.xml
+%{__install} -m 755 -pD data/openscada_start %{buildroot}%{_bindir}/openscada_start
+%{__install} -m 755 -pD data/oscada.init %{buildroot}%{_initrddir}/openscadad
+%{__install} -m 755 -d %{buildroot}/var/spool/openscada/{DATA,icons}
+%{__install} -m 644 data/icons/* %{buildroot}/var/spool/openscada/icons
+%{__install} -m 755 -d %{buildroot}/var/spool/openscada/ARCHIVES/{MESS,VAL}
+%{__install} -m 644 -pD demo/oscada_demo.xml %{buildroot}%{_sysconfdir}/oscada_demo.xml
+%{__install} -m 755 -pD demo/openscada_demo %{buildroot}%{_bindir}/openscada_demo
 %if 0%{?with_qtstarter}
-install -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
-install -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
+%{__install} -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
+%{__install} -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
 %endif
-install -m 755 -d %{buildroot}/var/spool/openscada/DEMO
-install -m 644 demo/*.db %{buildroot}/var/spool/openscada/DEMO
+%{__install} -m 755 -d %{buildroot}/var/spool/openscada/DEMO
+%{__install} -m 644 demo/*.db %{buildroot}/var/spool/openscada/DEMO
 
 echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
@@ -1206,6 +1321,12 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %doc README README_ru README_uk COPYING ChangeLog INSTALL TODO TODO_ru TODO_uk
 %{_libdir}/*.so.*
 %{_libdir}/openscada/*.so
+%exclude %{mo_mess}/de/LC_MESSAGES/oscd_*
+%exclude %{mo_mess}/ru/LC_MESSAGES/oscd_*
+%exclude %{mo_mess}/uk/LC_MESSAGES/oscd_*
+%lang(de) %{mo_mess}/de/LC_MESSAGES/openscada.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/openscada.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/openscada.mo
 
 %{?with_diamondboards: %exclude %{_libdir}/openscada/daq_DiamondBoards.so}
 %{?with_dcon: %exclude %{_libdir}/openscada/daq_DCON.so}
@@ -1219,16 +1340,21 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{?with_logiclevel: %exclude %{_libdir}/openscada/daq_LogicLev.so}
 %{?with_daqgate: %exclude %{_libdir}/openscada/daq_DAQGate.so}
 %{?with_icpdas: %exclude %{_libdir}/openscada/daq_ICP_DAS.so}
+%{?with_opcua: %exclude %{_libdir}/openscada/daq_OPC_UA.so}
+%{?with_amrdevs: %exclude %{_libdir}/openscada/daq_AMRDevs.so}
 %{?with_selfsystem: %exclude %{_libdir}/openscada/prot_SelfSystem.so}
+%{?with_userprotocol: %exclude %{_libdir}/openscada/prot_UserProtocol.so}
 %{?with_firebird: %exclude %{_libdir}/openscada/bd_FireBird.so}
 %{?with_mysql: %exclude %{_libdir}/openscada/bd_MySQL.so}
 %{?with_dbf: %exclude %{_libdir}/openscada/bd_DBF.so}
 %{?with_sqlite: %exclude %{_libdir}/openscada/bd_SQLite.so}
+%{?with_postgresql: %exclude %{_libdir}/openscada/bd_PostgreSQL.so}
 %{?with_dbarch: %exclude %{_libdir}/openscada/arh_DBArch.so}
 %{?with_fsarch: %exclude %{_libdir}/openscada/arh_FSArch.so}
 %{?with_webcfg: %exclude %{_libdir}/openscada/ui_WebCfg.so}
 %{?with_webcfgd: %exclude %{_libdir}/openscada/ui_WebCfgD.so}
 %{?with_webvision: %exclude %{_libdir}/openscada/ui_WebVision.so}
+%{?with_webuser: %exclude %{_libdir}/openscada/ui_WebUser.so}
 %{?with_http: %exclude %{_libdir}/openscada/prot_HTTP.so}
 %{?with_qtstarter: %exclude %{_libdir}/openscada/ui_QTStarter.so}
 %{?with_qtcfg: %exclude %{_libdir}/openscada/ui_QTCfg.so}
@@ -1270,132 +1396,243 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %files DAQ-DCON
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_DCON.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DCON.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DCON.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DCON.mo
 %endif
 
 %if 0%{?with_modbus}
 %files DAQ-ModBus
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_ModBus.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_ModBus.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_ModBus.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_ModBus.mo
 %endif
 
 %if 0%{?with_soundcard}
 %files DAQ-Soundcard
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_SoundCard.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SoundCard.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SoundCard.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SoundCard.mo
 %endif
 
 %if 0%{?with_snmp}
 %files DAQ-SNMP
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_SNMP.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SNMP.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SNMP.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SNMP.mo
 %endif
 
 %if 0%{?with_siemens}
 %files DAQ-Siemens
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_Siemens.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Siemens.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Siemens.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Siemens.mo
 %endif
 
 %if 0%{?with_system}
 %files DAQ-System
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_System.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_System.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_System.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_System.mo
 %endif
 
 %if 0%{?with_blockcalc}
 %files DAQ-BlockCalc
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_BlockCalc.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_BlockCalc.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_BlockCalc.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_BlockCalc.mo
 %endif
 
 %if 0%{?with_javalikecalc}
 %files DAQ-JavaLikeCalc
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_JavaLikeCalc.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_JavaLikeCalc.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_JavaLikeCalc.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_JavaLikeCalc.mo
 %endif
 
 %if 0%{?with_logiclevel}
 %files DAQ-LogicLevel
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_LogicLev.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_LogicLev.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_LogicLev.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_LogicLev.mo
 %endif
 
 %if 0%{?with_daqgate}
 %files DAQ-Gate
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_DAQGate.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DAQGate.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DAQGate.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DAQGate.mo
 %endif
 
 %if 0%{?with_icpdas}
 %files DAQ-IcpDas
 %defattr(-,root,root)
 %{_libdir}/openscada/daq_ICP_DAS.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_ICP_DAS.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_ICP_DAS.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_ICP_DAS.mo
+%endif
+
+%if 0%{?with_opcua}
+%files DAQ-OpcUa
+%defattr(-,root,root)
+%{_libdir}/openscada/daq_OPC_UA.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_OPC_UA.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_OPC_UA.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_OPC_UA.mo
+%endif
+
+%if 0%{?with_amrdevs}
+%files DAQ-AMRDevs
+%defattr(-,root,root)
+%{_libdir}/openscada/daq_AMRDevs.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_AMRDevs.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_AMRDevs.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_AMRDevs.mo
 %endif
 
 %if 0%{?with_selfsystem}
 %files Protocol-SelfSystem
 %defattr(-,root,root)
 %{_libdir}/openscada/prot_SelfSystem.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SelfSystem.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SelfSystem.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SelfSystem.mo
+%endif
+
+%if 0%{?with_userprotocol}
+%files Protocol-UserProtocol
+%defattr(-,root,root)
+%{_libdir}/openscada/prot_UserProtocol.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_UserProtocol.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_UserProtocol.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_UserProtocol.mo
 %endif
 
 %if 0%{?with_firebird}
 %files DB-FireBird
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_FireBird.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FireBird.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FireBird.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FireBird.mo
 %endif
 
 %if 0%{?with_mysql}
 %files DB-MySQL
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_MySQL.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_MySQL.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_MySQL.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_MySQL.mo
 %endif
 
 %if 0%{?with_dbf}
 %files DB-DBF
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_DBF.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DBF.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DBF.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DBF.mo
 %endif
 
 %if 0%{?with_sqlite}
 %files DB-SQLite
 %defattr(-,root,root)
 %{_libdir}/openscada/bd_SQLite.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SQLite.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SQLite.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SQLite.mo
+%endif
+
+%if 0%{?with_postgresql}
+%files DB-PostgreSQL
+%defattr(-,root,root)
+%{_libdir}/openscada/bd_PostgreSQL.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_PostgreSQL.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_PostgreSQL.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_PostgreSQL.mo
 %endif
 
 %if 0%{?with_dbarch}
 %files ARH-DBArch
 %defattr(-,root,root)
 %{_libdir}/openscada/arh_DBArch.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_DBArch.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_DBArch.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_DBArch.mo
 %endif
 
 %if 0%{?with_fsarch}
 %files ARH-FSArch
 %defattr(-,root,root)
 %{_libdir}/openscada/arh_FSArch.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FSArch.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FSArch.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FSArch.mo
 %endif
 
 %if 0%{?with_webcfg}
 %files UI-WebCfg
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebCfg.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebCfg.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebCfg.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebCfg.mo
 %endif
 
 %if 0%{?with_webcfgd}
 %files UI-WebCfgd
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebCfgD.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebCfgD.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebCfgD.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebCfgD.mo
 %endif
 
 %if 0%{?with_webvision}
 %files UI-WebVision
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_WebVision.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebVision.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebVision.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebVision.mo
+%endif
+
+%if 0%{?with_webuser}
+%files UI-WebUser
+%defattr(-,root,root)
+%{_libdir}/openscada/ui_WebUser.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_WebUser.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_WebUser.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_WebUser.mo
 %endif
 
 %if 0%{?with_http}
 %files Protocol-HTTP
 %defattr(-,root,root)
 %{_libdir}/openscada/prot_HTTP.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_HTTP.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_HTTP.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_HTTP.mo
 %endif
 
 %if 0%{?with_qtstarter}
@@ -1405,66 +1642,99 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %_desktopdir/openscada.desktop
 %_desktopdir/openscada_demo.desktop
 %_iconsdir/openscada.png
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_QTStarter.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_QTStarter.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_QTStarter.mo
 %endif
 
 %if 0%{?with_qtcfg}
 %files UI-QTCfg
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_QTCfg.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_QTCfg.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_QTCfg.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_QTCfg.mo
 %endif
 
 %if 0%{?with_uivision}
 %files UI-Vision
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_Vision.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Vision.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Vision.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Vision.mo
 %endif
 
 %if 0%{?with_uivcaengine}
 %files UI-VCAEngine
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_VCAEngine.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_VCAEngine.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_VCAEngine.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_VCAEngine.mo
 %endif
 
 %if 0%{?with_ssl}
 %files Transport-SSL
 %defattr(-,root,root)
 %{_libdir}/openscada/tr_SSL.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SSL.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SSL.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SSL.mo
 %endif
 
 %if 0%{?with_sockets}
 %files Transport-Sockets
 %defattr(-,root,root)
 %{_libdir}/openscada/tr_Sockets.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Sockets.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Sockets.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Sockets.mo
 %endif
 
 %if 0%{?with_serial}
 %files Transport-Serial
 %defattr(-,root,root)
 %{_libdir}/openscada/tr_Serial.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_Serial.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_Serial.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_Serial.mo
 %endif
 
 %if 0%{?with_flibcomplex}
 %files Special-FLibComplex1
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibComplex1.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FLibComplex1.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FLibComplex1.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FLibComplex1.mo
 %endif
 
 %if 0%{?with_flibmath}
 %files Special-FLibMath
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibMath.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FLibMath.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FLibMath.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FLibMath.mo
 %endif
 
 %if 0%{?with_flibsys}
-%files Special-FLibSys
+%files Special-FLibSYS
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_FLibSYS.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_FLibSYS.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_FLibSYS.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_FLibSYS.mo
 %endif
 
 %if 0%{?with_systemtests}
 %files Special-SystemTests
 %defattr(-,root,root)
 %{_libdir}/openscada/spec_SystemTests.so
+%lang(de) %{mo_mess}/de/LC_MESSAGES/oscd_SystemTests.mo
+%lang(ru) %{mo_mess}/ru/LC_MESSAGES/oscd_SystemTests.mo
+%lang(uk) %{mo_mess}/uk/LC_MESSAGES/oscd_SystemTests.mo
 %endif
 
 %files devel
@@ -1485,6 +1755,55 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Tue Jan 11 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-5
+- Moved files of messages from main package to the self package.
+
+* Tue Jan 4 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-4
+- My mistake fixing. Sorry!
+
+* Tue Dec 21 2010 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-3
+- Fixed:UI.VCAEngine: A session deadlock is fixed for dynamic-active projects, for attributes access.
+
+* Mon Dec 20 2010 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-2
+- Fixed BuildRequires.
+
+* Mon Dec 20 2010 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-1
+- Fixed Source0 patch
+- Build 0.7.0.1 update to production release.
+
+* Tue Nov 26 2010 Aleksey Popkov <aleksey@oscada.org> - 0.7.0-3
+- Fixed unresolved deps.
+
+* Tue Oct 26 2010 Aleksey Popkov <aleksey@oscada.org> - 0.7.0-2
+- Build the 0.7.0 version.
+
+* Thu Oct 13 2010 Aleksey Popkov <aleksey@oscada.org> - 0.7.0-2
+- Adding the module to self package of PostgreSQL servers.
+- Build the 0.7.0 version.
+
+* Mon May 17 2010 Aleksey Popkov <aleksey@oscada.org> - 0.6.4.2-1
+- RPM-build speck files is changed for build version 0.6.4.2 packages
+- Adding the module to self package of OPC_UA
+- Adding the module to self package of WebUser
+- Adding the module to self package of UserProtocol
+- Disabled the module AMRDevs (not tested).
+
+* Wed Feb 17 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-9
+- Fixed of dependencies in Obsoletes directives
+- Change of Source0 url path.
+
+* Tue Jan 30 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-8
+- Fixed of dependencies.
+
+* Tue Jan 29 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-7
+- Added of obsoletes and provides directives.
+
+* Tue Jan 29 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-6
+- Fixed of dependencies.
+
+* Tue Jan 26 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-5
+- Fixed of dependencies.
+
 * Tue Jan 26 2010 Aleksey Popkov <aleksey@oscada.org.ua> - 0.6.4.1-4
 - The macros doc is edited.
 
