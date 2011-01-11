@@ -10,7 +10,7 @@ index 21744dd..cdecaf8 100644
 -OPENSCADA=/usr/bin/openscada
 +bindir=/usr/bin
 +lockfile=/var/lock/subsys/openscadad
-+OPENSCADA_BIN=${bindir}/openscada
++OPENSCADA_BIN=
  ARGS="--demon &> /dev/null"
  RETVAL=0
  
