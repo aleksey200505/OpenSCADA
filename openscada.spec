@@ -73,8 +73,8 @@
 
 Summary: Open SCADA system project
 Name: openscada
-Version: 0.7.0.1
-Release: 5%{?dist}
+Version: 0.7.0.2
+Release: 2%{?dist}
 Source0: ftp://oscada.org/OpenSCADA/0.7.0/openscada-%version.tar.gz
 # Init scripts for fedora
 Patch0: oscada.init.patch
@@ -927,17 +927,42 @@ Das Paket %name-Special-SystemTests enthält die Testgruppe für das
 OpenSCADA-System
 %endif
 
-%package doc
+%package docEN
 Summary: Open SCADA documents
 Group: Documentation
-%description doc
-The %name-doc package include documents files.
-%description doc -l ru_RU.UTF8
-Пакет %name-doc включает файлы документации.
-%description doc -l uk_UA.UTF8
-Пакет %name-doc включає файли документації.
-%description doc -l de_DE.UTF8
-Das Paket %name-doc enthält die Dokumentationsdateien.
+%description docEN
+The %name-docEN package include documents files (English).
+%description docEN -l ru_RU.UTF8
+Пакет %name-docEN включает файлы документации (Английский).
+%description docEN -l uk_UA.UTF8
+Пакет %name-docEN включає файли документації (Англійська).
+%description docEN -l de_DE.UTF8
+Das Paket %name-docEN enthält die Dokumentationsdateien (Englisch).
+
+%package docRU
+Summary: Open SCADA documents
+Group: Documentation
+%description docRU
+The %name-docRU package include documents files (Russian).
+%description docRU -l ru_RU.UTF8
+Пакет %name-docRU включает файлы документации (Русский).
+%description docRU -l uk_UA.UTF8
+Пакет %name-docRU включає файли документації (Російська).
+%description docRU -l de_DE.UTF8
+Das Paket %name-docRU enthält die Dokumentationsdateien (Russisch).
+
+%package docUK
+Summary: Open SCADA documents
+Group: Documentation
+%description docUK
+The %name-docUK package include documents files (Ukraine).
+%description docUK -l ru_RU.UTF8
+Пакет %name-docUK включает файлы документации (Украинский).
+%description docUK -l uk_UA.UTF8
+Пакет %name-docUK включає файли документації (Українська).
+%description docUK -l de_DE.UTF8
+Das Paket %name-docUK enthält die Dokumentationsdateien (Ukrainisch).
+
 
 %package devel
 Summary: Open SCADA development
@@ -1756,6 +1781,13 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %endif
 
 %changelog
+* Wed Mar 4 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.2-2
+- Rebuild of 0.7.0.2 version
+- Fixed UI.WebVision: Function VCAElFigure::dashDotFigureBorders() realisation wrong comment is fixed.
+
+* Wed Mar 2 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.2-1
+- Build of 0.7.0.2 version.
+
 * Tue Jan 11 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.1-5
 - Moved files of messages from main package to the self package
 - Fixed macros errors
