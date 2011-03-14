@@ -73,8 +73,8 @@
 
 Summary: Open SCADA system project
 Name: openscada
-Version: 0.7.0.2
-Release: 3%{?dist}
+Version: 0.7.1
+Release: 1%{?dist}
 Source0: ftp://oscada.org/OpenSCADA/0.7.1/openscada-%version.tar.lzma
 Source1: ftp://oscada.org/OpenSCADA/0.7.1/openscada-res-%version.tar.lzma
 # Init scripts for fedora
@@ -1014,7 +1014,7 @@ Das Paket %{name}-LibDB.VCA enthaelt Visuelle Komponente in einer Bibliothek Dat
 So verwenden, verbinden Sie die Datei Datenbank SQLite LibsDB/vcaBase.db und LibsDB/vcaTest.db.
 
 # ############################### Modeles ############################################
-%package Model.AGLS
+%package Model.AGLKS
 Summary: Model "AGLKS" data bases and config (Demo: EN,RU,UK).
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
@@ -1050,22 +1050,22 @@ Requires: %{name}-UI-WebCfg = %{version}-%{release}
 Requires: %{name}-UI-WebVision = %{version}-%{release}
 
 
-%description Model.AGLS
+%description Model.AGLKS
 The %{name}-Model.AGLKS package includes model "AGLKS" data bases and config.
 The Model is used for OpenSCADA demo and allowed for English, Russian and Ukrainian languages.
 For start use command <openscada_demo> or <openscada_AGLKS>.
 For access use account "root" and password "openscada" or account "user" and password "user".
-%description Model.AGLS -l ru_RU.UTF8
+%description Model.AGLKS -l ru_RU.UTF8
 Пакет %{name}-Model.AGLKS включает БД и конфигурацию модели "АГЛКС".
 Модель используется для демонстрации OpenSCADA и доступна на Английском, Русском и Украинском языках.
 Для старта используйте команду <openscada_demo> мли <openscada_AGLKS>.
 Для доступа используйте запись "root" и пароль "openscada" или запись "user" и пароль "user".
-%description Model.AGLS -l uk_UA.UTF8
+%description Model.AGLKS -l uk_UA.UTF8
 Пакет %{name}-Model.AGLKS включає БД та конфігурацію моделі "АГЛКС".
 Модель використано для демонстрації OpenSCADA та доступно на Англійській, Російській та Українській мовах.
 Для старту використовуйте команду <openscada_demo> та <openscada_AGLKS>.
 Для доступу використовуйте запис "root" та пароль "openscada" або запис "user" та пароль "user".
-%description Model.AGLS -l de_DE.UTF8
+%description Model.AGLKS -l de_DE.UTF8
 Das Paket %{name}-Model.AGLKS enthaelt Datenbanken und Konfigurationsdateien Modell "AGLKS".
 Das Modell wird verwendet, um OpenSCADA demonstrieren und ist verfügbar in Englisch, Russisch und Ukrainisch.
 Fuers Starten wird Kommando <openscada_demo> oder <openscada_AGLKS> benutzt.
@@ -1108,21 +1108,23 @@ The %{name}-Model.Boiler package model "Boiler" data bases and config.
 The Model is allowed only for Russian language.
 For start use command <openscada_Boiler>.
 For access use account "root" and password "openscada" or account "user" and password "user".
-%description Model.AGLS -l ru_RU.UTF8
+%description Model.Boiler -l ru_RU.UTF8
 Пакет %{name}-Model.Boiler включает БД и конфигурацию модели "Котёл".
 Модель доступна только на Русском языке.
 Для старта используйте команду <openscada_Boiler>.
 Для доступа используйте запись "root" и пароль "openscada" или запись "user" и пароль "user".
-%description Model.AGLS -l uk_UA.UTF8
+%description Model.Boiler -l uk_UA.UTF8
 Пакет %{name}-Model.Boiler включає БД та конфігурацію моделі "Котел".
 Модель доступно тільки на Російській мові.
 Для старту використовуйте команду <openscada_Boiler>.
 Для доступу використовуйте запис "root" та пароль "openscada" або запис "user" та пароль "user".
-%description Model.AGLS -l de_DE.UTF8
+%description Model.Boiler -l de_DE.UTF8
 Das Paket %{name}-Model.Boiler enthaelt Datenbanken und Konfigurationsdateien Modell "Kessel".
 Das Modell ist nur in Russisch verfügbar.
 Fuers Starten wird Kommando <openscada_Boiler> benutzt.
 Fuer den Zugang die Aufzeichnung "root" und das Kennwort "openscada" benutzen. 
+
+
 # ############################### Virtual Packages ###################################
 %package plc
 Summary: OpenSCADA PLC
@@ -1254,6 +1256,7 @@ station (OpenSCADA).
 
 %prep
 %setup -q -n %{srcname}
+%setup -T -D -a 1
 %patch0 -p1 -b .fedora
 
 %build
