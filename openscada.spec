@@ -74,8 +74,9 @@
 Summary: Open SCADA system project
 Name: openscada
 Version: 0.7.0.2
-Release: 2%{?dist}
-Source0: ftp://oscada.org/OpenSCADA/0.7.0/openscada-%version.tar.gz
+Release: 3%{?dist}
+Source0: ftp://oscada.org/OpenSCADA/0.7.1/openscada-%version.tar.lzma
+Source1: ftp://oscada.org/OpenSCADA/0.7.1/openscada-res-%version.tar.lzma
 # Init scripts for fedora
 Patch0: oscada.init.patch
 License: GPLv2
@@ -963,7 +964,6 @@ The %name-docUK package include documents files (Ukraine).
 %description docUK -l de_DE.UTF8
 Das Paket %name-docUK enthält die Dokumentationsdateien (Ukrainisch).
 
-
 %package devel
 Summary: Open SCADA development
 Group: Development/Libraries
@@ -979,129 +979,150 @@ Das Paket %name-devel enthält das Bibliothekenarchiv und die
 eingeschlossenen
 Dateien.
 
-%package demo
-Summary: Open SCADA demo data bases and config
+%package LibDB.Main
+Summary: Main OpenSCADA libraries for DAQ and other into SQLite DB.
 Group: Applications/Engineering
 Requires:%{name} = %{version}-%{release}
-# ############### DB ########################
-%if 0%{?with_dbarch}
-Requires:%{name}-DB-SQLite = %{version}-%{release}
-%endif
-# ############### ARH ########################
-%if 0%{?with_dbarch}
-Requires:%{name}-ARH-DBArch = %{version}-%{release}
-%endif
-%if 0%{?with_fsarch}
-Requires:%{name}-ARH-FSArch = %{version}-%{release}
-%endif
-# ############### Special ########################
-%if 0%{?with_flibmath}
-Requires:%{name}-Special-FLibMath = %{version}-%{release}
-%endif
-%if 0%{?with_flibcomplex}
-Requires:%{name}-Special-FLibComplex1 = %{version}-%{release}
-%endif
-%if 0%{?with_flibsys}
-Requires:%{name}-Special-FLibSYS = %{version}-%{release}
-%endif
-%if 0%{?with_systemtests}
-Requires:%{name}-Special-SystemTests = %{version}-%{release}
-%endif
-# ############### DAQ ########################
-%if 0%{?with_blockcalc}
-Requires:%{name}-DAQ-BlockCalc = %{version}-%{release}
-%endif
-%if 0%{?with_modbus}
-Requires:%{name}-DAQ-ModBus = %{version}-%{release}
-%endif
-%if 0%{?with_javalikecalc}
-Requires:%{name}-DAQ-JavaLikeCalc = %{version}-%{release}
-%endif
-%if 0%{?with_logiclevel}
-Requires:%{name}-DAQ-LogicLevel = %{version}-%{release}
-%endif
-%if 0%{?with_system}
-Requires:%{name}-DAQ-System = %{version}-%{release}
-%endif
-%if 0%{?with_daqgate}
-Requires:%{name}-DAQ-Gate = %{version}-%{release}
-%endif
-%if 0%{?with_icpdas}
-Requires:%{name}-DAQ-IcpDas = %{version}-%{release}
-%endif
-%if 0%{?with_opcua}
-Requires:%{name}-DAQ-OpcUa = %{version}-%{release}
-%endif
-%if 0%{?with_amrdevs}
-Requires:%{name}-DAQ-AMRDevs = %{version}-%{release}
-%endif
-# ############### HTTP ########################
-%if 0%{?with_http}
-Requires:%{name}-Protocol-HTTP = %{version}-%{release}
-%endif
-# ############### SelfSystem ########################
-%if 0%{?with_selfsystem}
-Requires:%{name}-Protocol-SelfSystem = %{version}-%{release}
-%endif
-%if 0%{?with_userprotocol}
-Requires:%{name}-Protocol-UserProtocol = %{version}-%{release}
-%endif
-# ############### Transport ########################
-%if 0%{?with_sockets}
-Requires:%{name}-Transport-Sockets = %{version}-%{release}
-%endif
-%if 0%{?with_ssl}
-Requires:%{name}-Transport-SSL = %{version}-%{release}
-%endif
-%if 0%{?with_serial}
-Requires:%{name}-Transport-Serial = %{version}-%{release}
-%endif
-# ############### GUI System ########################
+%description LibDB.Main
+The %{name}-LibDB.Main package includes main OpenSCADA libraries into SQLite DB.
+For use connect SQLite DB file LibsDB/OscadaLibs.db.
+%description LibDB.Main -l ru_RU.UTF8
+Пакет %{name}-LibDB.Main включает основные библиотеки OpenSCADA в БД SQLite.
+Для использования подключите файл БД SQLite LibsDB/OscadaLibs.db.
+%description LibDB.Main -l uk_UA.UTF8
+Пакет %{name}-LibDB.Main включає основні бібліотеки OpenSCADA у БД SQLite.
+Для використання підключіть файл БД SQLite LibsDB/OscadaLibs.db.
+%description LibDB.Main -l de_DE.UTF8
+Das Paket %{name}-LibDB.Main enthaelt die Hauptbibliothek OpenSCADA die Datenbank SQLite.
+So verwenden, verbinden Sie die Datei Datenbank SQLite LibsDB/OscadaLibs.db.
+
+%package LibDB.VCA
+Summary: Main OpenSCADA libraries for DAQ and other into SQLite DB.
+Group: Applications/Engineering
+Requires:%{name} = %{version}-%{release}
+%description LibDB.VCA
+The %{name}-LibDB.VCA package includes visual components libraries into SQLite DB.
+For use connect SQLite DB file LibsDB/vcaBase.db and LibsDB/vcaTest.db.
+%description LibDB.VCA -l ru_RU.UTF8
+Пакет %{name}-LibDB.VCA включает библиотеки визуальных компонетов в БД SQLite.
+Для использования подключите файл БД SQLite LibsDB/vcaBase.db и LibsDB/vcaTest.db.
+%description LibDB.VCA -l uk_UA.UTF8
+Пакет %{name}-LibDB.VCA включає бібліотеки візуальних компонентів у БД SQLite.
+Для використання підключіть файл БД SQLite LibsDB/vcaBase.db та LibsDB/vcaTest.db.
+%description LibDB.VCA -l de_DE.UTF8
+Das Paket %{name}-LibDB.VCA enthaelt Visuelle Komponente in einer Bibliothek Datenbank SQLite.
+So verwenden, verbinden Sie die Datei Datenbank SQLite LibsDB/vcaBase.db und LibsDB/vcaTest.db.
+
+# ############################### Modeles ############################################
+%package Model.AGLS
+Summary: Model "AGLKS" data bases and config (Demo: EN,RU,UK).
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+Requires: %{name}-LibDB.Main = %{version}-%{release}
+Requires: %{name}-LibDB.VCA = %{version}-%{release}
+Requires: %{name}-DAQ-BlockCalc = %{version}-%{release}
+Requires: %{name}-ARH-FSArch = %{version}-%{release}
+Requires: %{name}-DAQ-JavaLikeCalc = %{version}-%{release}
+Requires: %{name}-DAQ-LogicLevel = %{version}-%{release}
+Requires: %{name}-DAQ-ModBus = %{version}-%{release}
+Requires: %{name}-DAQ-System = %{version}-%{release}
+Requires: %{name}-DB-SQLite = %{version}-%{release}
+Requires: %{name}-Protocol-HTTP = %{version}-%{release}
+Requires: %{name}-Protocol-SelfSystem = %{version}-%{release}
+Requires: %{name}-Special-FLibComplex1 = %{version}-%{release}
+Requires: %{name}-Special-FLibMath = %{version}-%{release}
+Requires: %{name}-Special-FLibSYS = %{version}-%{release}
+Requires: %{name}-Transport-SSL = %{version}-%{release}
+Requires: %{name}-Transport-Serial = %{version}-%{release}
 %if 0%{?with_qtstarter}
-Requires:%{name}-UI-QTStarter = %{version}-%{release}
+Requires: %{name}-UI-QTStarter = %{version}-%{release}
 %endif
 %if 0%{?with_qtcfg}
-Requires:%{name}-UI-QTCfg = %{version}-%{release}
+Requires: %{name}-UI-QTCfg = %{version}-%{release}
 %endif
 %if 0%{?with_uivision}
-Requires:%{name}-UI-Vision = %{version}-%{release}
+Requires: %{name}-UI-Vision = %{version}-%{release}
 %endif
 %if 0%{?with_uivcaengine}
-Requires:%{name}-UI-VCAEngine = %{version}-%{release}
+Requires: %{name}-UI-VCAEngine = %{version}-%{release}
 %endif
-# ############### Web Interfaces ########################
-%if 0%{?with_webcfg}
-Requires:%{name}-UI-WebCfg = %{version}-%{release}
-%endif
-%if 0%{?with_webcfgd}
-Requires:%{name}-UI-WebCfgd = %{version}-%{release}
-%endif
-%if 0%{?with_webvision}
-Requires:%{name}-UI-WebVision = %{version}-%{release}
-%endif
-%if 0%{?with_webuser}
-Requires:%{name}-UI-WebUser = %{version}-%{release}
-%endif
-%description demo
-The %{name}-demo package includes demo data bases and configs.
-For start use command <openscada_demo>. For access use account
-"root" and password "openscada" or account "user" without password.
-%description demo -l ru_RU.UTF8
-Пакет %{name}-demo включает демонстрационные базы данных и
-конфигурации. Для старта используйте команду <openscada_demo>.
-Для доступа используйте запись "root" и пароль "openscada"
-или запись "user" без пароля.
-%description demo -l uk_UA.UTF8
-Пакет %{name}-demo включає демонстраційні бази даних та
-конфігурації. Для старту використовуйте команду <openscada_demo>.
-Для доступу використовуйте запис "root" та пароль "openscada"
-або запис "user" без пароля.
-%description demo -l de_DE.UTF8
-Das Paket %{name}-demo enthält die Demodatenbanken und
-Konfigurationen. Fürs Starten wird Kommando <openscada_demo>
-benutzt. Für den Zugang benutzen Sie die Anschreibung "root"
-und das Kennwort "openscada" oder die Anschreibung "user" ohne Kennwort.
+Requires: %{name}-UI-WebCfg = %{version}-%{release}
+Requires: %{name}-UI-WebVision = %{version}-%{release}
 
+
+%description Model.AGLS
+The %{name}-Model.AGLKS package includes model "AGLKS" data bases and config.
+The Model is used for OpenSCADA demo and allowed for English, Russian and Ukrainian languages.
+For start use command <openscada_demo> or <openscada_AGLKS>.
+For access use account "root" and password "openscada" or account "user" and password "user".
+%description Model.AGLS -l ru_RU.UTF8
+Пакет %{name}-Model.AGLKS включает БД и конфигурацию модели "АГЛКС".
+Модель используется для демонстрации OpenSCADA и доступна на Английском, Русском и Украинском языках.
+Для старта используйте команду <openscada_demo> мли <openscada_AGLKS>.
+Для доступа используйте запись "root" и пароль "openscada" или запись "user" и пароль "user".
+%description Model.AGLS -l uk_UA.UTF8
+Пакет %{name}-Model.AGLKS включає БД та конфігурацію моделі "АГЛКС".
+Модель використано для демонстрації OpenSCADA та доступно на Англійській, Російській та Українській мовах.
+Для старту використовуйте команду <openscada_demo> та <openscada_AGLKS>.
+Для доступу використовуйте запис "root" та пароль "openscada" або запис "user" та пароль "user".
+%description Model.AGLS -l de_DE.UTF8
+Das Paket %{name}-Model.AGLKS enthaelt Datenbanken und Konfigurationsdateien Modell "AGLKS".
+Das Modell wird verwendet, um OpenSCADA demonstrieren und ist verfügbar in Englisch, Russisch und Ukrainisch.
+Fuers Starten wird Kommando <openscada_demo> oder <openscada_AGLKS> benutzt.
+Fuer den Zugang die Aufzeichnung "root" und das Kennwort "openscada" benutzen.
+
+%package Model.Boiler
+Summary: Model "Boiler" data bases and config (only Russian).
+Group: Applications/Engineering
+Requires: %{name} = %{version}-%{release}
+Requires: %{name}-LibDB.Main = %{version}-%{release}
+Requires: %{name}-LibDB.VCA = %{version}-%{release}
+
+Requires: %{name}-DAQ-BlockCalc = %{version}-%{release}
+Requires: %{name}-ARH-FSArch = %{version}-%{release}
+Requires: %{name}-DAQ-JavaLikeCalc = %{version}-%{release}
+Requires: %{name}-DAQ-LogicLevel = %{version}-%{release}
+Requires: %{name}-DAQ-System = %{version}-%{release}
+Requires: %{name}-Special-FLibComplex1 = %{version}-%{release}
+Requires: %{name}-Special-FLibMath = %{version}-%{release}
+Requires: %{name}-Special-FLibSYS = %{version}-%{release}
+Requires: %{name}-DB-SQLite = %{version}-%{release}
+
+%if 0%{?with_qtstarter}
+Requires: %{name}-UI-QTStarter = %{version}-%{release}
+%endif
+%if 0%{?with_qtcfg}
+Requires: %{name}-UI-QTCfg = %{version}-%{release}
+%endif
+%if 0%{?with_uivision}
+Requires: %{name}-UI-Vision = %{version}-%{release}
+%endif
+%if 0%{?with_uivcaengine}
+Requires: %{name}-UI-VCAEngine = %{version}-%{release}
+%endif
+Requires: %{name}-UI-WebCfg = %{version}-%{release}
+Requires: %{name}-UI-WebVision = %{version}-%{release}
+
+%description Model.Boiler
+The %{name}-Model.Boiler package model "Boiler" data bases and config.
+The Model is allowed only for Russian language.
+For start use command <openscada_Boiler>.
+For access use account "root" and password "openscada" or account "user" and password "user".
+%description Model.AGLS -l ru_RU.UTF8
+Пакет %{name}-Model.Boiler включает БД и конфигурацию модели "Котёл".
+Модель доступна только на Русском языке.
+Для старта используйте команду <openscada_Boiler>.
+Для доступа используйте запись "root" и пароль "openscada" или запись "user" и пароль "user".
+%description Model.AGLS -l uk_UA.UTF8
+Пакет %{name}-Model.Boiler включає БД та конфігурацію моделі "Котел".
+Модель доступно тільки на Російській мові.
+Для старту використовуйте команду <openscada_Boiler>.
+Для доступу використовуйте запис "root" та пароль "openscada" або запис "user" та пароль "user".
+%description Model.AGLS -l de_DE.UTF8
+Das Paket %{name}-Model.Boiler enthaelt Datenbanken und Konfigurationsdateien Modell "Kessel".
+Das Modell ist nur in Russisch verfügbar.
+Fuers Starten wird Kommando <openscada_Boiler> benutzt.
+Fuer den Zugang die Aufzeichnung "root" und das Kennwort "openscada" benutzen. 
 # ############################### Virtual Packages ###################################
 %package plc
 Summary: OpenSCADA PLC
@@ -1299,17 +1320,34 @@ rm -f %{buildroot}%{_libdir}/openscada/*.*a
 %{__install} -m 644 -pD data/oscada_start.xml %{buildroot}%{_sysconfdir}/oscada_start.xml
 %{__install} -m 755 -pD data/openscada_start %{buildroot}%{_bindir}/openscada_start
 %{__install} -m 755 -pD data/oscada.init %{buildroot}%{_initrddir}/openscadad
-%{__install} -m 755 -d %{buildroot}/var/spool/openscada/{DATA,icons}
+%{__install} -m 755 -d %{buildroot}/var/spool/openscada/{DATA,icons,LibsDB,AGLKS,Boiler}
 %{__install} -m 644 data/icons/* %{buildroot}/var/spool/openscada/icons
 %{__install} -m 755 -d %{buildroot}/var/spool/openscada/ARCHIVES/{MESS,VAL}
-%{__install} -m 644 -pD demo/oscada_demo.xml %{buildroot}%{_sysconfdir}/oscada_demo.xml
-%{__install} -m 755 -pD demo/openscada_demo %{buildroot}%{_bindir}/openscada_demo
-%if 0%{?with_qtstarter}
-%{__install} -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
-%{__install} -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
-%endif
-%{__install} -m 755 -d %{buildroot}/var/spool/openscada/DEMO
-%{__install} -m 644 demo/*.db %{buildroot}/var/spool/openscada/DEMO
+#%{__install} -m 644 -pD demo/oscada_demo.xml %{buildroot}%{_sysconfdir}/oscada_demo.xml
+#%{__install} -m 755 -pD demo/openscada_demo %{buildroot}%{_bindir}/openscada_demo
+#%if 0%{?with_qtstarter}
+#%{__install} -m 644 -pD demo/openscada_demo.png %{buildroot}%_iconsdir/openscada_demo.png
+#%{__install} -m 644 -pD data/openscada.png %{buildroot}%_iconsdir/openscada.png
+#%endif
+#%{__install} -m 755 -d %{buildroot}/var/spool/openscada/DEMO
+#%{__install} -m 644 demo/*.db %{buildroot}/var/spool/openscada/DEMO
+
+
+%{__install} -m 644 -pD data/LibsDB/*.db %{buildroot}/var/spool/openscada/LibsDB
+%{__install} -m 644 data/ModelsDB/AGLKS/*.db %{buildroot}/var/spool/openscada/AGLKS
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/oscada_AGLKS.xml %{buildroot}/%{_sysconfdir}/oscada_AGLKS.xml
+%{__install} -m 755 -pD data/ModelsDB/AGLKS/openscada_AGLKS %{buildroot}/%{_bindir}/openscada_AGLKS
+%{__install} -m 755 -pD data/ModelsDB/AGLKS/openscada_demo %{buildroot}/%{_bindir}/openscada_demo
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.desktop %{buildroot}/%{_desktopdir}/openscada_AGLKS.desktop
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/%{_iconsdir}/openscada_AGLKS.png
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/var/spool/openscada/icons/AGLKS.png
+
+%{__install} -m 644 data/ModelsDB/Boiler/*.db %{buildroot}/var/spool/openscada/Boiler
+%{__install} -m 644 -pD data/ModelsDB/Boiler/oscada_Boiler.xml %{buildroot}/%{_sysconfdir}/oscada_Boiler.xml
+%{__install} -m 755 -pD data/ModelsDB/Boiler/openscada_Boiler %{buildroot}/%{_bindir}/openscada_Boiler
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.desktop %{buildroot}/%{_desktopdir}/openscada_Boiler.desktop
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/%{_iconsdir}/openscada_Boiler.png
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/var/spool/openscada/icons/Boiler.png 
 
 echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
@@ -1320,8 +1358,8 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 
 # installation of *.desktop files
 %if 0%{?with_qtstarter}
-desktop-file-install --dir=%{buildroot}%_desktopdir data/openscada.desktop
-desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
+desktop-file-install --dir=%{buildroot}%{_desktopdir} data/openscada.desktop
+desktop-file-install --dir=%{buildroot}%{_desktopdir} demo/openscada_demo.desktop
 %endif
 
 %find_lang o.* %{name}.lang
@@ -1408,9 +1446,20 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %files visStation
 %defattr(-,root,root)
 
-%files doc
+%files docEN
 %defattr(-,root,root)
-%doc doc/*.pdf doc/Modules
+#%doc doc/*.pdf doc/Modules
+%doc doc/en/*
+
+%files docRU
+%defattr(-,root,root)
+#%doc doc/*.pdf doc/Modules
+%doc doc/ru/*
+
+%files docUK
+%defattr(-,root,root)
+#%doc doc/*.pdf doc/Modules
+%doc doc/uk/*
 
 %if 0%{?with_diamondboards}
 %files DAQ-DiamondBoards
@@ -1769,18 +1818,40 @@ desktop-file-install --dir=%{buildroot}%_desktopdir demo/openscada_demo.desktop
 %{_libdir}/*.so
 %{_includedir}/openscada/*
 
-%files demo
+%files LibDB.Main
 %defattr(-,root,root)
-%config(noreplace) %{_sysconfdir}/oscada_demo.xml
-%dir %{_localstatedir}/spool/openscada/DEMO
-%{_bindir}/openscada_demo
-%{_localstatedir}/spool/openscada/DEMO/*.db
-%if 0%{?with_qtstarter}
-%_desktopdir/openscada_demo.desktop
-%_iconsdir/openscada_demo.png
-%endif
+%dir %{_localstatedir}/spool/openscada/LibsDB/OscadaLibs.db
+
+%files LibDB.VCA
+%defattr(-,root,root)
+%dir %{_localstatedir}/spool/openscada/LibsDB/vca*.db
+
+%files Model.AGLKS
+%defattr(-,root,root)
+%config(noreplace) %{_sysconfdir}/oscada_AGLKS.xml
+%{_bindir}/openscada_AGLKS
+%{_desktopdir}/openscada_AGLKS.desktop
+%{_iconsdir}/openscada_AGLKS.png
+%{dir} %{_localstatedir}/spool/openscada/icons/AGLKS.png
+%{dir} %{_localstatedir}/spool/openscada/AGLKS/*.db
+ 
+%files Model.Boiler
+%defattr(-,root,root)
+%config(noreplace) %{_sysconfdir}/oscada_Boiler.xml
+%{_bindir}/openscada_Boiler
+%{_desktopdir}/openscada_Boiler.desktop
+%{_iconsdir}/openscada_Boiler.png
+%{dir} %{_localstatedir}/spool/openscada/icons/Boiler.png
+%{dir} %{_localstatedir}/spool/openscada/Boiler/*.db 
+
 
 %changelog
+* Mon Mar 14 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.2-3
+- New source packages implementation is released.
+- Documentation separated by languages.
+- Libraries DB packages is added for *-LibDB.Main and *-LibDB.VCA.
+- Instead DemoDB package added Model's packages for "AGLKS" and "Boiler".
+
 * Wed Mar 4 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.0.2-2
 - Rebuild of 0.7.0.2 version
 - Fixed UI.WebVision: Function VCAElFigure::dashDotFigureBorders() realisation wrong comment is fixed.
