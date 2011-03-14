@@ -1338,17 +1338,16 @@ rm -f %{buildroot}%{_libdir}/openscada/*.*a
 %{__install} -m 644 data/ModelsDB/AGLKS/*.db %{buildroot}/var/spool/openscada/AGLKS
 %{__install} -m 644 -pD data/ModelsDB/AGLKS/oscada_AGLKS.xml %{buildroot}/%{_sysconfdir}/oscada_AGLKS.xml
 %{__install} -m 755 -pD data/ModelsDB/AGLKS/openscada_AGLKS %{buildroot}/%{_bindir}/openscada_AGLKS
-%{__install} -m 755 -pD data/ModelsDB/AGLKS/openscada_demo %{buildroot}/%{_bindir}/openscada_demo
 %{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.desktop %{buildroot}/%{_desktopdir}/openscada_AGLKS.desktop
 %{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/%{_iconsdir}/openscada_AGLKS.png
-%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/var/spool/openscada/icons/AGLKS.png
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/%{_localstatedir}/spool/openscada/icons/AGLKS.png
 
 %{__install} -m 644 data/ModelsDB/Boiler/*.db %{buildroot}/var/spool/openscada/Boiler
 %{__install} -m 644 -pD data/ModelsDB/Boiler/oscada_Boiler.xml %{buildroot}/%{_sysconfdir}/oscada_Boiler.xml
 %{__install} -m 755 -pD data/ModelsDB/Boiler/openscada_Boiler %{buildroot}/%{_bindir}/openscada_Boiler
 %{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.desktop %{buildroot}/%{_desktopdir}/openscada_Boiler.desktop
 %{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/%{_iconsdir}/openscada_Boiler.png
-%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/var/spool/openscada/icons/Boiler.png 
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/%{_localstatedir}/spool/openscada/icons/Boiler.png 
 
 echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
@@ -1389,9 +1388,9 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %exclude %{langmess}/de/LC_MESSAGES/oscd_*
 %exclude %{langmess}/ru/LC_MESSAGES/oscd_*
 %exclude %{langmess}/uk/LC_MESSAGES/oscd_*
-%lang(de) %{langmess}/de/LC_MESSAGES/openscada.mo
-%lang(ru) %{langmess}/ru/LC_MESSAGES/openscada.mo
-%lang(uk) %{langmess}/uk/LC_MESSAGES/openscada.mo
+#%lang(de) %{langmess}/de/LC_MESSAGES/openscada.mo
+#%lang(ru) %{langmess}/ru/LC_MESSAGES/openscada.mo
+#%lang(uk) %{langmess}/uk/LC_MESSAGES/openscada.mo
 
 %{?with_diamondboards: %exclude %{_libdir}/openscada/daq_DiamondBoards.so}
 %{?with_dcon: %exclude %{_libdir}/openscada/daq_DCON.so}
