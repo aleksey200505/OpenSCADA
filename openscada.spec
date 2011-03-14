@@ -1717,9 +1717,9 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %files UI-QTStarter
 %defattr(-,root,root)
 %{_libdir}/openscada/ui_QTStarter.so
-%_desktopdir/openscada.desktop
-%_desktopdir/openscada_demo.desktop
-%_iconsdir/openscada.png
+#%_desktopdir/openscada.desktop
+#%_desktopdir/openscada_demo.desktop
+#%_iconsdir/openscada.png
 %lang(de) %{langmess}/de/LC_MESSAGES/oscd_QTStarter.mo
 %lang(ru) %{langmess}/ru/LC_MESSAGES/oscd_QTStarter.mo
 %lang(uk) %{langmess}/uk/LC_MESSAGES/oscd_QTStarter.mo
