@@ -1077,7 +1077,6 @@ Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 Requires: %{name}-LibDB.Main = %{version}-%{release}
 Requires: %{name}-LibDB.VCA = %{version}-%{release}
-
 Requires: %{name}-DAQ-BlockCalc = %{version}-%{release}
 Requires: %{name}-ARH-FSArch = %{version}-%{release}
 Requires: %{name}-DAQ-JavaLikeCalc = %{version}-%{release}
@@ -1087,7 +1086,6 @@ Requires: %{name}-Special-FLibComplex1 = %{version}-%{release}
 Requires: %{name}-Special-FLibMath = %{version}-%{release}
 Requires: %{name}-Special-FLibSYS = %{version}-%{release}
 Requires: %{name}-DB-SQLite = %{version}-%{release}
-
 %if 0%{?with_qtstarter}
 Requires: %{name}-UI-QTStarter = %{version}-%{release}
 %endif
@@ -1835,8 +1833,8 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %{_bindir}/openscada_AGLKS
 %{_desktopdir}/openscada_AGLKS.desktop
 %{_iconsdir}/openscada_AGLKS.png
-%{dir} %{_localstatedir}/spool/openscada/icons/AGLKS.png
-%{dir} %{_localstatedir}/spool/openscada/AGLKS/*.db
+%dir %{_localstatedir}/spool/openscada/icons/AGLKS.png
+%dir %{_localstatedir}/spool/openscada/AGLKS/*.db
  
 %files Model.Boiler
 %defattr(-,root,root)
@@ -1844,8 +1842,8 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %{_bindir}/openscada_Boiler
 %{_desktopdir}/openscada_Boiler.desktop
 %{_iconsdir}/openscada_Boiler.png
-%{dir} %{_localstatedir}/spool/openscada/icons/Boiler.png
-%{dir} %{_localstatedir}/spool/openscada/Boiler/*.db 
+%dir %{_localstatedir}/spool/openscada/icons/Boiler.png
+%dir %{_localstatedir}/spool/openscada/Boiler/*.db 
 
 
 %changelog
