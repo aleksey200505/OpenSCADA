@@ -1360,10 +1360,10 @@ echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/
 %{__sed} -i 's|OPENSCADA_BIN=|OPENSCADA_BIN=%{_bindir}/openscada|' %{buildroot}%{_initrddir}/openscadad
 
 # installation of *.desktop files
-%if 0%{?with_qtstarter}
-desktop-file-install --dir=%{buildroot}%{_desktopdir} data/openscada.desktop
-desktop-file-install --dir=%{buildroot}%{_desktopdir} demo/openscada_demo.desktop
-%endif
+#%if 0%{?with_qtstarter}
+#desktop-file-install --dir=%{buildroot}%{_desktopdir} data/openscada.desktop
+#desktop-file-install --dir=%{buildroot}%{_desktopdir} demo/openscada_demo.desktop
+#%endif
 
 %find_lang o.* %{name}.lang
 
