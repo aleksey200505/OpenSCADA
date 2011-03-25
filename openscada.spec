@@ -15,10 +15,11 @@
 %bcond_without javalikecalc
 %bcond_without logiclevel
 %bcond_without daqgate
-%bcond_with icpdas
 %bcond_without opcua
-%bcond_with amrdevs
 %bcond_without bfn
+
+%bcond_with icpdas
+%bcond_with amrdevs
 # ======== Protocol ========
 %bcond_without selfsystem
 %bcond_without userprotocol
@@ -40,15 +41,18 @@
 %bcond_without http
 # ========== QT Interfaces ==========
 %bcond_without uivcaengine
+
 # QT4 devel old in to CentOs
 %if 0%{?rhel}
 %bcond_with qtstarter
 %bcond_with qtcfg
 %bcond_with uivision
+%bcond_with uivcaengine
 %else
 %bcond_without qtstarter
 %bcond_without qtcfg
 %bcond_without uivision
+%bcond_without uivcaengine
 %define _desktopdir %_datadir/applications
 %define _iconsdir /usr/share/icons
 %endif
@@ -61,9 +65,6 @@
 %bcond_without flibmath
 %bcond_without flibsys
 %bcond_without systemtests
-# ========== Modeles ==============
-%bcond_without modeles_aglks
-%bcond_without modeles_broiler
 
 # Only for x86_32
 %ifarch x86_64
@@ -112,6 +113,7 @@ BuildRequires: net-snmp-devel
 BuildRequires: glibc-devel
 BuildRequires: gcc-c++
 BuildRequires: pcre-devel
+BuildRequires: lzma
 
 Requires(post): chkconfig
 Requires(preun): chkconfig
@@ -394,22 +396,13 @@ Summary: Open SCADA DAQ
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
 %description DAQ-Bfn
-The %name-DAQ-Bfn, package allow realization of ICP DAS
-hardware support. Include I87000 and I-7000 DCON modules
-and I-8000 fast modules.
+The %{name}-DAQ-Bfn package - allow realisation of BFN.
 %description DAQ-Bfn -l ru_RU.UTF8
-Пакет %name-DAQ-Bfn, предоставляет реализацию поддержки
-оборудования ICP DAS. Включена поддержка I-87000
-и I-7000 DCON модулей и I-8000 быстрых модулей.
+Пакет %{name}-DAQ-Bfn - предоставляет реализацию BFN.
 %description DAQ-Bfn -l uk_UA.UTF8
-Пакет %name-DAQ-Bfn, надає реалізацію підтримки обладнання
-ICP DAS. Включаючи I-87000 та I-7000 DCON модулі
-та I-8000 швидкі модулі.
+Пакет %{name}-DAQ-Bfn - надає реалізацію BFN.
 %description DAQ-Bfn -l de_DE.UTF8
-Das Paket %name-DAQ-Bfn, gewährt die Implementierung der
-Unterstützung der installierten Ausrüstung ICP DAS.
-Die Unterstützung von Modulen I-87000 und I-7000
-und Schnell-Modulen I-8000 DCON ist eingeschlossen.
+Пакет %{name}-DAQ-Bfn - предоставляет реализацию BFN.
 %endif
 
 %if 0%{?with_selfsystem}
@@ -1175,7 +1168,6 @@ Das Modell ist nur in Russisch verfügbar.
 Fuers Starten wird Kommando <openscada_Boiler> benutzt.
 Fuer den Zugang die Aufzeichnung "root" und das Kennwort "openscada" benutzen. 
 
-
 # ############################### Virtual Packages ###################################
 %package plc
 Summary: OpenSCADA PLC
@@ -1379,41 +1371,37 @@ rm -f %{buildroot}%{_libdir}/openscada/*.*a
 %{__install} -m 644 data/icons/* %{buildroot}/var/spool/openscada/icons
 %{__install} -m 755 -d %{buildroot}/var/spool/openscada/ARCHIVES/{MESS,VAL}
 
-%{__install} -m 644 -pD data/LibsDB/*.db %{buildroot}/%{_localstatedir}/spool/openscada/LibsDB
-%{__install} -m 644 data/ModelsDB/AGLKS/*.db %{buildroot}/%{_localstatedir}/spool/openscada/AGLKS
-%{__install} -m 644 -pD data/ModelsDB/AGLKS/oscada_AGLKS.xml %{buildroot}/%{_sysconfdir}/oscada_AGLKS.xml
-%{__install} -m 755 -pD data/ModelsDB/AGLKS/openscada_AGLKS %{buildroot}/%{_bindir}/openscada_AGLKS
-%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.desktop %{buildroot}/%{_desktopdir}/openscada_AGLKS.desktop
-%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/%{_iconsdir}/openscada_AGLKS.png
-%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}/%{_localstatedir}/spool/openscada/icons/AGLKS.png
+%{__install} -m 644 -pD data/LibsDB/*.db %{buildroot}%{_localstatedir}/spool/openscada/LibsDB
+%{__install} -m 644 data/ModelsDB/AGLKS/*.db %{buildroot}%{_localstatedir}/spool/openscada/AGLKS
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/oscada_AGLKS.xml %{buildroot}%{_sysconfdir}/oscada_AGLKS.xml
+%{__install} -m 755 -pD data/ModelsDB/AGLKS/openscada_AGLKS %{buildroot}%{_bindir}/openscada_AGLKS
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}%_iconsdir/openscada_AGLKS.png
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.png %{buildroot}%{_localstatedir}/spool/openscada/icons/AGLKS.png
+%{__install} -m 644 -pD data/ModelsDB/AGLKS/openscada_AGLKS.desktop %{buildroot}%_desktopdir/openscada_AGLKS.desktop
 
-%{__install} -m 644 data/ModelsDB/Boiler/*.db %{buildroot}/%{_localstatedir}/spool/openscada/Boiler
-%{__install} -m 644 -pD data/ModelsDB/Boiler/oscada_Boiler.xml %{buildroot}/%{_sysconfdir}/oscada_Boiler.xml
-%{__install} -m 755 -pD data/ModelsDB/Boiler/openscada_Boiler %{buildroot}/%{_bindir}/openscada_Boiler
-%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.desktop %{buildroot}/%{_desktopdir}/openscada_Boiler.desktop
-%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/%{_iconsdir}/openscada_Boiler.png
-%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}/%{_localstatedir}/spool/openscada/icons/Boiler.png 
-
+%{__install} -m 644 data/ModelsDB/Boiler/*.db %{buildroot}%{_localstatedir}/spool/openscada/Boiler
+%{__install} -m 644 -pD data/ModelsDB/Boiler/oscada_Boiler.xml %{buildroot}%{_sysconfdir}/oscada_Boiler.xml
+%{__install} -m 755 -pD data/ModelsDB/Boiler/openscada_Boiler %{buildroot}%{_bindir}/openscada_Boiler
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}%_iconsdir/openscada_Boiler.png
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.png %{buildroot}%{_localstatedir}/spool/openscada/icons/Boiler.png 
+%{__install} -m 644 -pD data/ModelsDB/Boiler/openscada_Boiler.desktop %{buildroot}%_desktopdir/openscada_Boiler.desktop
 
 echo "OpenSCADA data dir" > %{buildroot}/var/spool/openscada/DATA/info
 echo "OpenSCADA messages archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/MESS/info
 echo "OpenSCADA values archive dir" > %{buildroot}/var/spool/openscada/ARCHIVES/VAL/info
 
+%{__sed} -i 's|../../lib/openscada/|../../%{_lib}/openscada/|' %{buildroot}%{_sysconfdir}/oscada*.xml
 %{__sed} -i 's|/usr/lib/|%{_libdir}/|' %{buildroot}%{_sysconfdir}/oscada*.xml
 %{__sed} -i 's|OPENSCADA_BIN=|OPENSCADA_BIN=%{_bindir}/openscada|' %{buildroot}%{_initrddir}/openscadad
 
 # installation of *.desktop files
-%if 0%{?with_modeles_aglks}
-desktop-file-install --dir=%{buildroot}%{_desktopdir} data/ModelsDB/AGLKS/openscada_AGLKS.desktop
-%endif
-%if 0%{?with_modeles_boiler}
-desktop-file-install --dir=%{buildroot}%{_desktopdir} data/ModelsDB/Boiler/openscada_Boiler.desktop
-%endif
+desktop-file-install --dir=%{buildroot}%_desktopdir data/ModelsDB/AGLKS/openscada_AGLKS.desktop
+desktop-file-install --dir=%{buildroot}%_desktopdir data/ModelsDB/Boiler/openscada_Boiler.desktop
 
 %find_lang o.* %{name}.lang
 
 %clean
-%{__rm} -rf %{buildroot}
+#%{__rm} -rf %{buildroot}
 
 %files -f %{name}.lang
  
@@ -1881,25 +1869,23 @@ desktop-file-install --dir=%{buildroot}%{_desktopdir} data/ModelsDB/Boiler/opens
 %defattr(-,root,root)
 %dir %{_localstatedir}/spool/openscada/LibsDB/vca*.db
 
-%if 0%{?with_modeles_aglks}
 %files Model.AGLKS
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/oscada_AGLKS.xml
 %{_bindir}/openscada_AGLKS
-%{_iconsdir}/openscada_AGLKS.png
+%_desktopdir/openscada_AGLKS.desktop
+%_iconsdir/openscada_AGLKS.png
 %dir %{_localstatedir}/spool/openscada/icons/AGLKS.png
 %dir %{_localstatedir}/spool/openscada/AGLKS/*.db
-%endif
 
-%if 0%{?with_modeles_broiler}
 %files Model.Boiler
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/oscada_Boiler.xml
 %{_bindir}/openscada_Boiler
-%{_iconsdir}/openscada_Boiler.png
+%_desktopdir/openscada_Boiler.desktop
+%_iconsdir/openscada_Boiler.png
 %dir %{_localstatedir}/spool/openscada/icons/Boiler.png
 %dir %{_localstatedir}/spool/openscada/Boiler/*.db 
-%endif
 
 %changelog
 * Mon Mar 14 2011 Aleksey Popkov <aleksey@oscada.org> - 0.7.1-1
