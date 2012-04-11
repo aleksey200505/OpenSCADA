@@ -58,8 +58,8 @@
 #include "vis_shapes.h"
 
 #ifdef HAVE_PHONON
-#include <phonon/VideoPlayer>
-#include <phonon/VideoWidget>
+#include <Phonon/VideoPlayer>
+#include <Phonon/VideoWidget>
 #endif
 
 
